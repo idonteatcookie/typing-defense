@@ -155,7 +155,7 @@ export class GameScene extends Phaser.Scene {
     });
 
     eventBus.on(EVENT_NAMES.MONSTER_SPAWN, (monster) => {
-      this.addMonster(monster.id, monster.x, monster.y, hexToNumber(monster.color), monster.size);
+      this.addMonster(monster.id, monster.x, monster.y, hexToNumber(monster.color), monster.size, monster.type);
     });
 
     eventBus.on(EVENT_NAMES.MONSTER_DEATH, (monster) => {
@@ -181,7 +181,7 @@ export class GameScene extends Phaser.Scene {
     });
 
     eventBus.on(EVENT_NAMES.BULLET_FIRE, (bullet) => {
-      this.addBullet(bullet.id, bullet.x, bullet.y, hexToNumber(bullet.color));
+      this.addBullet(bullet.id, bullet.x, bullet.y, hexToNumber(bullet.color), bullet.towerType);
       this.showMuzzleFlash(bullet.x, bullet.y, hexToNumber(bullet.color));
     });
 
@@ -287,29 +287,34 @@ export class GameScene extends Phaser.Scene {
     }
   }
 
-  private addMonster(id: string, x: number, y: number, color: number, size: number): void {
+  private addMonster(id: string, x: number, y: number, color: number, size: number, type?: string): void {
     const container = this.add.container(x, y);
 
-    const shadow = this.add.circle(2, size * 0.3, size, 0x000000, 0.3);
-
-    const body = this.add.circle(0, 0, size, color);
-    body.setStrokeStyle(3, 0x000000, 0.6);
-
-    const highlight = this.add.circle(-size * 0.3, -size * 0.3, size * 0.3, 0xffffff, 0.3);
-
-    const eye1 = this.add.circle(-size * 0.3, -size * 0.1, size * 0.22, 0xffffff);
-    const eye2 = this.add.circle(size * 0.3, -size * 0.1, size * 0.22, 0xffffff);
-    const pupil1 = this.add.circle(-size * 0.3, -size * 0.05, size * 0.1, 0x000000);
-    const pupil2 = this.add.circle(size * 0.3, -size * 0.05, size * 0.1, 0x000000);
+    let body: Phaser.GameObjects.Image | Phaser.GameObjects.Arc;
+    if (type && this.textures.exists(type)) {
+      body = this.add.image(0, 0, type);
+      const scale = (size * 2) / Math.max(body.width, body.height);
+      body.setScale(scale);
+    } else {
+      body = this.add.circle(0, 0, size, color);
+      body.setStrokeStyle(3, 0x000000, 0.6);
+      const highlight = this.add.circle(-size * 0.3, -size * 0.3, size * 0.3, 0xffffff, 0.3);
+      const eye1 = this.add.circle(-size * 0.3, -size * 0.1, size * 0.22, 0xffffff);
+      const eye2 = this.add.circle(size * 0.3, -size * 0.1, size * 0.22, 0xffffff);
+      const pupil1 = this.add.circle(-size * 0.3, -size * 0.05, size * 0.1, 0x000000);
+      const pupil2 = this.add.circle(size * 0.3, -size * 0.05, size * 0.1, 0x000000);
+      container.add([highlight, eye1, eye2, pupil1, pupil2]);
+    }
 
     const hpBarBg = this.add.rectangle(0, -size - 12, size * 2.2, 7, 0x1a1a1a, 0.8);
     hpBarBg.setStrokeStyle(1, 0x444444, 0.8);
     const hpBar = this.add.rectangle(-size * 1.1, -size - 12, size * 2.2, 7, 0x22c55e);
     hpBar.setOrigin(0, 0.5);
 
-    container.add([shadow, body, highlight, eye1, eye2, pupil1, pupil2, hpBarBg, hpBar]);
+    container.add([body, hpBarBg, hpBar]);
     container.setData('hpBar', hpBar);
     container.setData('maxHp', 100);
+    container.setData('size', size);
     container.setDepth(10);
 
     this.monsters.set(id, container);
@@ -343,21 +348,29 @@ export class GameScene extends Phaser.Scene {
 
     const shadow = this.add.circle(2, 8, 20, 0x000000, 0.3);
 
-    const base = this.add.circle(0, 6, 20, 0x64748b);
-    base.setStrokeStyle(3, 0x334155);
+    if (this.textures.exists('tower')) {
+      const tower = this.add.image(0, 0, 'tower');
+      const scale = 40 / Math.max(tower.width, tower.height);
+      tower.setScale(scale);
+      container.add([shadow, tower]);
+    } else {
+      const base = this.add.circle(0, 6, 20, 0x64748b);
+      base.setStrokeStyle(3, 0x334155);
 
-    const platform = this.add.circle(0, 2, 16, 0x475569);
-    platform.setStrokeStyle(2, 0x1e293b);
+      const platform = this.add.circle(0, 2, 16, 0x475569);
+      platform.setStrokeStyle(2, 0x1e293b);
 
-    const body = this.add.rectangle(0, -8, 22, 22, color);
-    body.setStrokeStyle(2, 0x000000, 0.4);
+      const body = this.add.rectangle(0, -8, 22, 22, color);
+      body.setStrokeStyle(2, 0x000000, 0.4);
 
-    const top = this.add.circle(0, -18, 11, color);
-    top.setStrokeStyle(2, 0x000000, 0.4);
+      const top = this.add.circle(0, -18, 11, color);
+      top.setStrokeStyle(2, 0x000000, 0.4);
 
-    const gem = this.add.circle(0, -18, 5, 0xffffff, 0.5);
+      const gem = this.add.circle(0, -18, 5, 0xffffff, 0.5);
 
-    container.add([shadow, base, platform, body, top, gem]);
+      container.add([shadow, base, platform, body, top, gem]);
+    }
+
     container.setDepth(20);
     this.towers.set(id, container);
 
@@ -386,19 +399,32 @@ export class GameScene extends Phaser.Scene {
     }
   }
 
-  private addBullet(id: string, x: number, y: number, color: number): void {
+  private addBullet(id: string, x: number, y: number, color: number, towerType?: string): void {
     const container = this.add.container(x, y);
 
-    const glow = this.add.circle(0, 0, 10, color, 0.3);
-    glow.setData('isGlow', true);
+    let bulletImage: string | null = null;
+    if (towerType === 'arrow' && this.textures.exists('arrow_bullet')) {
+      bulletImage = 'arrow_bullet';
+    }
 
-    const bullet = this.add.circle(0, 0, 6, color);
-    bullet.setStrokeStyle(2, 0xffffff, 0.7);
+    if (bulletImage) {
+      const sprite = this.add.image(0, 0, bulletImage);
+      const scale = 20 / Math.max(sprite.width, sprite.height);
+      sprite.setScale(scale);
+      container.add([sprite]);
+    } else {
+      const glow = this.add.circle(0, 0, 10, color, 0.3);
+      glow.setData('isGlow', true);
 
-    const highlight = this.add.circle(-2, -2, 2, 0xffffff, 0.8);
-    highlight.setData('isHighlight', true);
+      const bullet = this.add.circle(0, 0, 6, color);
+      bullet.setStrokeStyle(2, 0xffffff, 0.7);
 
-    container.add([glow, bullet, highlight]);
+      const highlight = this.add.circle(-2, -2, 2, 0xffffff, 0.8);
+      highlight.setData('isHighlight', true);
+
+      container.add([glow, bullet, highlight]);
+    }
+
     container.setDepth(30);
 
     this.bullets.set(id, container as any);
@@ -493,9 +519,10 @@ export class GameScene extends Phaser.Scene {
         display.y = monster.y;
 
         const hpBar = display.getData('hpBar') as Phaser.GameObjects.Rectangle;
-        if (hpBar) {
+        const size = display.getData('size') as number;
+        if (hpBar && size) {
           const hpPercent = monster.currentHp / monster.maxHp;
-          hpBar.width = 40 * hpPercent;
+          hpBar.width = size * 2.2 * hpPercent;
 
           if (hpPercent > 0.5) {
             hpBar.setFillStyle(0x22c55e);

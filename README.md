@@ -22,15 +22,29 @@
 
 ### 塔防元素
 - **炮塔系统**：可放置箭塔和冰塔辅助攻击
-- **怪物系统**：史莱姆（普通）、疾行者（快速）、坦克（高血量）
+- **怪物系统**：史莱姆（普通）、疾行者（快速）、坦克（高血量）、Boss
 - **波次系统**：每关多波怪物，难度递增
 - **路径系统**：怪物沿固定路径前进
+
+### 连击狂热模式
+达到一定连击数后触发视觉效果：
+- **10连击**：⚡ 狂热模式 - 黄色发光、屏幕边框脉动
+- **20连击**：🔥 狂暴模式 - 紫色发光、文字抖动、屏幕震动
+- **50连击**：💀 无敌模式 - 红色发光、强烈震动、伤害翻倍
 
 ### 视觉反馈
 - 正确输入：字母变绿色
 - 错误输入：字母变红色并左右抖动
 - 炮台开火动画
 - 怪物受击和死亡效果
+- 连击时屏幕边框发光脉动
+
+### 音效系统
+- **背景音乐**：游戏过程中循环播放
+- **发射音效**：每次发射子弹时播放
+- **错误音效**：输入错误时播放
+- **胜利/失败音效**：游戏结束时播放
+- 暂停时自动暂停音乐
 
 ## 技术栈
 
@@ -48,6 +62,24 @@ typing-defense/
 ├── docs/                        # 文档
 │   ├── 盲打塔防游戏PRD.md       # 产品需求文档
 │   └── 盲打防线-技术架构设计文档.md  # 技术架构文档
+├── public/
+│   └── assets/                  # 游戏素材
+│       ├── audio/               # 音频文件
+│       │   ├── bgm.mp3             # 背景音乐
+│       │   ├── bullet.mp3          # 发射音效
+│       │   ├── error.mp3           # 错误音效
+│       │   ├── victory.mp3         # 胜利音效
+│       │   └── defeat.mp3          # 失败音效
+│       ├── monsters/            # 怪物图片
+│       │   ├── slime.png           # 史莱姆
+│       │   ├── runner.png          # 疾行者
+│       │   ├── tank.png            # 坦克
+│       │   └── boss.png            # Boss
+│       ├── towers/              # 炮塔图片
+│       │   └── tower.png           # 炮塔
+│       └── bullets/             # 子弹图片
+│       │   ├── arrow.png           # 箭塔子弹
+│       │   └── bullet.png          # 炮台子弹
 ├── src/
 │   ├── components/              # React 组件
 │   │   ├── dialog/              # 对话框组件
@@ -100,12 +132,13 @@ typing-defense/
 │   │   │   ├── grid.ts             # 网格工具
 │   │   │   ├── math.ts             # 数学工具
 │   │   │   └── pool.ts             # 对象池
+│   │   ├── AudioManager.ts      # 音频管理器
 │   │   ├── EventBus.ts          # 事件总线
 │   │   └── GameManager.ts       # 游戏管理器（单例）
 │   ├── phaser/                  # Phaser 游戏引擎
 │   │   ├── scenes/              # 场景
-│   │   │   ├── BootScene.ts        # 启动场景
-│   │   │   └── GameScene.ts        # 游戏场景
+│   │   │   ├── BootScene.ts        # 启动场景（加载资源）
+│   │   │   └── GameScene.ts        # 游戏场景（渲染）
 │   │   └── PhaserGame.ts         # Phaser游戏实例
 │   ├── storage/                 # 本地存储
 │   │   ├── SettingsStorage.ts      # 设置存储
@@ -117,7 +150,7 @@ typing-defense/
 │   │   ├── useSettingsStore.ts     # 设置状态
 │   │   └── useUserStore.ts         # 用户状态
 │   ├── App.tsx                 # 根组件
-│   ├── index.css               # 全局样式
+│   ├── index.css               # 全局样式（含连击动画）
 │   └── main.tsx                # 入口文件
 ├── .eslintrc.cjs               # ESLint 配置
 ├── .gitignore                  # Git 忽略配置
@@ -127,7 +160,8 @@ typing-defense/
 ├── tailwind.config.js          # Tailwind 配置
 ├── tsconfig.json               # TypeScript 配置
 ├── tsconfig.node.json          # TypeScript Node 配置
-└── vite.config.ts              # Vite 配置
+├── vite.config.ts              # Vite 配置
+└── README.md                   # 项目说明
 ```
 
 ## 配置文件说明
@@ -153,14 +187,49 @@ typing-defense/
 }
 ```
 
+**波次配置结构**：
+
+```json
+"waves": [
+  {
+    "delay": 0,           // 波次开始延迟(毫秒)
+    "monsters": [
+      {
+        "type": "slime",  // 怪物类型
+        "count": 5,       // 数量
+        "interval": 3000  // 生成间隔(毫秒)
+      }
+    ]
+  }
+]
+```
+
 **怪物类型**：
-- `slime` - 史莱姆（普通怪物）
-- `runner` - 疾行者（速度快）
-- `tank` - 坦克（血量高）
+- `slime` - 史莱姆（普通怪物，血量30）
+- `runner` - 疾行者（速度快，血量20）
+- `tank` - 坦克（血量高，血量100）
+- `boss` - Boss（血量500）
 
 **炮塔类型**：
 - `arrow` - 箭塔（单体攻击）
 - `ice` - 冰塔（减速效果）
+
+### 怪物配置 (MonsterConfig.ts)
+
+位置：`src/game/config/MonsterConfig.ts`
+
+```typescript
+slime:  { maxHp: 30,  speed: 30, goldReward: 5,  size: 20 }
+runner: { maxHp: 20,  speed: 60, goldReward: 8,  size: 16 }
+tank:   { maxHp: 100, speed: 20, goldReward: 15, size: 28 }
+boss:   { maxHp: 500, speed: 15, goldReward: 100, size: 40 }
+```
+
+### 炮塔配置 (TowerConfig.ts)
+
+位置：`src/game/config/TowerConfig.ts`
+
+可配置每种炮塔的伤害、射程、攻击速度、造价等属性。
 
 ### 游戏常量 (gameConstants.ts)
 
@@ -172,21 +241,31 @@ GAME_HEIGHT = 640          // 游戏画布高度
 GRID_SIZE = 40             // 网格大小
 CANNON_DAMAGE = 15         // 炮台基础伤害
 CANNON_BULLET_SPEED = 500  // 炮台子弹速度
-START_LIVES = 10           // 默认初始生命
-START_GOLD = 100           // 默认初始金币
 ```
 
-### 怪物配置 (MonsterConfig.ts)
+## 游戏素材
 
-位置：`src/game/config/MonsterConfig.ts`
+### 图片素材
 
-可配置每种怪物的血量、速度、金币奖励等属性。
+| 目录 | 文件 | 用途 |
+|------|------|------|
+| `monsters/` | slime.png | 史莱姆怪物 |
+| | runner.png | 疾行者怪物 |
+| | tank.png | 坦克怪物 |
+| | boss.png | Boss怪物 |
+| `towers/` | tower.png | 炮塔 |
+| `bullets/` | arrow.png | 箭塔子弹 |
+| | bullet.png | 炮台子弹 |
 
-### 炮塔配置 (TowerConfig.ts)
+### 音频素材
 
-位置：`src/game/config/TowerConfig.ts`
-
-可配置每种炮塔的伤害、射程、攻击速度、造价等属性。
+| 文件 | 用途 | 说明 |
+|------|------|------|
+| bgm.mp3 | 背景音乐 | 游戏过程中循环播放 |
+| bullet.mp3 | 发射音效 | 每次发射子弹时播放 |
+| error.mp3 | 错误音效 | 输入错误字母时播放 |
+| victory.mp3 | 胜利音效 | 关卡胜利时播放 |
+| defeat.mp3 | 失败音效 | 关卡失败时播放 |
 
 ## 快速开始
 
@@ -236,22 +315,9 @@ npm run typecheck
 
 ## 调试方式
 
-### React DevTools
-使用浏览器 React DevTools 扩展调试 React 组件状态。
+### 关卡调试
 
-### Zustand DevTools
-Zustand 状态可通过 Redux DevTools 扩展查看（需配置）。
-
-### 游戏调试
-- **怪物数量**：修改 `src/data/levels.json` 中对应关卡的 `waves` 配置，调整怪物数量
-- **游戏速度**：在 `GameManager.ts` 的 `update` 方法中调整 deltaTime 缩放
-- **初始金币/生命**：修改关卡配置中的 `startGold` 和 `startLives`
-- **打字难度**：修改关卡配置中的 `typingDifficulty`（当前目标始终为单字母）
-- **练习字母**：修改关卡配置中的 `practiceLetters` 字段
-
-### 关卡调试示例
-
-快速测试某一关，修改对应关卡的 `waves`：
+修改 `src/data/levels.json`：
 
 ```json
 {
@@ -269,13 +335,16 @@ Zustand 状态可通过 Redux DevTools 扩展查看（需配置）。
 }
 ```
 
-### 事件调试
-所有游戏事件通过 `EventBus` 发布，可在 `src/constants/eventNames.ts` 查看所有事件名，在控制台监听事件：
+### 属性调试
 
-```javascript
-// 浏览器控制台
-eventBus.on('typing:correct', (data) => console.log('Correct:', data));
-```
+- **怪物血量/速度**：修改 `src/game/config/MonsterConfig.ts`
+- **炮塔伤害/造价**：修改 `src/game/config/TowerConfig.ts`
+- **连击伤害倍率**：修改 `src/game/typing/TypingManager.ts` 的 `getComboDamageMultiplier()`
+- **连击触发等级**：修改 `src/components/game/ComboDisplay.tsx` 的等级判定
+
+### 事件调试
+
+所有游戏事件通过 `EventBus` 发布，可在 `src/constants/eventNames.ts` 查看所有事件名。
 
 ## 游戏操作
 
@@ -286,21 +355,25 @@ eventBus.on('typing:correct', (data) => console.log('Correct:', data));
 ## 架构说明
 
 ### 核心架构模式
-- **单例模式**：`GameManager` 全局唯一游戏管理器
+- **单例模式**：`GameManager`、`AudioManager` 全局唯一管理器
 - **发布-订阅**：`EventBus` 实现组件间解耦通信
 - **ECS模式**：System 管理实体更新逻辑
 - **工厂模式**：`EngineFactory` 创建打字引擎
-- **对象池**：`pool.ts` 优化对象创建性能
 
 ### 数据流
 1. 用户键盘输入 → `BottomInput` 组件监听
 2. 输入传递给 `GameManager.handleTypingInput()`
 3. `TypingManager` 处理输入逻辑
-4. 正确输入触发 `fireCannon()` 发射子弹
+4. 正确输入触发 `fireCannon()` 发射子弹，播放音效
 5. `BulletSystem` 更新子弹位置
 6. `MonsterSystem` 处理怪物伤害和死亡
 7. 状态变化通过 EventBus 发布事件
 8. React 组件监听事件更新 UI
+
+### 状态管理
+- `useGameStore`：游戏状态（金币、生命、波次、连击）
+- `useUserStore`：用户数据（解锁关卡、最高连击）
+- `useSettingsStore`：设置（音量、静音）
 
 ## License
 

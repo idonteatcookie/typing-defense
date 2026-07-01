@@ -37,6 +37,13 @@ export class BootScene extends Phaser.Scene {
       loadingText.destroy();
       percentText.destroy();
     });
+
+    this.load.image('slime', '/assets/monsters/slime.png');
+    this.load.image('runner', '/assets/monsters/runner.png');
+    this.load.image('tank', '/assets/monsters/tank.png');
+    this.load.image('tower', '/assets/towers/tower.png');
+    this.load.image('arrow_bullet', '/assets/bullets/arrow.png');
+    this.load.image('cannon_bullet', '/assets/bullets/bullet.png');
   }
 
   create(): void {

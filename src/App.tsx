@@ -5,6 +5,7 @@ import { useSettingsStore } from './store/useSettingsStore';
 import { gameManager } from './game/GameManager';
 import { eventBus } from './game/EventBus';
 import { EVENT_NAMES } from './constants/eventNames';
+import { audioManager } from './game/AudioManager';
 import MainMenu from './components/menu/MainMenu';
 import LevelSelect from './components/menu/LevelSelect';
 import GameView from './components/game/GameView';
@@ -60,14 +61,23 @@ function App() {
 
     const unsub6 = eventBus.on(EVENT_NAMES.TYPING_WRONG, () => {
       setCombo(0);
+      audioManager.playWrongSound();
     });
 
     const unsub7 = eventBus.on(EVENT_NAMES.GAME_VICTORY, (data: VictoryData) => {
       setVictory(data);
+      audioManager.stopBgm();
+      audioManager.playVictorySound();
     });
 
     const unsub8 = eventBus.on(EVENT_NAMES.GAME_DEFEAT, (data: DefeatData) => {
       setDefeat(data);
+      audioManager.stopBgm();
+      audioManager.playDefeatSound();
+    });
+
+    const unsub9 = eventBus.on(EVENT_NAMES.BULLET_FIRE, () => {
+      audioManager.playBulletSound();
     });
 
     return () => {
@@ -79,6 +89,7 @@ function App() {
       unsub6();
       unsub7();
       unsub8();
+      unsub9();
     };
   }, [setGold, setLives, setWave, setTypingTarget, setCombo, setVictory, setDefeat]);
 
@@ -87,9 +98,11 @@ function App() {
     setCurrentLevelId(levelId);
     setGameScreen('playing');
     setWave(1, gameManager.getTotalWaves());
+    audioManager.startBgm();
   }, [setGameScreen, setWave, setCurrentLevelId]);
 
   const handleGoToMenu = useCallback(() => {
+    audioManager.stopAll();
     setGameScreen('menu');
   }, [setGameScreen]);
 
@@ -99,11 +112,13 @@ function App() {
 
   const handlePause = useCallback(() => {
     gameManager.pause();
+    audioManager.pauseBgm();
     setGameScreen('paused');
   }, [setGameScreen]);
 
   const handleResume = useCallback(() => {
     gameManager.resume();
+    audioManager.resumeBgm();
     setGameScreen('playing');
   }, [setGameScreen]);
 
@@ -113,6 +128,7 @@ function App() {
       gameManager.startLevel(levelId);
       setGameScreen('playing');
       setWave(1, gameManager.getTotalWaves());
+      audioManager.startBgm();
     }
   }, [setGameScreen, setWave]);
 
@@ -124,6 +140,7 @@ function App() {
       setCurrentLevelId(nextLevelId);
       setGameScreen('playing');
       setWave(1, gameManager.getTotalWaves());
+      audioManager.startBgm();
     } else {
       setGameScreen('levelSelect');
     }

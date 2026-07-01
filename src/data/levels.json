@@ -17,7 +17,14 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 5, "interval": 2500 }] }
+      {
+        "delay": 0,
+        "monsters": [
+          { "type": "slime", "count": 5, "interval": 2500 },
+          { "type": "runner", "count": 5, "interval": 2500 },
+          { "type": "tank", "count": 5, "interval": 2500 }
+        ]
+      }
     ]
   },
   {
@@ -38,7 +45,10 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 5, "interval": 2500 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 5, "interval": 2500 }]
+      }
     ]
   },
   {
@@ -59,7 +69,10 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 6, "interval": 2200 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 6, "interval": 2200 }]
+      }
     ]
   },
   {
@@ -80,7 +93,10 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 6, "interval": 2000 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 6, "interval": 2000 }]
+      }
     ]
   },
   {
@@ -101,8 +117,14 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 8, "interval": 2000 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 6, "interval": 1800 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 8, "interval": 2000 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "slime", "count": 6, "interval": 1800 }]
+      }
     ]
   },
   {
@@ -123,8 +145,14 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 8, "interval": 1800 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 8, "interval": 1600 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 8, "interval": 1800 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "slime", "count": 8, "interval": 1600 }]
+      }
     ]
   },
   {
@@ -145,8 +173,17 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1600 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 8, "interval": 1500 }, { "type": "runner", "count": 2, "interval": 2500 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 10, "interval": 1600 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 8, "interval": 1500 },
+          { "type": "runner", "count": 2, "interval": 2500 }
+        ]
+      }
     ]
   },
   {
@@ -167,8 +204,17 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1400 }, { "type": "runner", "count": 3, "interval": 2000 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 10, "interval": 1400 },
+          { "type": "runner", "count": 3, "interval": 2000 }
+        ]
+      }
     ]
   },
   {
@@ -189,8 +235,14 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 8, "interval": 1800 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 8, "interval": 1600 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 8, "interval": 1800 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "slime", "count": 8, "interval": 1600 }]
+      }
     ]
   },
   {
@@ -211,8 +263,14 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 8, "interval": 1700 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 8, "interval": 1700 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }]
+      }
     ]
   },
   {
@@ -233,8 +291,17 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1600 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 8, "interval": 1500 }, { "type": "runner", "count": 2, "interval": 2500 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 10, "interval": 1600 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 8, "interval": 1500 },
+          { "type": "runner", "count": 2, "interval": 2500 }
+        ]
+      }
     ]
   },
   {
@@ -255,8 +322,14 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1400 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "slime", "count": 10, "interval": 1400 }]
+      }
     ]
   },
   {
@@ -277,8 +350,17 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1300 }, { "type": "runner", "count": 3, "interval": 2000 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 10, "interval": 1300 },
+          { "type": "runner", "count": 3, "interval": 2000 }
+        ]
+      }
     ]
   },
   {
@@ -299,8 +381,14 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1400 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1300 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 12, "interval": 1400 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "slime", "count": 10, "interval": 1300 }]
+      }
     ]
   },
   {
@@ -321,8 +409,17 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1200 }, { "type": "runner", "count": 4, "interval": 1800 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 10, "interval": 1200 },
+          { "type": "runner", "count": 4, "interval": 1800 }
+        ]
+      }
     ]
   },
   {
@@ -343,8 +440,17 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }, { "type": "runner", "count": 4, "interval": 1800 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 12, "interval": 1200 },
+          { "type": "runner", "count": 4, "interval": 1800 }
+        ]
+      }
     ]
   },
   {
@@ -365,8 +471,17 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 14, "interval": 1200 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1100 }, { "type": "runner", "count": 5, "interval": 1600 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 14, "interval": 1200 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 12, "interval": 1100 },
+          { "type": "runner", "count": 5, "interval": 1600 }
+        ]
+      }
     ]
   },
   {
@@ -387,9 +502,21 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 14, "interval": 1200 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1100 }, { "type": "runner", "count": 5, "interval": 1500 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 14, "interval": 1200 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 12, "interval": 1100 },
+          { "type": "runner", "count": 5, "interval": 1500 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }]
+      }
     ]
   },
   {
@@ -410,8 +537,17 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }, { "type": "runner", "count": 4, "interval": 1800 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 12, "interval": 1200 },
+          { "type": "runner", "count": 4, "interval": 1800 }
+        ]
+      }
     ]
   },
   {
@@ -432,8 +568,17 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }, { "type": "runner", "count": 4, "interval": 1800 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 12, "interval": 1200 },
+          { "type": "runner", "count": 4, "interval": 1800 }
+        ]
+      }
     ]
   },
   {
@@ -454,9 +599,24 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 15, "interval": 1100 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1000 }, { "type": "runner", "count": 6, "interval": 1500 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 900 }, { "type": "tank", "count": 2, "interval": 3000 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 15, "interval": 1100 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 12, "interval": 1000 },
+          { "type": "runner", "count": 6, "interval": 1500 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 15, "interval": 900 },
+          { "type": "tank", "count": 2, "interval": 3000 }
+        ]
+      }
     ]
   },
   {
@@ -477,9 +637,21 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 900 }, { "type": "runner", "count": 6, "interval": 1400 }] },
-      { "delay": 5000, "monsters": [{ "type": "runner", "count": 10, "interval": 1000 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 15, "interval": 900 },
+          { "type": "runner", "count": 6, "interval": 1400 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "runner", "count": 10, "interval": 1000 }]
+      }
     ]
   },
   {
@@ -500,8 +672,14 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1400 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "slime", "count": 10, "interval": 1400 }]
+      }
     ]
   },
   {
@@ -522,8 +700,14 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }]
+      }
     ]
   },
   {
@@ -544,8 +728,17 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1400 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1300 }, { "type": "runner", "count": 3, "interval": 2000 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 12, "interval": 1400 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 10, "interval": 1300 },
+          { "type": "runner", "count": 3, "interval": 2000 }
+        ]
+      }
     ]
   },
   {
@@ -566,8 +759,14 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }]
+      }
     ]
   },
   {
@@ -588,8 +787,17 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }, { "type": "runner", "count": 4, "interval": 1800 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 12, "interval": 1200 },
+          { "type": "runner", "count": 4, "interval": 1800 }
+        ]
+      }
     ]
   },
   {
@@ -610,8 +818,14 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 14, "interval": 1200 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1100 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 14, "interval": 1200 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "slime", "count": 12, "interval": 1100 }]
+      }
     ]
   },
   {
@@ -632,8 +846,17 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 14, "interval": 1200 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1000 }, { "type": "runner", "count": 5, "interval": 1500 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 14, "interval": 1200 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 12, "interval": 1000 },
+          { "type": "runner", "count": 5, "interval": 1500 }
+        ]
+      }
     ]
   },
   {
@@ -654,8 +877,17 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 14, "interval": 1100 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 14, "interval": 1000 }, { "type": "runner", "count": 5, "interval": 1500 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 14, "interval": 1100 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 14, "interval": 1000 },
+          { "type": "runner", "count": 5, "interval": 1500 }
+        ]
+      }
     ]
   },
   {
@@ -676,8 +908,17 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 15, "interval": 1100 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1000 }, { "type": "runner", "count": 6, "interval": 1400 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 15, "interval": 1100 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 12, "interval": 1000 },
+          { "type": "runner", "count": 6, "interval": 1400 }
+        ]
+      }
     ]
   },
   {
@@ -698,9 +939,21 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 900 }, { "type": "runner", "count": 6, "interval": 1300 }] },
-      { "delay": 5000, "monsters": [{ "type": "tank", "count": 3, "interval": 2500 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 15, "interval": 900 },
+          { "type": "runner", "count": 6, "interval": 1300 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "tank", "count": 3, "interval": 2500 }]
+      }
     ]
   },
   {
@@ -721,8 +974,17 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }, { "type": "runner", "count": 5, "interval": 1600 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 15, "interval": 1000 },
+          { "type": "runner", "count": 5, "interval": 1600 }
+        ]
+      }
     ]
   },
   {
@@ -743,8 +1005,17 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }, { "type": "runner", "count": 5, "interval": 1600 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 15, "interval": 1000 },
+          { "type": "runner", "count": 5, "interval": 1600 }
+        ]
+      }
     ]
   },
   {
@@ -765,9 +1036,24 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 900 }, { "type": "runner", "count": 6, "interval": 1400 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 900 }, { "type": "tank", "count": 3, "interval": 2500 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 12, "interval": 900 },
+          { "type": "runner", "count": 6, "interval": 1400 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 15, "interval": 900 },
+          { "type": "tank", "count": 3, "interval": 2500 }
+        ]
+      }
     ]
   },
   {
@@ -788,9 +1074,24 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 18, "interval": 900 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 800 }, { "type": "runner", "count": 8, "interval": 1200 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 20, "interval": 800 }, { "type": "tank", "count": 4, "interval": 2000 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 18, "interval": 900 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 15, "interval": 800 },
+          { "type": "runner", "count": 8, "interval": 1200 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 20, "interval": 800 },
+          { "type": "tank", "count": 4, "interval": 2000 }
+        ]
+      }
     ]
   },
   {
@@ -811,10 +1112,28 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 20, "interval": 800 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 700 }, { "type": "runner", "count": 10, "interval": 1000 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 20, "interval": 700 }, { "type": "tank", "count": 5, "interval": 2000 }] },
-      { "delay": 6000, "monsters": [{ "type": "runner", "count": 12, "interval": 900 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 20, "interval": 800 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 15, "interval": 700 },
+          { "type": "runner", "count": 10, "interval": 1000 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 20, "interval": 700 },
+          { "type": "tank", "count": 5, "interval": 2000 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [{ "type": "runner", "count": 12, "interval": 900 }]
+      }
     ]
   },
   {
@@ -835,10 +1154,28 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 20, "interval": 700 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 18, "interval": 600 }, { "type": "runner", "count": 10, "interval": 900 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 25, "interval": 600 }, { "type": "tank", "count": 5, "interval": 1800 }] },
-      { "delay": 6000, "monsters": [{ "type": "runner", "count": 15, "interval": 700 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 20, "interval": 700 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 18, "interval": 600 },
+          { "type": "runner", "count": 10, "interval": 900 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 25, "interval": 600 },
+          { "type": "tank", "count": 5, "interval": 1800 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [{ "type": "runner", "count": 15, "interval": 700 }]
+      }
     ]
   },
   {
@@ -859,11 +1196,35 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 25, "interval": 600 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 20, "interval": 550 }, { "type": "runner", "count": 12, "interval": 800 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 25, "interval": 550 }, { "type": "tank", "count": 6, "interval": 1500 }] },
-      { "delay": 6000, "monsters": [{ "type": "runner", "count": 18, "interval": 600 }] },
-      { "delay": 7000, "monsters": [{ "type": "tank", "count": 6, "interval": 1500 }, { "type": "slime", "count": 20, "interval": 500 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 25, "interval": 600 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 20, "interval": 550 },
+          { "type": "runner", "count": 12, "interval": 800 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 25, "interval": 550 },
+          { "type": "tank", "count": 6, "interval": 1500 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [{ "type": "runner", "count": 18, "interval": 600 }]
+      },
+      {
+        "delay": 7000,
+        "monsters": [
+          { "type": "tank", "count": 6, "interval": 1500 },
+          { "type": "slime", "count": 20, "interval": 500 }
+        ]
+      }
     ]
   },
   {
@@ -884,11 +1245,35 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 30, "interval": 500 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 25, "interval": 450 }, { "type": "runner", "count": 15, "interval": 600 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 30, "interval": 450 }, { "type": "tank", "count": 8, "interval": 1200 }] },
-      { "delay": 6000, "monsters": [{ "type": "runner", "count": 20, "interval": 500 }] },
-      { "delay": 7000, "monsters": [{ "type": "tank", "count": 8, "interval": 1200 }, { "type": "slime", "count": 25, "interval": 400 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 30, "interval": 500 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 25, "interval": 450 },
+          { "type": "runner", "count": 15, "interval": 600 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 30, "interval": 450 },
+          { "type": "tank", "count": 8, "interval": 1200 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [{ "type": "runner", "count": 20, "interval": 500 }]
+      },
+      {
+        "delay": 7000,
+        "monsters": [
+          { "type": "tank", "count": 8, "interval": 1200 },
+          { "type": "slime", "count": 25, "interval": 400 }
+        ]
+      }
     ]
   },
   {
@@ -909,12 +1294,42 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 35, "interval": 400 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 30, "interval": 350 }, { "type": "runner", "count": 18, "interval": 500 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 35, "interval": 350 }, { "type": "tank", "count": 10, "interval": 1000 }] },
-      { "delay": 6000, "monsters": [{ "type": "runner", "count": 25, "interval": 400 }] },
-      { "delay": 7000, "monsters": [{ "type": "tank", "count": 10, "interval": 1000 }, { "type": "slime", "count": 30, "interval": 300 }] },
-      { "delay": 8000, "monsters": [{ "type": "runner", "count": 30, "interval": 350 }, { "type": "tank", "count": 12, "interval": 800 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 35, "interval": 400 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 30, "interval": 350 },
+          { "type": "runner", "count": 18, "interval": 500 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 35, "interval": 350 },
+          { "type": "tank", "count": 10, "interval": 1000 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [{ "type": "runner", "count": 25, "interval": 400 }]
+      },
+      {
+        "delay": 7000,
+        "monsters": [
+          { "type": "tank", "count": 10, "interval": 1000 },
+          { "type": "slime", "count": 30, "interval": 300 }
+        ]
+      },
+      {
+        "delay": 8000,
+        "monsters": [
+          { "type": "runner", "count": 30, "interval": 350 },
+          { "type": "tank", "count": 12, "interval": 800 }
+        ]
+      }
     ]
   },
   {
@@ -935,11 +1350,32 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 20, "interval": 600 }] },
-      { "delay": 5000, "monsters": [{ "type": "runner", "count": 15, "interval": 700 }] },
-      { "delay": 5000, "monsters": [{ "type": "tank", "count": 8, "interval": 1500 }] },
-      { "delay": 6000, "monsters": [{ "type": "slime", "count": 25, "interval": 500 }, { "type": "runner", "count": 10, "interval": 800 }] },
-      { "delay": 7000, "monsters": [{ "type": "tank", "count": 10, "interval": 1200 }, { "type": "runner", "count": 15, "interval": 600 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 20, "interval": 600 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "runner", "count": 15, "interval": 700 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "tank", "count": 8, "interval": 1500 }]
+      },
+      {
+        "delay": 6000,
+        "monsters": [
+          { "type": "slime", "count": 25, "interval": 500 },
+          { "type": "runner", "count": 10, "interval": 800 }
+        ]
+      },
+      {
+        "delay": 7000,
+        "monsters": [
+          { "type": "tank", "count": 10, "interval": 1200 },
+          { "type": "runner", "count": 15, "interval": 600 }
+        ]
+      }
     ]
   },
   {
@@ -960,11 +1396,35 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "runner", "count": 20, "interval": 500 }] },
-      { "delay": 5000, "monsters": [{ "type": "tank", "count": 10, "interval": 1200 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 30, "interval": 400 }, { "type": "runner", "count": 15, "interval": 600 }] },
-      { "delay": 6000, "monsters": [{ "type": "tank", "count": 12, "interval": 1000 }, { "type": "runner", "count": 20, "interval": 500 }] },
-      { "delay": 7000, "monsters": [{ "type": "slime", "count": 40, "interval": 350 }, { "type": "tank", "count": 8, "interval": 1000 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "runner", "count": 20, "interval": 500 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "tank", "count": 10, "interval": 1200 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 30, "interval": 400 },
+          { "type": "runner", "count": 15, "interval": 600 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [
+          { "type": "tank", "count": 12, "interval": 1000 },
+          { "type": "runner", "count": 20, "interval": 500 }
+        ]
+      },
+      {
+        "delay": 7000,
+        "monsters": [
+          { "type": "slime", "count": 40, "interval": 350 },
+          { "type": "tank", "count": 8, "interval": 1000 }
+        ]
+      }
     ]
   },
   {
@@ -985,13 +1445,46 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 40, "interval": 500 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 35, "interval": 450 }, { "type": "runner", "count": 15, "interval": 700 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 40, "interval": 400 }, { "type": "tank", "count": 10, "interval": 1500 }] },
-      { "delay": 6000, "monsters": [{ "type": "runner", "count": 25, "interval": 500 }] },
-      { "delay": 7000, "monsters": [{ "type": "tank", "count": 15, "interval": 1000 }, { "type": "slime", "count": 30, "interval": 450 }] },
-      { "delay": 8000, "monsters": [{ "type": "slime", "count": 50, "interval": 300 }, { "type": "runner", "count": 20, "interval": 500 }] },
-      { "delay": 10000, "monsters": [{ "type": "tank", "count": 20, "interval": 800 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 40, "interval": 500 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 35, "interval": 450 },
+          { "type": "runner", "count": 15, "interval": 700 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 40, "interval": 400 },
+          { "type": "tank", "count": 10, "interval": 1500 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [{ "type": "runner", "count": 25, "interval": 500 }]
+      },
+      {
+        "delay": 7000,
+        "monsters": [
+          { "type": "tank", "count": 15, "interval": 1000 },
+          { "type": "slime", "count": 30, "interval": 450 }
+        ]
+      },
+      {
+        "delay": 8000,
+        "monsters": [
+          { "type": "slime", "count": 50, "interval": 300 },
+          { "type": "runner", "count": 20, "interval": 500 }
+        ]
+      },
+      {
+        "delay": 10000,
+        "monsters": [{ "type": "tank", "count": 20, "interval": 800 }]
+      }
     ]
   },
   {
@@ -1012,14 +1505,53 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 50, "interval": 400 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 40, "interval": 350 }, { "type": "runner", "count": 20, "interval": 600 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 50, "interval": 300 }, { "type": "tank", "count": 15, "interval": 1000 }] },
-      { "delay": 6000, "monsters": [{ "type": "runner", "count": 35, "interval": 400 }] },
-      { "delay": 7000, "monsters": [{ "type": "tank", "count": 20, "interval": 800 }, { "type": "slime", "count": 40, "interval": 350 }] },
-      { "delay": 8000, "monsters": [{ "type": "slime", "count": 60, "interval": 250 }, { "type": "runner", "count": 30, "interval": 400 }] },
-      { "delay": 10000, "monsters": [{ "type": "tank", "count": 25, "interval": 700 }] },
-      { "delay": 10000, "monsters": [{ "type": "runner", "count": 40, "interval": 300 }, { "type": "tank", "count": 20, "interval": 800 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 50, "interval": 400 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 40, "interval": 350 },
+          { "type": "runner", "count": 20, "interval": 600 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 50, "interval": 300 },
+          { "type": "tank", "count": 15, "interval": 1000 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [{ "type": "runner", "count": 35, "interval": 400 }]
+      },
+      {
+        "delay": 7000,
+        "monsters": [
+          { "type": "tank", "count": 20, "interval": 800 },
+          { "type": "slime", "count": 40, "interval": 350 }
+        ]
+      },
+      {
+        "delay": 8000,
+        "monsters": [
+          { "type": "slime", "count": 60, "interval": 250 },
+          { "type": "runner", "count": 30, "interval": 400 }
+        ]
+      },
+      {
+        "delay": 10000,
+        "monsters": [{ "type": "tank", "count": 25, "interval": 700 }]
+      },
+      {
+        "delay": 10000,
+        "monsters": [
+          { "type": "runner", "count": 40, "interval": 300 },
+          { "type": "tank", "count": 20, "interval": 800 }
+        ]
+      }
     ]
   },
   {
@@ -1040,13 +1572,40 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "runner", "count": 30, "interval": 400 }] },
-      { "delay": 5000, "monsters": [{ "type": "runner", "count": 35, "interval": 300 }] },
-      { "delay": 5000, "monsters": [{ "type": "runner", "count": 40, "interval": 250 }, { "type": "tank", "count": 5, "interval": 2000 }] },
-      { "delay": 6000, "monsters": [{ "type": "slime", "count": 60, "interval": 200 }] },
-      { "delay": 7000, "monsters": [{ "type": "runner", "count": 50, "interval": 200 }] },
-      { "delay": 8000, "monsters": [{ "type": "tank", "count": 15, "interval": 1000 }, { "type": "runner", "count": 30, "interval": 300 }] },
-      { "delay": 10000, "monsters": [{ "type": "runner", "count": 60, "interval": 150 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "runner", "count": 30, "interval": 400 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "runner", "count": 35, "interval": 300 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "runner", "count": 40, "interval": 250 },
+          { "type": "tank", "count": 5, "interval": 2000 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [{ "type": "slime", "count": 60, "interval": 200 }]
+      },
+      {
+        "delay": 7000,
+        "monsters": [{ "type": "runner", "count": 50, "interval": 200 }]
+      },
+      {
+        "delay": 8000,
+        "monsters": [
+          { "type": "tank", "count": 15, "interval": 1000 },
+          { "type": "runner", "count": 30, "interval": 300 }
+        ]
+      },
+      {
+        "delay": 10000,
+        "monsters": [{ "type": "runner", "count": 60, "interval": 150 }]
+      }
     ]
   },
   {
@@ -1067,13 +1626,43 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "tank", "count": 10, "interval": 1500 }] },
-      { "delay": 5000, "monsters": [{ "type": "tank", "count": 15, "interval": 1200 }] },
-      { "delay": 5000, "monsters": [{ "type": "tank", "count": 20, "interval": 1000 }, { "type": "slime", "count": 20, "interval": 500 }] },
-      { "delay": 6000, "monsters": [{ "type": "tank", "count": 25, "interval": 800 }] },
-      { "delay": 7000, "monsters": [{ "type": "tank", "count": 30, "interval": 700 }, { "type": "runner", "count": 15, "interval": 600 }] },
-      { "delay": 8000, "monsters": [{ "type": "tank", "count": 35, "interval": 600 }] },
-      { "delay": 10000, "monsters": [{ "type": "tank", "count": 40, "interval": 500 }, { "type": "slime", "count": 30, "interval": 300 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "tank", "count": 10, "interval": 1500 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "tank", "count": 15, "interval": 1200 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "tank", "count": 20, "interval": 1000 },
+          { "type": "slime", "count": 20, "interval": 500 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [{ "type": "tank", "count": 25, "interval": 800 }]
+      },
+      {
+        "delay": 7000,
+        "monsters": [
+          { "type": "tank", "count": 30, "interval": 700 },
+          { "type": "runner", "count": 15, "interval": 600 }
+        ]
+      },
+      {
+        "delay": 8000,
+        "monsters": [{ "type": "tank", "count": 35, "interval": 600 }]
+      },
+      {
+        "delay": 10000,
+        "monsters": [
+          { "type": "tank", "count": 40, "interval": 500 },
+          { "type": "slime", "count": 30, "interval": 300 }
+        ]
+      }
     ]
   },
   {
@@ -1094,14 +1683,59 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 30, "interval": 300 }, { "type": "runner", "count": 15, "interval": 500 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 40, "interval": 250 }, { "type": "tank", "count": 10, "interval": 1500 }] },
-      { "delay": 5000, "monsters": [{ "type": "runner", "count": 30, "interval": 350 }, { "type": "tank", "count": 15, "interval": 1000 }] },
-      { "delay": 6000, "monsters": [{ "type": "slime", "count": 60, "interval": 200 }, { "type": "runner", "count": 25, "interval": 400 }] },
-      { "delay": 7000, "monsters": [{ "type": "tank", "count": 25, "interval": 700 }, { "type": "runner", "count": 30, "interval": 300 }] },
-      { "delay": 8000, "monsters": [{ "type": "slime", "count": 80, "interval": 150 }] },
-      { "delay": 10000, "monsters": [{ "type": "tank", "count": 30, "interval": 500 }, { "type": "runner", "count": 40, "interval": 250 }] },
-      { "delay": 10000, "monsters": [{ "type": "slime", "count": 100, "interval": 100 }, { "type": "tank", "count": 20, "interval": 800 }] }
+      {
+        "delay": 0,
+        "monsters": [
+          { "type": "slime", "count": 30, "interval": 300 },
+          { "type": "runner", "count": 15, "interval": 500 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 40, "interval": 250 },
+          { "type": "tank", "count": 10, "interval": 1500 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "runner", "count": 30, "interval": 350 },
+          { "type": "tank", "count": 15, "interval": 1000 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [
+          { "type": "slime", "count": 60, "interval": 200 },
+          { "type": "runner", "count": 25, "interval": 400 }
+        ]
+      },
+      {
+        "delay": 7000,
+        "monsters": [
+          { "type": "tank", "count": 25, "interval": 700 },
+          { "type": "runner", "count": 30, "interval": 300 }
+        ]
+      },
+      {
+        "delay": 8000,
+        "monsters": [{ "type": "slime", "count": 80, "interval": 150 }]
+      },
+      {
+        "delay": 10000,
+        "monsters": [
+          { "type": "tank", "count": 30, "interval": 500 },
+          { "type": "runner", "count": 40, "interval": 250 }
+        ]
+      },
+      {
+        "delay": 10000,
+        "monsters": [
+          { "type": "slime", "count": 100, "interval": 100 },
+          { "type": "tank", "count": 20, "interval": 800 }
+        ]
+      }
     ]
   },
   {
@@ -1122,14 +1756,47 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 50, "interval": 250 }] },
-      { "delay": 5000, "monsters": [{ "type": "runner", "count": 40, "interval": 250 }] },
-      { "delay": 5000, "monsters": [{ "type": "tank", "count": 25, "interval": 700 }] },
-      { "delay": 6000, "monsters": [{ "type": "slime", "count": 80, "interval": 150 }, { "type": "runner", "count": 30, "interval": 300 }] },
-      { "delay": 7000, "monsters": [{ "type": "tank", "count": 35, "interval": 500 }, { "type": "slime", "count": 50, "interval": 200 }] },
-      { "delay": 8000, "monsters": [{ "type": "runner", "count": 60, "interval": 150 }] },
-      { "delay": 10000, "monsters": [{ "type": "tank", "count": 40, "interval": 400 }, { "type": "runner", "count": 50, "interval": 200 }] },
-      { "delay": 10000, "monsters": [{ "type": "slime", "count": 120, "interval": 80 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 50, "interval": 250 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "runner", "count": 40, "interval": 250 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "tank", "count": 25, "interval": 700 }]
+      },
+      {
+        "delay": 6000,
+        "monsters": [
+          { "type": "slime", "count": 80, "interval": 150 },
+          { "type": "runner", "count": 30, "interval": 300 }
+        ]
+      },
+      {
+        "delay": 7000,
+        "monsters": [
+          { "type": "tank", "count": 35, "interval": 500 },
+          { "type": "slime", "count": 50, "interval": 200 }
+        ]
+      },
+      {
+        "delay": 8000,
+        "monsters": [{ "type": "runner", "count": 60, "interval": 150 }]
+      },
+      {
+        "delay": 10000,
+        "monsters": [
+          { "type": "tank", "count": 40, "interval": 400 },
+          { "type": "runner", "count": 50, "interval": 200 }
+        ]
+      },
+      {
+        "delay": 10000,
+        "monsters": [{ "type": "slime", "count": 120, "interval": 80 }]
+      }
     ]
   },
   {
@@ -1150,14 +1817,50 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "runner", "count": 50, "interval": 200 }] },
-      { "delay": 5000, "monsters": [{ "type": "tank", "count": 30, "interval": 600 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 80, "interval": 150 }, { "type": "runner", "count": 40, "interval": 200 }] },
-      { "delay": 6000, "monsters": [{ "type": "tank", "count": 40, "interval": 400 }, { "type": "slime", "count": 60, "interval": 150 }] },
-      { "delay": 7000, "monsters": [{ "type": "runner", "count": 70, "interval": 120 }] },
-      { "delay": 8000, "monsters": [{ "type": "tank", "count": 50, "interval": 300 }, { "type": "runner", "count": 60, "interval": 150 }] },
-      { "delay": 10000, "monsters": [{ "type": "slime", "count": 150, "interval": 60 }] },
-      { "delay": 10000, "monsters": [{ "type": "tank", "count": 60, "interval": 250 }, { "type": "runner", "count": 80, "interval": 100 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "runner", "count": 50, "interval": 200 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "tank", "count": 30, "interval": 600 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 80, "interval": 150 },
+          { "type": "runner", "count": 40, "interval": 200 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [
+          { "type": "tank", "count": 40, "interval": 400 },
+          { "type": "slime", "count": 60, "interval": 150 }
+        ]
+      },
+      {
+        "delay": 7000,
+        "monsters": [{ "type": "runner", "count": 70, "interval": 120 }]
+      },
+      {
+        "delay": 8000,
+        "monsters": [
+          { "type": "tank", "count": 50, "interval": 300 },
+          { "type": "runner", "count": 60, "interval": 150 }
+        ]
+      },
+      {
+        "delay": 10000,
+        "monsters": [{ "type": "slime", "count": 150, "interval": 60 }]
+      },
+      {
+        "delay": 10000,
+        "monsters": [
+          { "type": "tank", "count": 60, "interval": 250 },
+          { "type": "runner", "count": 80, "interval": 100 }
+        ]
+      }
     ]
   },
   {
@@ -1178,15 +1881,54 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 80, "interval": 200 }] },
-      { "delay": 5000, "monsters": [{ "type": "runner", "count": 60, "interval": 150 }] },
-      { "delay": 5000, "monsters": [{ "type": "tank", "count": 40, "interval": 400 }] },
-      { "delay": 6000, "monsters": [{ "type": "slime", "count": 120, "interval": 80 }, { "type": "runner", "count": 50, "interval": 180 }] },
-      { "delay": 7000, "monsters": [{ "type": "tank", "count": 50, "interval": 300 }, { "type": "slime", "count": 80, "interval": 100 }] },
-      { "delay": 8000, "monsters": [{ "type": "runner", "count": 100, "interval": 80 }] },
-      { "delay": 10000, "monsters": [{ "type": "tank", "count": 60, "interval": 200 }, { "type": "runner", "count": 80, "interval": 100 }] },
-      { "delay": 10000, "monsters": [{ "type": "slime", "count": 200, "interval": 40 }] },
-      { "delay": 12000, "monsters": [{ "type": "tank", "count": 80, "interval": 150 }, { "type": "runner", "count": 100, "interval": 60 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 80, "interval": 200 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "runner", "count": 60, "interval": 150 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "tank", "count": 40, "interval": 400 }]
+      },
+      {
+        "delay": 6000,
+        "monsters": [
+          { "type": "slime", "count": 120, "interval": 80 },
+          { "type": "runner", "count": 50, "interval": 180 }
+        ]
+      },
+      {
+        "delay": 7000,
+        "monsters": [
+          { "type": "tank", "count": 50, "interval": 300 },
+          { "type": "slime", "count": 80, "interval": 100 }
+        ]
+      },
+      {
+        "delay": 8000,
+        "monsters": [{ "type": "runner", "count": 100, "interval": 80 }]
+      },
+      {
+        "delay": 10000,
+        "monsters": [
+          { "type": "tank", "count": 60, "interval": 200 },
+          { "type": "runner", "count": 80, "interval": 100 }
+        ]
+      },
+      {
+        "delay": 10000,
+        "monsters": [{ "type": "slime", "count": 200, "interval": 40 }]
+      },
+      {
+        "delay": 12000,
+        "monsters": [
+          { "type": "tank", "count": 80, "interval": 150 },
+          { "type": "runner", "count": 100, "interval": 60 }
+        ]
+      }
     ]
   },
   {
@@ -1207,18 +1949,72 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "runner", "count": 150, "interval": 50 }] },
-      { "delay": 5000, "monsters": [{ "type": "tank", "count": 100, "interval": 150 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 300, "interval": 20 }, { "type": "runner", "count": 100, "interval": 80 }] },
-      { "delay": 6000, "monsters": [{ "type": "tank", "count": 150, "interval": 100 }, { "type": "slime", "count": 200, "interval": 30 }] },
-      { "delay": 7000, "monsters": [{ "type": "runner", "count": 200, "interval": 30 }] },
-      { "delay": 8000, "monsters": [{ "type": "tank", "count": 200, "interval": 70 }, { "type": "runner", "count": 150, "interval": 40 }] },
-      { "delay": 10000, "monsters": [{ "type": "slime", "count": 500, "interval": 10 }] },
-      { "delay": 10000, "monsters": [{ "type": "tank", "count": 250, "interval": 50 }, { "type": "runner", "count": 200, "interval": 30 }] },
-      { "delay": 12000, "monsters": [{ "type": "runner", "count": 400, "interval": 15 }, { "type": "tank", "count": 200, "interval": 80 }] },
-      { "delay": 15000, "monsters": [{ "type": "slime", "count": 1000, "interval": 3 }] },
-      { "delay": 20000, "monsters": [{ "type": "tank", "count": 300, "interval": 30 }, { "type": "runner", "count": 300, "interval": 20 }] },
-      { "delay": 25000, "monsters": [{ "type": "slime", "count": 2000, "interval": 1 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "runner", "count": 150, "interval": 50 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [{ "type": "tank", "count": 100, "interval": 150 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 300, "interval": 20 },
+          { "type": "runner", "count": 100, "interval": 80 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [
+          { "type": "tank", "count": 150, "interval": 100 },
+          { "type": "slime", "count": 200, "interval": 30 }
+        ]
+      },
+      {
+        "delay": 7000,
+        "monsters": [{ "type": "runner", "count": 200, "interval": 30 }]
+      },
+      {
+        "delay": 8000,
+        "monsters": [
+          { "type": "tank", "count": 200, "interval": 70 },
+          { "type": "runner", "count": 150, "interval": 40 }
+        ]
+      },
+      {
+        "delay": 10000,
+        "monsters": [{ "type": "slime", "count": 500, "interval": 10 }]
+      },
+      {
+        "delay": 10000,
+        "monsters": [
+          { "type": "tank", "count": 250, "interval": 50 },
+          { "type": "runner", "count": 200, "interval": 30 }
+        ]
+      },
+      {
+        "delay": 12000,
+        "monsters": [
+          { "type": "runner", "count": 400, "interval": 15 },
+          { "type": "tank", "count": 200, "interval": 80 }
+        ]
+      },
+      {
+        "delay": 15000,
+        "monsters": [{ "type": "slime", "count": 1000, "interval": 3 }]
+      },
+      {
+        "delay": 20000,
+        "monsters": [
+          { "type": "tank", "count": 300, "interval": 30 },
+          { "type": "runner", "count": 300, "interval": 20 }
+        ]
+      },
+      {
+        "delay": 25000,
+        "monsters": [{ "type": "slime", "count": 2000, "interval": 1 }]
+      }
     ]
   },
   {
@@ -1240,14 +2036,58 @@
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }, { "type": "runner", "count": 5, "interval": 2000 }] },
-      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }, { "type": "runner", "count": 8, "interval": 1500 }, { "type": "tank", "count": 2, "interval": 3000 }] },
-      { "delay": 6000, "monsters": [{ "type": "runner", "count": 12, "interval": 1000 }] },
-      { "delay": 7000, "monsters": [{ "type": "tank", "count": 5, "interval": 2000 }, { "type": "slime", "count": 20, "interval": 800 }] },
-      { "delay": 8000, "monsters": [{ "type": "runner", "count": 15, "interval": 800 }, { "type": "tank", "count": 8, "interval": 1500 }] },
-      { "delay": 10000, "monsters": [{ "type": "slime", "count": 30, "interval": 500 }, { "type": "runner", "count": 20, "interval": 600 }, { "type": "tank", "count": 10, "interval": 1200 }] },
-      { "delay": 10000, "monsters": [{ "type": "runner", "count": 30, "interval": 400 }, { "type": "tank", "count": 15, "interval": 1000 }] }
+      {
+        "delay": 0,
+        "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 12, "interval": 1200 },
+          { "type": "runner", "count": 5, "interval": 2000 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 15, "interval": 1000 },
+          { "type": "runner", "count": 8, "interval": 1500 },
+          { "type": "tank", "count": 2, "interval": 3000 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [{ "type": "runner", "count": 12, "interval": 1000 }]
+      },
+      {
+        "delay": 7000,
+        "monsters": [
+          { "type": "tank", "count": 5, "interval": 2000 },
+          { "type": "slime", "count": 20, "interval": 800 }
+        ]
+      },
+      {
+        "delay": 8000,
+        "monsters": [
+          { "type": "runner", "count": 15, "interval": 800 },
+          { "type": "tank", "count": 8, "interval": 1500 }
+        ]
+      },
+      {
+        "delay": 10000,
+        "monsters": [
+          { "type": "slime", "count": 30, "interval": 500 },
+          { "type": "runner", "count": 20, "interval": 600 },
+          { "type": "tank", "count": 10, "interval": 1200 }
+        ]
+      },
+      {
+        "delay": 10000,
+        "monsters": [
+          { "type": "runner", "count": 30, "interval": 400 },
+          { "type": "tank", "count": 15, "interval": 1000 }
+        ]
+      }
     ]
   }
 ]
