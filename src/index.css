@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'VT323', monospace;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e1b4b 100%);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-container {
+  position: relative;
+  box-shadow: 0 0 60px rgba(34, 197, 94, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 1152px;
+  height: 792px;
+}
+
+.pixel-text {
+  font-family: 'VT323', monospace;
+  letter-spacing: 1px;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+.btn-game {
+  @apply px-6 py-3 rounded-lg font-bold text-lg transition-all duration-200 transform;
+  @apply hover:scale-105 active:scale-95;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.btn-primary {
+  @apply bg-gradient-to-b from-green-400 to-green-600 text-white;
+  box-shadow: 0 4px 0 #15803d, 0 6px 10px rgba(0,0,0,0.3);
+}
+
+.btn-primary:hover {
+  @apply from-green-300 to-green-500;
+}
+
+.btn-primary:active {
+  box-shadow: 0 2px 0 #15803d, 0 3px 5px rgba(0,0,0,0.3);
+  transform: translateY(2px);
+}
+
+.btn-secondary {
+  @apply bg-gradient-to-b from-blue-400 to-blue-600 text-white;
+  box-shadow: 0 4px 0 #1d4ed8, 0 6px 10px rgba(0,0,0,0.3);
+}
+
+.btn-danger {
+  @apply bg-gradient-to-b from-red-400 to-red-600 text-white;
+  box-shadow: 0 4px 0 #b91c1c, 0 6px 10px rgba(0,0,0,0.3);
+}
+
+.panel {
+  @apply bg-slate-800 border border-slate-500 rounded-lg;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.stat-item {
+  @apply flex items-center gap-2 px-3 py-1 rounded bg-slate-700/50;
+}
+
+.tower-card {
+  @apply p-3 rounded-lg cursor-pointer transition-all duration-200 border-2 border-transparent;
+  @apply hover:border-green-400 hover:bg-slate-700/50;
+}
+
+.tower-card.selected {
+  @apply border-green-400 bg-green-900/30;
+}
+
+.tower-card.disabled {
+  @apply opacity-50 cursor-not-allowed hover:border-transparent hover:bg-transparent;
+}
+
+.input-display {
+  @apply text-4xl font-bold tracking-wider;
+  font-family: 'VT323', monospace;
+}
+
+.char-before {
+  @apply text-green-400;
+}
+
+.char-current {
+  @apply text-yellow-300 animate-pulse;
+  text-decoration: underline;
+}
+
+.char-after {
+  @apply text-gray-400;
+}
+
+.combo-display {
+  @apply absolute top-20 right-4 text-right;
+}
+
+.combo-number {
+  @apply text-5xl font-bold text-yellow-400;
+  text-shadow: 0 0 20px rgba(250, 204, 21, 0.8);
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.bounce-in {
+  animation: bounceIn 0.4s ease-out;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

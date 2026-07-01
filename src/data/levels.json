@@ -1,0 +1,133 @@
+[
+  {
+    "id": 1,
+    "name": "初识防线",
+    "startGold": 100,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      {
+        "delay": 3000,
+        "monsters": [
+          { "type": "slime", "count": 3, "interval": 1500 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 3, "interval": 1200 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "打字节奏",
+    "startGold": 150,
+    "startLives": 10,
+    "typingDifficulty": 2,
+    "path": [
+      { "x": 0, "y": 120 },
+      { "x": 320, "y": 120 },
+      { "x": 320, "y": 320 },
+      { "x": 640, "y": 320 },
+      { "x": 640, "y": 520 },
+      { "x": 480, "y": 520 },
+      { "x": 480, "y": 640 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      {
+        "delay": 3000,
+        "monsters": [
+          { "type": "slime", "count": 8, "interval": 1200 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 6, "interval": 1000 },
+          { "type": "runner", "count": 3, "interval": 1500 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 10, "interval": 800 },
+          { "type": "runner", "count": 5, "interval": 1200 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [
+          { "type": "runner", "count": 10, "interval": 700 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "箭塔初建",
+    "startGold": 200,
+    "startLives": 10,
+    "typingDifficulty": 3,
+    "path": [
+      { "x": 80, "y": 0 },
+      { "x": 80, "y": 200 },
+      { "x": 400, "y": 200 },
+      { "x": 400, "y": 80 },
+      { "x": 800, "y": 80 },
+      { "x": 800, "y": 360 },
+      { "x": 560, "y": 360 },
+      { "x": 560, "y": 560 },
+      { "x": 240, "y": 560 },
+      { "x": 240, "y": 640 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      {
+        "delay": 3000,
+        "monsters": [
+          { "type": "slime", "count": 10, "interval": 1000 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "slime", "count": 8, "interval": 900 },
+          { "type": "runner", "count": 5, "interval": 1200 }
+        ]
+      },
+      {
+        "delay": 5000,
+        "monsters": [
+          { "type": "tank", "count": 3, "interval": 3000 },
+          { "type": "slime", "count": 10, "interval": 800 }
+        ]
+      },
+      {
+        "delay": 6000,
+        "monsters": [
+          { "type": "runner", "count": 15, "interval": 600 }
+        ]
+      },
+      {
+        "delay": 8000,
+        "monsters": [
+          { "type": "tank", "count": 5, "interval": 2500 },
+          { "type": "slime", "count": 15, "interval": 700 }
+        ]
+      }
+    ]
+  }
+]
