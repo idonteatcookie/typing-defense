@@ -10,10 +10,12 @@ export class WaveManager {
   private isBetweenWaves: boolean = true;
   private spawnQueue: { type: MonsterType; spawned: number; total: number; interval: number; timer: number }[] = [];
   private allSpawned: boolean = false;
+  private isEndless: boolean = false;
+  private loopCount: number = 0;
 
   constructor() {}
 
-  startWaves(waves: WaveConfig[]): void {
+  startWaves(waves: WaveConfig[], isEndless: boolean = false): void {
     this.waves = waves;
     this.currentWaveIndex = 0;
     this.isWaveActive = false;
@@ -21,6 +23,8 @@ export class WaveManager {
     this.waveDelayTimer = 0;
     this.spawnQueue = [];
     this.allSpawned = false;
+    this.isEndless = isEndless;
+    this.loopCount = 0;
     this.startCurrentWave();
   }
 
@@ -61,8 +65,13 @@ export class WaveManager {
 
   private startCurrentWave(): void {
     if (this.currentWaveIndex >= this.waves.length) {
-      this.isWaveActive = false;
-      return;
+      if (this.isEndless) {
+        this.currentWaveIndex = 0;
+        this.loopCount++;
+      } else {
+        this.isWaveActive = false;
+        return;
+      }
     }
 
     const wave = this.waves[this.currentWaveIndex];
@@ -82,7 +91,12 @@ export class WaveManager {
   startNextWave(): boolean {
     this.currentWaveIndex++;
     if (this.currentWaveIndex >= this.waves.length) {
-      return false;
+      if (this.isEndless) {
+        this.currentWaveIndex = 0;
+        this.loopCount++;
+      } else {
+        return false;
+      }
     }
 
     const wave = this.waves[this.currentWaveIndex];
@@ -98,6 +112,7 @@ export class WaveManager {
   }
 
   isAllWavesComplete(): boolean {
+    if (this.isEndless) return false;
     return this.currentWaveIndex >= this.waves.length - 1 && this.allSpawned;
   }
 
@@ -107,6 +122,10 @@ export class WaveManager {
 
   getTotalWaves(): number {
     return this.waves.length;
+  }
+
+  getLoopCount(): number {
+    return this.loopCount;
   }
 
   getWaveDelayRemaining(): number {

@@ -21,8 +21,8 @@ export class TypingManager {
     this.reset();
   }
 
-  newTarget(difficulty: number, levelId?: number): TypingTarget {
-    this.currentTarget = this.engine.generateTarget(difficulty, levelId);
+  newTarget(difficulty: number, levelId?: number, practiceLetters?: string): TypingTarget {
+    this.currentTarget = this.engine.generateTarget(difficulty, levelId, practiceLetters);
     eventBus.emit(EVENT_NAMES.TYPING_TARGET_CHANGE, this.currentTarget);
     return this.currentTarget;
   }

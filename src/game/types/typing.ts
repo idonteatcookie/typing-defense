@@ -2,7 +2,7 @@ import type { TypingEngineType } from './game';
 
 export interface ITypingEngine {
   readonly type: TypingEngineType;
-  generateTarget(difficulty: number, levelId?: number): TypingTarget;
+  generateTarget(difficulty: number, levelId?: number, practiceLetters?: string): TypingTarget;
   inputChar(target: TypingTarget, char: string): TypingInputResult;
   getDisplayText(target: TypingTarget): TypingDisplayText;
   resetProgress(target: TypingTarget): void;

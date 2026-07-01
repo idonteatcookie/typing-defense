@@ -74,7 +74,7 @@ export class GameManager {
     this.typingManager.reset();
     this.targetAssignDelay = 0;
 
-    this.waveManager.startWaves(level.waves);
+    this.waveManager.startWaves(level.waves, level.isEndless || false);
 
     this.gameState = 'playing';
     eventBus.emit(EVENT_NAMES.GAME_START, undefined as any);
@@ -185,17 +185,16 @@ export class GameManager {
   private checkTypingTarget(deltaTime: number): void {
     if (this.targetAssignDelay > 0) {
       this.targetAssignDelay -= deltaTime;
-      return;
-    }
-    const target = this.typingManager.getCurrentTarget();
-    if (!target && this.gameState === 'playing') {
-      this.assignNewTypingTarget();
+      if (this.targetAssignDelay <= 0) {
+        this.assignNewTypingTarget();
+      }
     }
   }
 
   private assignNewTypingTarget(): void {
     const difficulty = this.levelManager.getTypingDifficulty();
-    this.typingManager.newTarget(difficulty, this.currentLevelId);
+    const practiceLetters = this.levelManager.getPracticeLetters();
+    this.typingManager.newTarget(difficulty, this.currentLevelId, practiceLetters);
   }
 
   handleTypingInput(char: string): void {
@@ -232,8 +231,7 @@ export class GameManager {
       });
     }
 
-    this.typingManager.clearTarget();
-    this.targetAssignDelay = 0.15;
+    this.targetAssignDelay = 0.1;
   }
 
   placeTower(type: TowerType, gridX: number, gridY: number): boolean {
@@ -292,6 +290,8 @@ export class GameManager {
   }
 
   private checkVictory(): void {
+    if (this.levelManager.isEndless()) return;
+
     const totalMonsters = this.waveManager.getTotalMonsterCount();
     if (this.waveManager.isAllWavesComplete() &&
         this.monsterSystem.getActiveCount() === 0 &&

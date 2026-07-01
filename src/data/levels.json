@@ -1,7 +1,8 @@
 [
   {
     "id": 1,
-    "name": "初识防线",
+    "name": "左手基准键",
+    "practiceLetters": "asdf",
     "startGold": 100,
     "startLives": 10,
     "typingDifficulty": 1,
@@ -16,118 +17,1237 @@
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      {
-        "delay": 3000,
-        "monsters": [
-          { "type": "slime", "count": 3, "interval": 1500 }
-        ]
-      },
-      {
-        "delay": 5000,
-        "monsters": [
-          { "type": "slime", "count": 3, "interval": 1200 }
-        ]
-      }
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 5, "interval": 2500 }] }
     ]
   },
   {
     "id": 2,
-    "name": "打字节奏",
-    "startGold": 150,
+    "name": "右手基准键",
+    "practiceLetters": "jkl;",
+    "startGold": 100,
     "startLives": 10,
-    "typingDifficulty": 2,
+    "typingDifficulty": 1,
     "path": [
-      { "x": 0, "y": 120 },
-      { "x": 320, "y": 120 },
-      { "x": 320, "y": 320 },
-      { "x": 640, "y": 320 },
-      { "x": 640, "y": 520 },
-      { "x": 480, "y": 520 },
-      { "x": 480, "y": 640 }
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
     ],
     "availableTowers": ["arrow"],
     "waves": [
-      {
-        "delay": 3000,
-        "monsters": [
-          { "type": "slime", "count": 8, "interval": 1200 }
-        ]
-      },
-      {
-        "delay": 5000,
-        "monsters": [
-          { "type": "slime", "count": 6, "interval": 1000 },
-          { "type": "runner", "count": 3, "interval": 1500 }
-        ]
-      },
-      {
-        "delay": 5000,
-        "monsters": [
-          { "type": "slime", "count": 10, "interval": 800 },
-          { "type": "runner", "count": 5, "interval": 1200 }
-        ]
-      },
-      {
-        "delay": 6000,
-        "monsters": [
-          { "type": "runner", "count": 10, "interval": 700 }
-        ]
-      }
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 5, "interval": 2500 }] }
     ]
   },
   {
     "id": 3,
-    "name": "箭塔初建",
+    "name": "双手基准键",
+    "practiceLetters": "asdfjkl;",
+    "startGold": 100,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 6, "interval": 2200 }] }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "加G键",
+    "practiceLetters": "asdfgjkl;",
+    "startGold": 100,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 6, "interval": 2000 }] }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "加H键",
+    "practiceLetters": "asdfghjkl;",
+    "startGold": 100,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 8, "interval": 2000 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 6, "interval": 1800 }] }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "基准行巩固",
+    "practiceLetters": "asdfghjkl;",
+    "startGold": 110,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 8, "interval": 1800 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 8, "interval": 1600 }] }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "基准行速度1",
+    "practiceLetters": "asdfghjkl;",
+    "startGold": 110,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1600 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 8, "interval": 1500 }, { "type": "runner", "count": 2, "interval": 2500 }] }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "基准行速度2",
+    "practiceLetters": "asdfghjkl;",
+    "startGold": 120,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1400 }, { "type": "runner", "count": 3, "interval": 2000 }] }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "加上行Q",
+    "practiceLetters": "asdfghjkl;q",
+    "startGold": 120,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 8, "interval": 1800 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 8, "interval": 1600 }] }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "加上行P",
+    "practiceLetters": "asdfghjkl;qp",
+    "startGold": 120,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 8, "interval": 1700 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "加上行W",
+    "practiceLetters": "asdfghjkl;qwp",
+    "startGold": 130,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1600 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 8, "interval": 1500 }, { "type": "runner", "count": 2, "interval": 2500 }] }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "加上行O",
+    "practiceLetters": "asdfghjkl;qwop",
+    "startGold": 130,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1400 }] }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "加上行E",
+    "practiceLetters": "asdfghjkl;qweop",
+    "startGold": 130,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1300 }, { "type": "runner", "count": 3, "interval": 2000 }] }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "加上行I",
+    "practiceLetters": "asdfghjkl;qweiop",
+    "startGold": 130,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1400 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1300 }] }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "加上行R",
+    "practiceLetters": "asdfghjkl;qweriop",
+    "startGold": 140,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1200 }, { "type": "runner", "count": 4, "interval": 1800 }] }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "加上行U",
+    "practiceLetters": "asdfghjkl;qweruiop",
+    "startGold": 140,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }, { "type": "runner", "count": 4, "interval": 1800 }] }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "加上行T",
+    "practiceLetters": "asdfghjkl;qwertuiop",
+    "startGold": 140,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 14, "interval": 1200 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1100 }, { "type": "runner", "count": 5, "interval": 1600 }] }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "加上行Y",
+    "practiceLetters": "asdfghjkl;qwertyuiop",
+    "startGold": 150,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 14, "interval": 1200 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1100 }, { "type": "runner", "count": 5, "interval": 1500 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }] }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "上中行左半",
+    "practiceLetters": "qwertasdfg",
+    "startGold": 150,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }, { "type": "runner", "count": 4, "interval": 1800 }] }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "上中行右半",
+    "practiceLetters": "yuiophjkl;",
+    "startGold": 150,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }, { "type": "runner", "count": 4, "interval": 1800 }] }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "上中行综合1",
+    "practiceLetters": "qwertyuiopasdfghjkl;",
+    "startGold": 160,
+    "startLives": 10,
+    "typingDifficulty": 2,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 15, "interval": 1100 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1000 }, { "type": "runner", "count": 6, "interval": 1500 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 900 }, { "type": "tank", "count": 2, "interval": 3000 }] }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "上中行综合2",
+    "practiceLetters": "qwertyuiopasdfghjkl;",
+    "startGold": 160,
+    "startLives": 10,
+    "typingDifficulty": 2,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 900 }, { "type": "runner", "count": 6, "interval": 1400 }] },
+      { "delay": 5000, "monsters": [{ "type": "runner", "count": 10, "interval": 1000 }] }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "加下行Z",
+    "practiceLetters": "asdfghjkl;z",
+    "startGold": 160,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1400 }] }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "加下行/",
+    "practiceLetters": "asdfghjkl;z/",
+    "startGold": 160,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "加下行X",
+    "practiceLetters": "asdfghjkl;zx/",
+    "startGold": 170,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1400 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 10, "interval": 1300 }, { "type": "runner", "count": 3, "interval": 2000 }] }
+    ]
+  },
+  {
+    "id": 26,
+    "name": "加下行.",
+    "practiceLetters": "asdfghjkl;zx./",
+    "startGold": 170,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }] }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "加下行C",
+    "practiceLetters": "asdfghjkl;zxc./",
+    "startGold": 170,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1300 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }, { "type": "runner", "count": 4, "interval": 1800 }] }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "加下行,",
+    "practiceLetters": "asdfghjkl;zxc,./",
+    "startGold": 170,
+    "startLives": 10,
+    "typingDifficulty": 1,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 14, "interval": 1200 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1100 }] }
+    ]
+  },
+  {
+    "id": 29,
+    "name": "加下行V",
+    "practiceLetters": "asdfghjkl;zxcv,./",
+    "startGold": 180,
+    "startLives": 10,
+    "typingDifficulty": 2,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 14, "interval": 1200 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1000 }, { "type": "runner", "count": 5, "interval": 1500 }] }
+    ]
+  },
+  {
+    "id": 30,
+    "name": "加下行M",
+    "practiceLetters": "asdfghjkl;zxcvm,./",
+    "startGold": 180,
+    "startLives": 10,
+    "typingDifficulty": 2,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 14, "interval": 1100 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 14, "interval": 1000 }, { "type": "runner", "count": 5, "interval": 1500 }] }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "加下行B",
+    "practiceLetters": "asdfghjkl;zxcvbm,./",
+    "startGold": 180,
+    "startLives": 10,
+    "typingDifficulty": 2,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 15, "interval": 1100 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1000 }, { "type": "runner", "count": 6, "interval": 1400 }] }
+    ]
+  },
+  {
+    "id": 32,
+    "name": "加下行N",
+    "practiceLetters": "asdfghjkl;zxcvbnm,./",
+    "startGold": 190,
+    "startLives": 10,
+    "typingDifficulty": 2,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 900 }, { "type": "runner", "count": 6, "interval": 1300 }] },
+      { "delay": 5000, "monsters": [{ "type": "tank", "count": 3, "interval": 2500 }] }
+    ]
+  },
+  {
+    "id": 33,
+    "name": "左半三行",
+    "practiceLetters": "qazwsxedcrfvtgb",
+    "startGold": 190,
+    "startLives": 10,
+    "typingDifficulty": 2,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }, { "type": "runner", "count": 5, "interval": 1600 }] }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "右半三行",
+    "practiceLetters": "yhnujmik,ol.p;/",
+    "startGold": 190,
+    "startLives": 10,
+    "typingDifficulty": 2,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }, { "type": "runner", "count": 5, "interval": 1600 }] }
+    ]
+  },
+  {
+    "id": 35,
+    "name": "三行入门",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 200,
+    "startLives": 10,
+    "typingDifficulty": 2,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 900 }, { "type": "runner", "count": 6, "interval": 1400 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 900 }, { "type": "tank", "count": 3, "interval": 2500 }] }
+    ]
+  },
+  {
+    "id": 36,
+    "name": "三行基础",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
     "startGold": 200,
     "startLives": 10,
     "typingDifficulty": 3,
     "path": [
-      { "x": 80, "y": 0 },
-      { "x": 80, "y": 200 },
-      { "x": 400, "y": 200 },
-      { "x": 400, "y": 80 },
-      { "x": 800, "y": 80 },
-      { "x": 800, "y": 360 },
-      { "x": 560, "y": 360 },
-      { "x": 560, "y": 560 },
-      { "x": 240, "y": 560 },
-      { "x": 240, "y": 640 }
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
     ],
     "availableTowers": ["arrow", "ice"],
     "waves": [
-      {
-        "delay": 3000,
-        "monsters": [
-          { "type": "slime", "count": 10, "interval": 1000 }
-        ]
-      },
-      {
-        "delay": 5000,
-        "monsters": [
-          { "type": "slime", "count": 8, "interval": 900 },
-          { "type": "runner", "count": 5, "interval": 1200 }
-        ]
-      },
-      {
-        "delay": 5000,
-        "monsters": [
-          { "type": "tank", "count": 3, "interval": 3000 },
-          { "type": "slime", "count": 10, "interval": 800 }
-        ]
-      },
-      {
-        "delay": 6000,
-        "monsters": [
-          { "type": "runner", "count": 15, "interval": 600 }
-        ]
-      },
-      {
-        "delay": 8000,
-        "monsters": [
-          { "type": "tank", "count": 5, "interval": 2500 },
-          { "type": "slime", "count": 15, "interval": 700 }
-        ]
-      }
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 18, "interval": 900 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 800 }, { "type": "runner", "count": 8, "interval": 1200 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 20, "interval": 800 }, { "type": "tank", "count": 4, "interval": 2000 }] }
+    ]
+  },
+  {
+    "id": 37,
+    "name": "三行进阶1",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 220,
+    "startLives": 10,
+    "typingDifficulty": 3,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 20, "interval": 800 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 700 }, { "type": "runner", "count": 10, "interval": 1000 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 20, "interval": 700 }, { "type": "tank", "count": 5, "interval": 2000 }] },
+      { "delay": 6000, "monsters": [{ "type": "runner", "count": 12, "interval": 900 }] }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "三行进阶2",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 220,
+    "startLives": 10,
+    "typingDifficulty": 4,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 20, "interval": 700 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 18, "interval": 600 }, { "type": "runner", "count": 10, "interval": 900 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 25, "interval": 600 }, { "type": "tank", "count": 5, "interval": 1800 }] },
+      { "delay": 6000, "monsters": [{ "type": "runner", "count": 15, "interval": 700 }] }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "三行进阶3",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 220,
+    "startLives": 10,
+    "typingDifficulty": 4,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 25, "interval": 600 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 20, "interval": 550 }, { "type": "runner", "count": 12, "interval": 800 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 25, "interval": 550 }, { "type": "tank", "count": 6, "interval": 1500 }] },
+      { "delay": 6000, "monsters": [{ "type": "runner", "count": 18, "interval": 600 }] },
+      { "delay": 7000, "monsters": [{ "type": "tank", "count": 6, "interval": 1500 }, { "type": "slime", "count": 20, "interval": 500 }] }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "速度挑战1",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 250,
+    "startLives": 10,
+    "typingDifficulty": 5,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 30, "interval": 500 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 25, "interval": 450 }, { "type": "runner", "count": 15, "interval": 600 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 30, "interval": 450 }, { "type": "tank", "count": 8, "interval": 1200 }] },
+      { "delay": 6000, "monsters": [{ "type": "runner", "count": 20, "interval": 500 }] },
+      { "delay": 7000, "monsters": [{ "type": "tank", "count": 8, "interval": 1200 }, { "type": "slime", "count": 25, "interval": 400 }] }
+    ]
+  },
+  {
+    "id": 41,
+    "name": "速度挑战2",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 250,
+    "startLives": 10,
+    "typingDifficulty": 5,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 35, "interval": 400 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 30, "interval": 350 }, { "type": "runner", "count": 18, "interval": 500 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 35, "interval": 350 }, { "type": "tank", "count": 10, "interval": 1000 }] },
+      { "delay": 6000, "monsters": [{ "type": "runner", "count": 25, "interval": 400 }] },
+      { "delay": 7000, "monsters": [{ "type": "tank", "count": 10, "interval": 1000 }, { "type": "slime", "count": 30, "interval": 300 }] },
+      { "delay": 8000, "monsters": [{ "type": "runner", "count": 30, "interval": 350 }, { "type": "tank", "count": 12, "interval": 800 }] }
+    ]
+  },
+  {
+    "id": 42,
+    "name": "准确度训练1",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 280,
+    "startLives": 5,
+    "typingDifficulty": 6,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 20, "interval": 600 }] },
+      { "delay": 5000, "monsters": [{ "type": "runner", "count": 15, "interval": 700 }] },
+      { "delay": 5000, "monsters": [{ "type": "tank", "count": 8, "interval": 1500 }] },
+      { "delay": 6000, "monsters": [{ "type": "slime", "count": 25, "interval": 500 }, { "type": "runner", "count": 10, "interval": 800 }] },
+      { "delay": 7000, "monsters": [{ "type": "tank", "count": 10, "interval": 1200 }, { "type": "runner", "count": 15, "interval": 600 }] }
+    ]
+  },
+  {
+    "id": 43,
+    "name": "准确度训练2",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 300,
+    "startLives": 3,
+    "typingDifficulty": 7,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "runner", "count": 20, "interval": 500 }] },
+      { "delay": 5000, "monsters": [{ "type": "tank", "count": 10, "interval": 1200 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 30, "interval": 400 }, { "type": "runner", "count": 15, "interval": 600 }] },
+      { "delay": 6000, "monsters": [{ "type": "tank", "count": 12, "interval": 1000 }, { "type": "runner", "count": 20, "interval": 500 }] },
+      { "delay": 7000, "monsters": [{ "type": "slime", "count": 40, "interval": 350 }, { "type": "tank", "count": 8, "interval": 1000 }] }
+    ]
+  },
+  {
+    "id": 44,
+    "name": "耐力挑战1",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 350,
+    "startLives": 10,
+    "typingDifficulty": 6,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 40, "interval": 500 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 35, "interval": 450 }, { "type": "runner", "count": 15, "interval": 700 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 40, "interval": 400 }, { "type": "tank", "count": 10, "interval": 1500 }] },
+      { "delay": 6000, "monsters": [{ "type": "runner", "count": 25, "interval": 500 }] },
+      { "delay": 7000, "monsters": [{ "type": "tank", "count": 15, "interval": 1000 }, { "type": "slime", "count": 30, "interval": 450 }] },
+      { "delay": 8000, "monsters": [{ "type": "slime", "count": 50, "interval": 300 }, { "type": "runner", "count": 20, "interval": 500 }] },
+      { "delay": 10000, "monsters": [{ "type": "tank", "count": 20, "interval": 800 }] }
+    ]
+  },
+  {
+    "id": 45,
+    "name": "耐力挑战2",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 380,
+    "startLives": 10,
+    "typingDifficulty": 7,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 50, "interval": 400 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 40, "interval": 350 }, { "type": "runner", "count": 20, "interval": 600 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 50, "interval": 300 }, { "type": "tank", "count": 15, "interval": 1000 }] },
+      { "delay": 6000, "monsters": [{ "type": "runner", "count": 35, "interval": 400 }] },
+      { "delay": 7000, "monsters": [{ "type": "tank", "count": 20, "interval": 800 }, { "type": "slime", "count": 40, "interval": 350 }] },
+      { "delay": 8000, "monsters": [{ "type": "slime", "count": 60, "interval": 250 }, { "type": "runner", "count": 30, "interval": 400 }] },
+      { "delay": 10000, "monsters": [{ "type": "tank", "count": 25, "interval": 700 }] },
+      { "delay": 10000, "monsters": [{ "type": "runner", "count": 40, "interval": 300 }, { "type": "tank", "count": 20, "interval": 800 }] }
+    ]
+  },
+  {
+    "id": 46,
+    "name": "反应力训练",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 400,
+    "startLives": 10,
+    "typingDifficulty": 8,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "runner", "count": 30, "interval": 400 }] },
+      { "delay": 5000, "monsters": [{ "type": "runner", "count": 35, "interval": 300 }] },
+      { "delay": 5000, "monsters": [{ "type": "runner", "count": 40, "interval": 250 }, { "type": "tank", "count": 5, "interval": 2000 }] },
+      { "delay": 6000, "monsters": [{ "type": "slime", "count": 60, "interval": 200 }] },
+      { "delay": 7000, "monsters": [{ "type": "runner", "count": 50, "interval": 200 }] },
+      { "delay": 8000, "monsters": [{ "type": "tank", "count": 15, "interval": 1000 }, { "type": "runner", "count": 30, "interval": 300 }] },
+      { "delay": 10000, "monsters": [{ "type": "runner", "count": 60, "interval": 150 }] }
+    ]
+  },
+  {
+    "id": 47,
+    "name": "坦克突破",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 450,
+    "startLives": 10,
+    "typingDifficulty": 7,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "tank", "count": 10, "interval": 1500 }] },
+      { "delay": 5000, "monsters": [{ "type": "tank", "count": 15, "interval": 1200 }] },
+      { "delay": 5000, "monsters": [{ "type": "tank", "count": 20, "interval": 1000 }, { "type": "slime", "count": 20, "interval": 500 }] },
+      { "delay": 6000, "monsters": [{ "type": "tank", "count": 25, "interval": 800 }] },
+      { "delay": 7000, "monsters": [{ "type": "tank", "count": 30, "interval": 700 }, { "type": "runner", "count": 15, "interval": 600 }] },
+      { "delay": 8000, "monsters": [{ "type": "tank", "count": 35, "interval": 600 }] },
+      { "delay": 10000, "monsters": [{ "type": "tank", "count": 40, "interval": 500 }, { "type": "slime", "count": 30, "interval": 300 }] }
+    ]
+  },
+  {
+    "id": 48,
+    "name": "混合大军",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 500,
+    "startLives": 10,
+    "typingDifficulty": 8,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 30, "interval": 300 }, { "type": "runner", "count": 15, "interval": 500 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 40, "interval": 250 }, { "type": "tank", "count": 10, "interval": 1500 }] },
+      { "delay": 5000, "monsters": [{ "type": "runner", "count": 30, "interval": 350 }, { "type": "tank", "count": 15, "interval": 1000 }] },
+      { "delay": 6000, "monsters": [{ "type": "slime", "count": 60, "interval": 200 }, { "type": "runner", "count": 25, "interval": 400 }] },
+      { "delay": 7000, "monsters": [{ "type": "tank", "count": 25, "interval": 700 }, { "type": "runner", "count": 30, "interval": 300 }] },
+      { "delay": 8000, "monsters": [{ "type": "slime", "count": 80, "interval": 150 }] },
+      { "delay": 10000, "monsters": [{ "type": "tank", "count": 30, "interval": 500 }, { "type": "runner", "count": 40, "interval": 250 }] },
+      { "delay": 10000, "monsters": [{ "type": "slime", "count": 100, "interval": 100 }, { "type": "tank", "count": 20, "interval": 800 }] }
+    ]
+  },
+  {
+    "id": 49,
+    "name": "大师级1",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 500,
+    "startLives": 10,
+    "typingDifficulty": 9,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 50, "interval": 250 }] },
+      { "delay": 5000, "monsters": [{ "type": "runner", "count": 40, "interval": 250 }] },
+      { "delay": 5000, "monsters": [{ "type": "tank", "count": 25, "interval": 700 }] },
+      { "delay": 6000, "monsters": [{ "type": "slime", "count": 80, "interval": 150 }, { "type": "runner", "count": 30, "interval": 300 }] },
+      { "delay": 7000, "monsters": [{ "type": "tank", "count": 35, "interval": 500 }, { "type": "slime", "count": 50, "interval": 200 }] },
+      { "delay": 8000, "monsters": [{ "type": "runner", "count": 60, "interval": 150 }] },
+      { "delay": 10000, "monsters": [{ "type": "tank", "count": 40, "interval": 400 }, { "type": "runner", "count": 50, "interval": 200 }] },
+      { "delay": 10000, "monsters": [{ "type": "slime", "count": 120, "interval": 80 }] }
+    ]
+  },
+  {
+    "id": 50,
+    "name": "大师级2",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 550,
+    "startLives": 10,
+    "typingDifficulty": 9,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "runner", "count": 50, "interval": 200 }] },
+      { "delay": 5000, "monsters": [{ "type": "tank", "count": 30, "interval": 600 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 80, "interval": 150 }, { "type": "runner", "count": 40, "interval": 200 }] },
+      { "delay": 6000, "monsters": [{ "type": "tank", "count": 40, "interval": 400 }, { "type": "slime", "count": 60, "interval": 150 }] },
+      { "delay": 7000, "monsters": [{ "type": "runner", "count": 70, "interval": 120 }] },
+      { "delay": 8000, "monsters": [{ "type": "tank", "count": 50, "interval": 300 }, { "type": "runner", "count": 60, "interval": 150 }] },
+      { "delay": 10000, "monsters": [{ "type": "slime", "count": 150, "interval": 60 }] },
+      { "delay": 10000, "monsters": [{ "type": "tank", "count": 60, "interval": 250 }, { "type": "runner", "count": 80, "interval": 100 }] }
+    ]
+  },
+  {
+    "id": 51,
+    "name": "极限挑战",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 600,
+    "startLives": 10,
+    "typingDifficulty": 10,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 80, "interval": 200 }] },
+      { "delay": 5000, "monsters": [{ "type": "runner", "count": 60, "interval": 150 }] },
+      { "delay": 5000, "monsters": [{ "type": "tank", "count": 40, "interval": 400 }] },
+      { "delay": 6000, "monsters": [{ "type": "slime", "count": 120, "interval": 80 }, { "type": "runner", "count": 50, "interval": 180 }] },
+      { "delay": 7000, "monsters": [{ "type": "tank", "count": 50, "interval": 300 }, { "type": "slime", "count": 80, "interval": 100 }] },
+      { "delay": 8000, "monsters": [{ "type": "runner", "count": 100, "interval": 80 }] },
+      { "delay": 10000, "monsters": [{ "type": "tank", "count": 60, "interval": 200 }, { "type": "runner", "count": 80, "interval": 100 }] },
+      { "delay": 10000, "monsters": [{ "type": "slime", "count": 200, "interval": 40 }] },
+      { "delay": 12000, "monsters": [{ "type": "tank", "count": 80, "interval": 150 }, { "type": "runner", "count": 100, "interval": 60 }] }
+    ]
+  },
+  {
+    "id": 52,
+    "name": "终极挑战",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "startGold": 1000,
+    "startLives": 1,
+    "typingDifficulty": 10,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "runner", "count": 150, "interval": 50 }] },
+      { "delay": 5000, "monsters": [{ "type": "tank", "count": 100, "interval": 150 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 300, "interval": 20 }, { "type": "runner", "count": 100, "interval": 80 }] },
+      { "delay": 6000, "monsters": [{ "type": "tank", "count": 150, "interval": 100 }, { "type": "slime", "count": 200, "interval": 30 }] },
+      { "delay": 7000, "monsters": [{ "type": "runner", "count": 200, "interval": 30 }] },
+      { "delay": 8000, "monsters": [{ "type": "tank", "count": 200, "interval": 70 }, { "type": "runner", "count": 150, "interval": 40 }] },
+      { "delay": 10000, "monsters": [{ "type": "slime", "count": 500, "interval": 10 }] },
+      { "delay": 10000, "monsters": [{ "type": "tank", "count": 250, "interval": 50 }, { "type": "runner", "count": 200, "interval": 30 }] },
+      { "delay": 12000, "monsters": [{ "type": "runner", "count": 400, "interval": 15 }, { "type": "tank", "count": 200, "interval": 80 }] },
+      { "delay": 15000, "monsters": [{ "type": "slime", "count": 1000, "interval": 3 }] },
+      { "delay": 20000, "monsters": [{ "type": "tank", "count": 300, "interval": 30 }, { "type": "runner", "count": 300, "interval": 20 }] },
+      { "delay": 25000, "monsters": [{ "type": "slime", "count": 2000, "interval": 1 }] }
+    ]
+  },
+  {
+    "id": 53,
+    "name": "无尽模式",
+    "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./",
+    "isEndless": true,
+    "startGold": 300,
+    "startLives": 10,
+    "typingDifficulty": 5,
+    "path": [
+      { "x": 480, "y": 0 },
+      { "x": 480, "y": 160 },
+      { "x": 160, "y": 160 },
+      { "x": 160, "y": 400 },
+      { "x": 720, "y": 400 },
+      { "x": 720, "y": 560 },
+      { "x": 480, "y": 560 }
+    ],
+    "availableTowers": ["arrow", "ice"],
+    "waves": [
+      { "delay": 0, "monsters": [{ "type": "slime", "count": 10, "interval": 1500 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 12, "interval": 1200 }, { "type": "runner", "count": 5, "interval": 2000 }] },
+      { "delay": 5000, "monsters": [{ "type": "slime", "count": 15, "interval": 1000 }, { "type": "runner", "count": 8, "interval": 1500 }, { "type": "tank", "count": 2, "interval": 3000 }] },
+      { "delay": 6000, "monsters": [{ "type": "runner", "count": 12, "interval": 1000 }] },
+      { "delay": 7000, "monsters": [{ "type": "tank", "count": 5, "interval": 2000 }, { "type": "slime", "count": 20, "interval": 800 }] },
+      { "delay": 8000, "monsters": [{ "type": "runner", "count": 15, "interval": 800 }, { "type": "tank", "count": 8, "interval": 1500 }] },
+      { "delay": 10000, "monsters": [{ "type": "slime", "count": 30, "interval": 500 }, { "type": "runner", "count": 20, "interval": 600 }, { "type": "tank", "count": 10, "interval": 1200 }] },
+      { "delay": 10000, "monsters": [{ "type": "runner", "count": 30, "interval": 400 }, { "type": "tank", "count": 15, "interval": 1000 }] }
     ]
   }
 ]

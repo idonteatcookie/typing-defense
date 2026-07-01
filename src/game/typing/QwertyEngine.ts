@@ -9,9 +9,9 @@ export class QwertyEngine implements ITypingEngine {
   private mediumLetters = 'asdfghjkl;qwertyuiop';
   private hardLetters = 'abcdefghijklmnopqrstuvwxyz';
 
-  generateTarget(difficulty: number, levelId?: number): TypingTarget {
+  generateTarget(difficulty: number, levelId?: number, practiceLetters?: string): TypingTarget {
     const length = this.getLengthByDifficulty(difficulty);
-    const letters = this.getLetterSet(difficulty);
+    const letters = practiceLetters || this.getLetterSet(difficulty);
     const text = this.generateRandomText(length, letters);
 
     return {
@@ -62,11 +62,7 @@ export class QwertyEngine implements ITypingEngine {
   }
 
   private getLengthByDifficulty(difficulty: number): number {
-    if (difficulty <= 2) return 1;
-    if (difficulty <= 4) return randomInt(1, 2);
-    if (difficulty <= 6) return randomInt(2, 3);
-    if (difficulty <= 8) return randomInt(2, 4);
-    return randomInt(3, 5);
+    return 1;
   }
 
   private getLetterSet(difficulty: number): string {

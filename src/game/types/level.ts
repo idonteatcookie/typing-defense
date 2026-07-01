@@ -9,6 +9,8 @@ export interface LevelConfig {
   availableTowers: TowerType[];
   waves: WaveConfig[];
   typingDifficulty: number;
+  practiceLetters?: string;
+  isEndless?: boolean;
 }
 
 export interface WaveConfig {

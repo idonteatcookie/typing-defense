@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useGameStore } from '@/store/useGameStore';
 import { gameManager } from '@/game/GameManager';
+import { eventBus } from '@/game/EventBus';
+import { EVENT_NAMES } from '@/constants/eventNames';
 
 export default function BottomInput() {
   const currentTarget = useGameStore((state) => state.currentTypingTarget);
   const combo = useGameStore((state) => state.combo);
   const gameScreen = useGameStore((state) => state.gameScreen);
-  const [inputShake, setInputShake] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [wrongShake, setWrongShake] = useState(false);
   const [stats, setStats] = useState({ wpm: 0, accuracy: 1 });
 
   useEffect(() => {
@@ -21,19 +24,32 @@ export default function BottomInput() {
   }, [gameScreen]);
 
   useEffect(() => {
+    const handleCorrect = () => {
+      setIsCorrect(true);
+      setTimeout(() => setIsCorrect(false), 150);
+    };
+
+    const handleWrong = () => {
+      setWrongShake(true);
+      setTimeout(() => setWrongShake(false), 300);
+    };
+
+    eventBus.on(EVENT_NAMES.TYPING_CORRECT, handleCorrect);
+    eventBus.on(EVENT_NAMES.TYPING_WRONG, handleWrong);
+
+    return () => {
+      eventBus.off(EVENT_NAMES.TYPING_CORRECT, handleCorrect);
+      eventBus.off(EVENT_NAMES.TYPING_WRONG, handleWrong);
+    };
+  }, []);
+
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (gameScreen !== 'playing') return;
       if (e.key.length !== 1) return;
       if (e.ctrlKey || e.metaKey || e.altKey) return;
 
-      const beforeCombo = gameManager.typingManager.getCombo();
       gameManager.handleTypingInput(e.key);
-      const afterCombo = gameManager.typingManager.getCombo();
-
-      if (afterCombo < beforeCombo) {
-        setInputShake(true);
-        setTimeout(() => setInputShake(false), 300);
-      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -50,12 +66,19 @@ export default function BottomInput() {
         <div className="flex-1 flex flex-col items-center justify-center">
           <div className="text-slate-400 text-sm mb-1 pixel-text">目标字母</div>
           <div
-            className={`input-display ${inputShake ? 'shake' : ''}`}
+            className={`input-display ${wrongShake ? 'shake-wrong' : ''}`}
           >
             {displayText ? (
               <>
                 <span className="char-before">{displayText.before}</span>
-                <span className="char-current">{displayText.current}</span>
+                <span
+                  className="char-current"
+                  style={{
+                    color: isCorrect ? '#4ade80' : wrongShake ? '#ef4444' : undefined,
+                  }}
+                >
+                  {displayText.current}
+                </span>
                 <span className="char-after">{displayText.after}</span>
               </>
             ) : (

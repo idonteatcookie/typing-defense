@@ -59,6 +59,14 @@ export class LevelManager {
     return this.currentLevel?.typingDifficulty || 1;
   }
 
+  getPracticeLetters(): string | undefined {
+    return this.currentLevel?.practiceLetters;
+  }
+
+  isEndless(): boolean {
+    return this.currentLevel?.isEndless || false;
+  }
+
   hasLevel(levelId: number): boolean {
     return this.levels.some(l => l.id === levelId);
   }

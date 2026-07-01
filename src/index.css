@@ -107,6 +107,9 @@ body {
 .char-current {
   @apply text-yellow-300 animate-pulse;
   text-decoration: underline;
+  display: inline-block;
+  min-width: 1.5rem;
+  text-align: center;
 }
 
 .char-after {
@@ -130,6 +133,18 @@ body {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
   75% { transform: translateX(5px); }
+}
+
+.shake-wrong {
+  animation: shakeWrong 0.3s ease-in-out;
+}
+
+@keyframes shakeWrong {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { color: #ef4444; }
+  20%, 40%, 60%, 80% { color: #ef4444; }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
 }
 
 .bounce-in {
