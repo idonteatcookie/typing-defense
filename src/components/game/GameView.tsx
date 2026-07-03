@@ -18,6 +18,8 @@ export default function GameView({ onPause, children }: GameViewProps) {
   const gameRef = useRef<Phaser.Game | null>(null);
   const [comboLevel, setComboLevel] = useState(0);
   const [isDanger, setIsDanger] = useState(false);
+  const placingTowerType = useGameStore((state) => state.placingTowerType);
+  const cancelPlacingTower = useGameStore((state) => state.cancelPlacingTower);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -103,6 +105,21 @@ export default function GameView({ onPause, children }: GameViewProps) {
           style={{ width: '960px', height: '640px' }}
         >
           <div ref={containerRef} className="w-full h-full" />
+
+          {placingTowerType && (
+            <div className="placing-hint-bar">
+              <span className="text-green-300 pixel-text">
+                📍 点击地图放置防御塔
+              </span>
+              <button
+                className="placing-cancel-btn"
+                onClick={cancelPlacingTower}
+              >
+                取消 (ESC)
+              </button>
+            </div>
+          )}
+
           <div className={getGlowClass()} />
           {isDanger && <div className="danger-glow" />}
           {isFrenzy && (

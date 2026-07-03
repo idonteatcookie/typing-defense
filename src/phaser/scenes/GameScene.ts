@@ -31,6 +31,7 @@ export class GameScene extends Phaser.Scene {
     this.createCannon();
     this.setupEventListeners();
     this.setupInputListeners();
+    this.setupPlacingTowerListener();
   }
 
   private createBackground(): void {
@@ -247,6 +248,33 @@ export class GameScene extends Phaser.Scene {
     this.input.keyboard?.on('keydown-ESC', () => {
       useGameStore.getState().cancelPlacingTower();
     });
+  }
+
+  private setupPlacingTowerListener(): void {
+    let prevPlacing: string | null = null;
+    useGameStore.subscribe((state) => {
+      const current = state.placingTowerType;
+      if (current !== prevPlacing) {
+        prevPlacing = current;
+        if (current) {
+          this.gridGraphics.setVisible(true);
+          this.drawFullGrid();
+        } else {
+          this.gridGraphics.setVisible(false);
+          this.rangeCircle.setVisible(false);
+        }
+      }
+    });
+  }
+
+  private drawFullGrid(): void {
+    this.gridGraphics.clear();
+    for (let x = 0; x < Math.ceil(GAME_WIDTH / GRID_SIZE); x++) {
+      for (let y = 0; y < Math.ceil(GAME_HEIGHT / GRID_SIZE); y++) {
+        this.gridGraphics.lineStyle(1, 0xffffff, 0.12);
+        this.gridGraphics.strokeRect(x * GRID_SIZE, y * GRID_SIZE, GRID_SIZE, GRID_SIZE);
+      }
+    }
   }
 
   private updateGridDisplay(gridX: number, gridY: number, towerType: string): void {

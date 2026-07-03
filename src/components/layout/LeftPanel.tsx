@@ -10,6 +10,15 @@ export default function LeftPanel() {
 
   const availableTowers = gameManager.getAvailableTowers();
 
+  const handleTowerClick = (type: string, canAfford: boolean) => {
+    if (!canAfford) return;
+    if (placingTowerType === type) {
+      cancelPlacingTower();
+    } else {
+      startPlacingTower(type as any);
+    }
+  };
+
   return (
     <div className="w-48 panel rounded-none border-l-0 border-t-0 border-b-0 border-r border-slate-600 p-3 overflow-y-auto flex-shrink-0">
       <h3 className="text-white font-bold text-lg mb-3 pixel-text text-center border-b border-slate-600 pb-2">
@@ -26,15 +35,11 @@ export default function LeftPanel() {
             <div
               key={type}
               className={`tower-card ${isSelected ? 'selected' : ''} ${!canAfford ? 'disabled' : ''}`}
-              onClick={() => {
-                if (!canAfford) return;
-                if (isSelected) {
-                  cancelPlacingTower();
-                } else {
-                  startPlacingTower(type);
-                }
-              }}
+              onClick={() => handleTowerClick(type, canAfford)}
             >
+              {isSelected && (
+                <div className="tower-selected-badge">✓</div>
+              )}
               <div className="flex items-center gap-3">
                 <div
                   className="w-10 h-10 rounded-lg flex items-center justify-center text-2xl"
@@ -60,13 +65,6 @@ export default function LeftPanel() {
           );
         })}
       </div>
-
-      {placingTowerType && (
-        <div className="mt-4 p-2 bg-green-900/30 rounded border border-green-500/50 text-center">
-          <p className="text-green-300 text-sm pixel-text">点击地图放置</p>
-          <p className="text-slate-400 text-xs mt-1">按 ESC 取消</p>
-        </div>
-      )}
     </div>
   );
 }
