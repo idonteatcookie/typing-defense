@@ -15,6 +15,7 @@ export interface TowerConfig {
   slowDuration?: number;
   goldPerTick?: number;
   tickInterval?: number;
+  sprite?: string;
 }
 
 export interface TowerState {

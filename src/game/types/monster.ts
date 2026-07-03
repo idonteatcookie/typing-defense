@@ -8,6 +8,8 @@ export interface MonsterConfig {
   goldReward: number;
   color: string;
   size: number;
+  sprite?: string;
+  description?: string;
 }
 
 export interface SlowEffect {

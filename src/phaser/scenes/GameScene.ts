@@ -182,7 +182,8 @@ export class GameScene extends Phaser.Scene {
 
     eventBus.on(EVENT_NAMES.BULLET_FIRE, (bullet) => {
       this.addBullet(bullet.id, bullet.x, bullet.y, hexToNumber(bullet.color), bullet.towerType);
-      this.showMuzzleFlash(bullet.x, bullet.y, hexToNumber(bullet.color));
+      const cannonPos = gameManager.getCannonPosition();
+      this.showMuzzleFlash(cannonPos.x, cannonPos.y, hexToNumber(bullet.color));
     });
 
     eventBus.on(EVENT_NAMES.BULLET_HIT, (data) => {
@@ -403,13 +404,24 @@ export class GameScene extends Phaser.Scene {
     const container = this.add.container(x, y);
 
     let bulletImage: string | null = null;
-    if (towerType === 'arrow' && this.textures.exists('arrow_bullet')) {
+    let isFrenzy = false;
+
+    if (towerType === 'cannon') {
+      const combo = gameManager.typingManager.getCombo();
+      isFrenzy = combo >= 10;
+      if (isFrenzy && this.textures.exists('cannon_bullet_fire')) {
+        bulletImage = 'cannon_bullet_fire';
+      } else if (this.textures.exists('cannon_bullet')) {
+        bulletImage = 'cannon_bullet';
+      }
+    } else if (towerType === 'arrow' && this.textures.exists('arrow_bullet')) {
       bulletImage = 'arrow_bullet';
     }
 
     if (bulletImage) {
       const sprite = this.add.image(0, 0, bulletImage);
-      const scale = 20 / Math.max(sprite.width, sprite.height);
+      const baseSize = towerType === 'cannon' && isFrenzy ? 30 : 20;
+      const scale = baseSize / Math.max(sprite.width, sprite.height);
       sprite.setScale(scale);
       container.add([sprite]);
     } else {

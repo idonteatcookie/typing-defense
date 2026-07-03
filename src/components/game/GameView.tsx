@@ -17,7 +17,7 @@ export default function GameView({ onPause, children }: GameViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
   const [comboLevel, setComboLevel] = useState(0);
-  const [screenShake, setScreenShake] = useState<string | null>(null);
+  const [isDanger, setIsDanger] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -40,13 +40,7 @@ export default function GameView({ onPause, children }: GameViewProps) {
     };
 
     const handleCorrect = (data: { combo: number }) => {
-      const level = getComboLevel(data.combo);
-      setComboLevel(level);
-
-      if (level >= 3) {
-        setScreenShake(level === 4 ? 'screen-shake-medium' : 'screen-shake-small');
-        setTimeout(() => setScreenShake(null), 150);
-      }
+      setComboLevel(getComboLevel(data.combo));
     };
 
     const handleWrong = () => {
@@ -66,11 +60,23 @@ export default function GameView({ onPause, children }: GameViewProps) {
     eventBus.on(EVENT_NAMES.GAME_VICTORY, handleVictory);
     eventBus.on(EVENT_NAMES.GAME_DEFEAT, handleDefeat);
 
+    const handleNearEnd = (nearEnd: boolean) => {
+      setIsDanger(nearEnd);
+    };
+    eventBus.on(EVENT_NAMES.MONSTER_NEAR_END, handleNearEnd);
+
+    const handleGameStart = () => {
+      setIsDanger(false);
+    };
+    eventBus.on(EVENT_NAMES.GAME_START, handleGameStart);
+
     return () => {
       eventBus.off(EVENT_NAMES.TYPING_CORRECT, handleCorrect);
       eventBus.off(EVENT_NAMES.TYPING_WRONG, handleWrong);
       eventBus.off(EVENT_NAMES.GAME_VICTORY, handleVictory);
       eventBus.off(EVENT_NAMES.GAME_DEFEAT, handleDefeat);
+      eventBus.off(EVENT_NAMES.MONSTER_NEAR_END, handleNearEnd);
+      eventBus.off(EVENT_NAMES.GAME_START, handleGameStart);
     };
   }, []);
 
@@ -83,6 +89,8 @@ export default function GameView({ onPause, children }: GameViewProps) {
     return `combo-glow combo-glow-level-${comboLevel}`;
   };
 
+  const isFrenzy = comboLevel >= 2;
+
   return (
     <div className="game-container flex flex-col">
       <TopBar onPause={onPause} />
@@ -91,11 +99,36 @@ export default function GameView({ onPause, children }: GameViewProps) {
         <LeftPanel />
 
         <div
-          className={`relative ${screenShake || ''}`}
+          className="relative"
           style={{ width: '960px', height: '640px' }}
         >
           <div ref={containerRef} className="w-full h-full" />
           <div className={getGlowClass()} />
+          {isDanger && <div className="danger-glow" />}
+          {isFrenzy && (
+            <div className="frenzy-fire">
+              <div className="fire-glow" />
+              <div className="flame-base" />
+              <div className="flame-tongue-1" />
+              <div className="flame-tongue-2" />
+              <div className="flame-tongue-3" />
+              <div className="flame-tongue-4" />
+              <div className="flame-tongue-5" />
+              <div className="flame-mid" />
+              <div className="flame-inner" />
+              <div className="flame-tip" />
+              <div className="sparks">
+                <div className="spark" />
+                <div className="spark" />
+                <div className="spark" />
+                <div className="spark" />
+                <div className="spark" />
+                <div className="spark" />
+                <div className="spark" />
+                <div className="spark" />
+              </div>
+            </div>
+          )}
           <ComboDisplay />
 
           {hasDialog && (

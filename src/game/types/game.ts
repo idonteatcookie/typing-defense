@@ -7,7 +7,7 @@ export type GameState = 'idle' | 'playing' | 'paused' | 'victory' | 'defeat';
 
 export type GameScreen = 'menu' | 'levelSelect' | 'playing' | 'paused' | 'victory' | 'defeat';
 
-export type TowerType = 'arrow' | 'magic' | 'ice' | 'sniper' | 'gold';
+export type TowerType = 'arrow' | 'magic' | 'ice' | 'sniper' | 'gold' | 'cannon';
 
 export type MonsterType = 'slime' | 'runner' | 'tank' | 'boss';
 

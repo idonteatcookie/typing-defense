@@ -16,6 +16,7 @@ interface EventDataMap {
   [EVENT_NAMES.MONSTER_HIT]: { monster: MonsterState; damage: number };
   [EVENT_NAMES.MONSTER_DEATH]: MonsterState;
   [EVENT_NAMES.MONSTER_REACH_END]: MonsterState;
+  [EVENT_NAMES.MONSTER_NEAR_END]: boolean;
 
   [EVENT_NAMES.TOWER_PLACE]: TowerState;
   [EVENT_NAMES.TOWER_SELL]: TowerState;

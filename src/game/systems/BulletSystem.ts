@@ -19,6 +19,9 @@ export class BulletSystem {
     towerType: TowerType
   ): Bullet {
     const config = getTowerConfig(towerType);
+    const color = config ? config.color : '#fbbf24';
+    const isAoe = config ? config.attackType === 'aoe' : false;
+    const aoeRadius = config ? (config.aoeRadius || 0) : 0;
     const bullet = new Bullet(
       x,
       y,
@@ -28,9 +31,9 @@ export class BulletSystem {
       damage,
       speed,
       towerType,
-      config.color,
-      config.attackType === 'aoe',
-      config.aoeRadius || 0
+      color,
+      isAoe,
+      aoeRadius
     );
 
     this.bullets.push(bullet);

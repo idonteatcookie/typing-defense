@@ -28,16 +28,21 @@
 
 ### 连击狂热模式
 达到一定连击数后触发视觉效果：
-- **10连击**：⚡ 狂热模式 - 黄色发光、屏幕边框脉动
-- **20连击**：🔥 狂暴模式 - 紫色发光、文字抖动、屏幕震动
-- **50连击**：💀 无敌模式 - 红色发光、强烈震动、伤害翻倍
+- **5连击**：黄色发光、屏幕边框脉动
+- **10连击**：⚡ 狂热模式 - 橙色发光、底部火焰燃烧效果
+- **20连击**：🔥 狂暴模式 - 紫色发光、文字抖动
+- **50连击**：💀 无敌模式 - 红色发光、强烈效果、伤害翻倍
+
+### 危险状态
+当怪物接近玩家位置（走过路径80%）时，屏幕四周会出现红色危险光晕脉动，提醒玩家注意。
 
 ### 视觉反馈
 - 正确输入：字母变绿色
 - 错误输入：字母变红色并左右抖动
-- 炮台开火动画
+- 炮台开火动画、炮口闪光
 - 怪物受击和死亡效果
-- 连击时屏幕边框发光脉动
+- 连击时屏幕边框发光脉动、底部火焰
+- 狂热模式子弹使用火焰贴图且更大
 
 ### 音效系统
 - **背景音乐**：游戏过程中循环播放
@@ -99,8 +104,10 @@ typing-defense/
 │   ├── constants/               # 常量定义
 │   │   ├── eventNames.ts           # 事件名称常量
 │   │   └── gameConstants.ts        # 游戏常量配置
-│   ├── data/                    # 数据配置
-│   │   └── levels.json             # 关卡配置文件
+│   ├── data/                    # 数据配置（JSON文件）
+│   │   ├── levels.json             # 关卡配置文件
+│   │   ├── monsters.json           # 怪物配置文件
+│   │   └── towers.json             # 防御塔配置文件
 │   ├── game/                    # 游戏核心逻辑
 │   │   ├── config/              # 配置
 │   │   │   ├── MonsterConfig.ts    # 怪物配置
@@ -166,24 +173,32 @@ typing-defense/
 
 ## 配置文件说明
 
-### 关卡配置 (levels.json)
+所有游戏配置均使用 JSON 文件，便于修改和扩展。详细配置说明请参考 [CONFIG.md](CONFIG.md)。
 
-位置：`src/data/levels.json`
+### 配置文件列表
+
+| 配置文件 | 路径 | 说明 |
+|---------|------|------|
+| 怪物配置 | `src/data/monsters.json` | 所有怪物的属性、贴图等 |
+| 防御塔配置 | `src/data/towers.json` | 所有可放置防御塔的属性 |
+| 关卡配置 | `src/data/levels.json` | 每一关的地图、怪物波次、练习字母等 |
+
+### 关卡配置 (levels.json)
 
 每关配置字段说明：
 
 ```json
 {
-  "id": 1,                    // 关卡ID
+  "id": 1,                    // 关卡ID（唯一，递增）
   "name": "左手基准键",        // 关卡名称
   "practiceLetters": "asdf",  // 练习字母集
   "isEndless": false,         // 是否为无尽模式
   "startGold": 100,           // 初始金币
   "startLives": 10,           // 初始生命
-  "typingDifficulty": 1,      // 打字难度
-  "path": [...],              // 怪物路径点
-  "availableTowers": [...],   // 可用炮塔类型
-  "waves": [...]              // 波次配置
+  "typingDifficulty": 1,      // 打字难度（1-5）
+  "path": [...],              // 怪物路径点坐标数组
+  "availableTowers": [...],   // 可用炮塔类型列表
+  "waves": [...]              // 波次配置数组
 }
 ```
 
@@ -195,7 +210,7 @@ typing-defense/
     "delay": 0,           // 波次开始延迟(毫秒)
     "monsters": [
       {
-        "type": "slime",  // 怪物类型
+        "type": "slime",  // 怪物类型（需在monsters.json中定义）
         "count": 5,       // 数量
         "interval": 3000  // 生成间隔(毫秒)
       }
@@ -204,32 +219,55 @@ typing-defense/
 ]
 ```
 
-**怪物类型**：
-- `slime` - 史莱姆（普通怪物，血量30）
-- `runner` - 疾行者（速度快，血量20）
-- `tank` - 坦克（血量高，血量100）
-- `boss` - Boss（血量500）
+### 怪物配置 (monsters.json)
 
-**炮塔类型**：
-- `arrow` - 箭塔（单体攻击）
-- `ice` - 冰塔（减速效果）
+每种怪物配置：
 
-### 怪物配置 (MonsterConfig.ts)
-
-位置：`src/game/config/MonsterConfig.ts`
-
-```typescript
-slime:  { maxHp: 30,  speed: 30, goldReward: 5,  size: 20 }
-runner: { maxHp: 20,  speed: 60, goldReward: 8,  size: 16 }
-tank:   { maxHp: 100, speed: 20, goldReward: 15, size: 28 }
-boss:   { maxHp: 500, speed: 15, goldReward: 100, size: 40 }
+```json
+{
+  "type": "slime",           // 怪物唯一标识
+  "name": "史莱姆",          // 显示名称
+  "maxHp": 30,               // 最大血量
+  "speed": 30,               // 移动速度(像素/秒)
+  "goldReward": 5,           // 击杀金币奖励
+  "color": "#4ade80",        // 颜色（无贴图时使用）
+  "size": 20,                // 大小(半径)
+  "sprite": "slime",         // 贴图资源名
+  "description": "..."       // 描述
+}
 ```
 
-### 炮塔配置 (TowerConfig.ts)
+**现有怪物类型**：
+- `slime` - 史莱姆（血量30，速度慢）
+- `runner` - 疾行者（血量20，速度快）
+- `tank` - 重甲兵（血量100，速度慢）
+- `boss` - Boss（血量500）
 
-位置：`src/game/config/TowerConfig.ts`
+### 防御塔配置 (towers.json)
 
-可配置每种炮塔的伤害、射程、攻击速度、造价等属性。
+每种防御塔配置：
+
+```json
+{
+  "type": "arrow",           // 塔唯一标识
+  "name": "箭塔",            // 显示名称
+  "cost": 50,                // 建造费用
+  "damage": 10,              // 伤害
+  "attackSpeed": 1.0,        // 攻击速度(次/秒)
+  "range": 120,              // 攻击范围(像素)
+  "attackType": "single",    // single/aoe
+  "color": "#8b5cf6",        // 颜色
+  "description": "...",      // 描述
+  "sprite": "tower"          // 贴图资源名
+}
+```
+
+**现有防御塔类型**：
+- `arrow` - 箭塔（单体攻击，性价比高）
+- `magic` - 魔法塔（范围伤害）
+- `ice` - 冰霜塔（减速效果）
+- `sniper` - 狙击塔（高伤害，远射程）
+- `gold` - 金币塔（产出金币）
 
 ### 游戏常量 (gameConstants.ts)
 
@@ -324,23 +362,35 @@ npm run typecheck
   "id": 1,
   "name": "测试关",
   "practiceLetters": "asdf",
-  "startGold": 999,
-  "startLives": 99,
+  "startGold": 999,       // 大量金币便于测试
+  "startLives": 99,       // 大量生命防止失败
   "waves": [
     {
       "delay": 0,
-      "monsters": [{ "type": "slime", "count": 3, "interval": 3000 }]
+      "monsters": [{ "type": "slime", "count": 3, "interval": 3000 }]  // 少量怪物快速测试
     }
   ]
 }
 ```
 
-### 属性调试
+### 怪物/防御塔调试
 
-- **怪物血量/速度**：修改 `src/game/config/MonsterConfig.ts`
-- **炮塔伤害/造价**：修改 `src/game/config/TowerConfig.ts`
+修改对应的 JSON 配置文件：
+
+- **怪物属性**：修改 `src/data/monsters.json`（血量、速度、奖励等）
+- **防御塔属性**：修改 `src/data/towers.json`（伤害、造价、射程等）
+
+### 其他调试
+
 - **连击伤害倍率**：修改 `src/game/typing/TypingManager.ts` 的 `getComboDamageMultiplier()`
-- **连击触发等级**：修改 `src/components/game/ComboDisplay.tsx` 的等级判定
+- **连击触发等级**：修改 `src/components/game/GameView.tsx` 的 `getComboLevel()`
+- **危险触发阈值**：修改 `src/game/GameManager.ts` 的 `dangerThreshold`（默认0.8）
+
+### 添加新内容
+
+1. **新怪物**：在 `monsters.json` 添加配置，贴图放入 `public/assets/monsters/`，在 `BootScene.ts` 加载
+2. **新防御塔**：在 `towers.json` 添加配置，贴图放入 `public/assets/towers/`，在 `BootScene.ts` 加载
+3. **新关卡**：在 `levels.json` 添加配置，设置唯一递增的 `id`
 
 ### 事件调试
 

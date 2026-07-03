@@ -33,6 +33,8 @@ export class GameManager {
   private startTime: number = 0;
   private cannonPosition = { x: GAME_WIDTH / 2, y: GAME_HEIGHT - 30 };
   private targetAssignDelay: number = 0;
+  private isDanger: boolean = false;
+  private dangerThreshold: number = 0.8;
 
   private constructor() {
     this.monsterSystem = new MonsterSystem();
@@ -163,8 +165,37 @@ export class GameManager {
 
     this.checkWaveComplete();
     this.checkTypingTarget(deltaTime);
+    this.checkDanger();
     this.checkDefeat();
     this.checkVictory();
+  }
+
+  private checkDanger(): void {
+    const frontMonster = this.monsterSystem.getFrontMonster();
+    const path = this.levelManager.getPath();
+    if (!frontMonster || path.length < 2) {
+      if (this.isDanger) {
+        this.isDanger = false;
+        eventBus.emit(EVENT_NAMES.MONSTER_NEAR_END, false);
+      }
+      return;
+    }
+
+    let totalPathLength = 0;
+    for (let i = 0; i < path.length - 1; i++) {
+      const dx = path[i + 1].x - path[i].x;
+      const dy = path[i + 1].y - path[i].y;
+      totalPathLength += Math.sqrt(dx * dx + dy * dy);
+    }
+
+    const progress = frontMonster.getProgress();
+    const progressRatio = progress / totalPathLength;
+    const isNearEnd = progressRatio >= this.dangerThreshold;
+
+    if (isNearEnd !== this.isDanger) {
+      this.isDanger = isNearEnd;
+      eventBus.emit(EVENT_NAMES.MONSTER_NEAR_END, isNearEnd);
+    }
   }
 
   private checkWaveComplete(): void {
@@ -222,7 +253,7 @@ export class GameManager {
         frontMonster.y,
         damage,
         CANNON_BULLET_SPEED,
-        'arrow'
+        'cannon'
       );
 
       eventBus.emit(EVENT_NAMES.CANNON_FIRE, {

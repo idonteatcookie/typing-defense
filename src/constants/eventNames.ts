@@ -9,6 +9,7 @@ export const EVENT_NAMES = {
   MONSTER_HIT: 'monster:hit',
   MONSTER_DEATH: 'monster:death',
   MONSTER_REACH_END: 'monster:reachEnd',
+  MONSTER_NEAR_END: 'monster:nearEnd',
 
   TOWER_PLACE: 'tower:place',
   TOWER_SELL: 'tower:sell',

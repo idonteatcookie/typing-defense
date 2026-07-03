@@ -1,0 +1,46 @@
+[
+  {
+    "type": "slime",
+    "name": "史莱姆",
+    "maxHp": 30,
+    "speed": 30,
+    "goldReward": 5,
+    "color": "#4ade80",
+    "size": 20,
+    "sprite": "slime",
+    "description": "基础怪物，血量低，速度慢"
+  },
+  {
+    "type": "runner",
+    "name": "疾行者",
+    "maxHp": 20,
+    "speed": 60,
+    "goldReward": 8,
+    "color": "#fbbf24",
+    "size": 16,
+    "sprite": "runner",
+    "description": "速度快，血量低，需要快速反应"
+  },
+  {
+    "type": "tank",
+    "name": "重甲兵",
+    "maxHp": 100,
+    "speed": 20,
+    "goldReward": 15,
+    "color": "#94a3b8",
+    "size": 28,
+    "sprite": "tank",
+    "description": "血量高，速度慢，需要持续输出"
+  },
+  {
+    "type": "boss",
+    "name": "Boss",
+    "maxHp": 500,
+    "speed": 15,
+    "goldReward": 100,
+    "color": "#ef4444",
+    "size": 40,
+    "sprite": "boss",
+    "description": "超高血量，击杀奖励丰厚"
+  }
+]

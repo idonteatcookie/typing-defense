@@ -44,6 +44,7 @@ export class BootScene extends Phaser.Scene {
     this.load.image('tower', '/assets/towers/tower.png');
     this.load.image('arrow_bullet', '/assets/bullets/arrow.png');
     this.load.image('cannon_bullet', '/assets/bullets/bullet.png');
+    this.load.image('cannon_bullet_fire', '/assets/bullets/bullet_fire.png');
   }
 
   create(): void {
