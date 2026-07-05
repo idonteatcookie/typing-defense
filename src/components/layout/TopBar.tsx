@@ -1,4 +1,5 @@
 import { useGameStore } from '@/store/useGameStore';
+import { gameManager } from '@/game/GameManager';
 
 interface TopBarProps {
   onPause: () => void;
@@ -12,6 +13,9 @@ export default function TopBar({ onPause, onSpeedToggle }: TopBarProps) {
   const currentLevelId = useGameStore((state) => state.currentLevelId);
   const speedMultiplier = useGameStore((state) => state.speedMultiplier);
 
+  const isEndless = gameManager.levelManager.isEndless();
+  const levelName = isEndless ? '无尽模式' : `关卡 ${currentLevelId}`;
+
   return (
     <div className="w-full h-14 panel rounded-t-lg rounded-b-none border-t-0 border-x-0 border-b border-slate-600 flex items-center justify-between px-6">
       <div className="flex items-center gap-4">
@@ -22,7 +26,7 @@ export default function TopBar({ onPause, onSpeedToggle }: TopBarProps) {
       </div>
 
       <div className="text-center">
-        <div className="text-slate-400 text-sm">关卡 {currentLevelId}</div>
+        <div className="text-slate-400 text-sm">{levelName}</div>
         <div className="text-white font-bold pixel-text">
           波次 {currentWave} / {totalWaves}
         </div>

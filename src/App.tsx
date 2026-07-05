@@ -118,6 +118,14 @@ function App() {
     setGameScreen('levelSelect');
   }, [setGameScreen]);
 
+  const handleStartEndless = useCallback(() => {
+    gameManager.startLevel(53);
+    setCurrentLevelId(53);
+    setGameScreen('playing');
+    setWave(1, gameManager.getTotalWaves());
+    audioManager.startBgm();
+  }, [setGameScreen, setWave, setCurrentLevelId]);
+
   const handlePause = useCallback(() => {
     gameManager.pause();
     audioManager.pauseBgm();
@@ -169,6 +177,7 @@ function App() {
       {gameScreen === 'menu' && (
         <MainMenu
           onStart={handleGoToLevelSelect}
+          onEndless={handleStartEndless}
         />
       )}
 

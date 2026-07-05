@@ -1,8 +1,9 @@
 interface MainMenuProps {
   onStart: () => void;
+  onEndless: () => void;
 }
 
-export default function MainMenu({ onStart }: MainMenuProps) {
+export default function MainMenu({ onStart, onEndless }: MainMenuProps) {
   return (
     <div className="flex flex-col items-center justify-center gap-8 p-12">
       <div className="text-center bounce-in">
@@ -19,11 +20,19 @@ export default function MainMenu({ onStart }: MainMenuProps) {
           className="btn-game btn-primary text-2xl"
           onClick={onStart}
         >
-          开始游戏
+          🎮 闯关模式
         </button>
 
         <button
           className="btn-game btn-secondary text-xl"
+          onClick={onEndless}
+        >
+          🔄 无尽模式
+        </button>
+
+        <button
+          className="btn-game text-lg bg-slate-600 text-white"
+          style={{ boxShadow: '0 4px 0 #334155, 0 6px 10px rgba(0,0,0,0.3)' }}
           onClick={() => {}}
         >
           设置

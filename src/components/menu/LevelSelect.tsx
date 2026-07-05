@@ -48,10 +48,9 @@ export default function LevelSelect({ onSelectLevel, onBack }: LevelSelectProps)
       </h2>
 
       <div className="grid grid-cols-4 gap-4">
-        {levels.map((level) => {
+        {levels.filter(level => !level.isEndless).map((level) => {
           const unlocked = isUnlocked(level.id);
           const stars = getStars(level.id);
-          const isEndless = level.isEndless;
 
           return (
             <button
@@ -60,12 +59,12 @@ export default function LevelSelect({ onSelectLevel, onBack }: LevelSelectProps)
                 unlocked
                   ? 'hover:scale-105 hover:border-green-400 cursor-pointer'
                   : 'opacity-50 cursor-not-allowed'
-              } ${isEndless ? 'border-purple-500' : ''}`}
+              }`}
               onClick={() => unlocked && onSelectLevel(level.id)}
               disabled={!unlocked}
             >
               <div className="text-4xl font-bold text-center mb-1 text-slate-200">
-                {unlocked ? (isEndless ? '∞' : level.id) : '🔒'}
+                {unlocked ? level.id : '🔒'}
               </div>
               <div className="text-lg text-center text-slate-300 mb-1">
                 {level.name}
@@ -75,12 +74,7 @@ export default function LevelSelect({ onSelectLevel, onBack }: LevelSelectProps)
                   {formatPracticeLetters(level.practiceLetters)}
                 </div>
               )}
-              {unlocked && !isEndless && renderStars(stars)}
-              {isEndless && unlocked && (
-                <div className="text-sm text-center text-purple-400 mt-1">
-                  无尽挑战
-                </div>
-              )}
+              {unlocked && renderStars(stars)}
               {!unlocked && (
                 <div className="text-xs text-slate-500 text-center mt-1">
                   完成上一关解锁
