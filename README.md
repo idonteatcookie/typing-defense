@@ -6,6 +6,7 @@
 
 ### 核心玩法
 - **打字攻击**：输入屏幕显示的目标字母，从底部炮台发射子弹攻击最前方的怪物
+- **炮台系统**：基地炮台使用独立图片，底座固定不动，炮管跟随目标旋转
 - **连击系统**：连续正确输入可获得连击加成，提高伤害（最高2倍）
 - **实时统计**：显示打字速度(WPM)、准确率、连击数等数据
 
@@ -21,11 +22,12 @@
 - 难度递进：基准行 → 上行 → 下行 → 全键盘
 
 ### 塔防元素
-- **炮塔系统**：可放置防御塔辅助攻击，包括箭塔、魔法塔、冰霜塔、狙击塔、金币塔
+- **炮塔系统**：可放置防御塔辅助攻击，包括箭塔、魔法塔、冰霜塔、狙击塔
 - **怪物系统**：史莱姆（普通）、疾行者（快速）、重甲兵（高血量）、Boss
 - **波次系统**：每关多波怪物，难度递增
 - **路径系统**：怪物沿固定路径前进
 - **防御塔放置**：点击左侧防御塔选中，再次点击取消；选中后地图上显示网格和攻击范围，点击地图放置
+- **防御塔配置化**：所有防御塔的属性、图片、音效均通过 JSON 配置文件管理
 
 ### 连击狂热模式
 达到一定连击数后触发视觉效果：
@@ -47,10 +49,11 @@
 
 ### 音效系统
 - **背景音乐**：游戏过程中循环播放
-- **发射音效**：每次发射子弹时播放
+- **发射音效**：炮台和每种防御塔都有独立的攻击音效
 - **错误音效**：输入错误时播放
 - **胜利/失败音效**：游戏结束时播放
 - 暂停时自动暂停音乐
+- 所有音效通过配置文件管理，可灵活替换
 
 ## 技术栈
 
@@ -72,20 +75,30 @@ typing-defense/
 │   └── assets/                  # 游戏素材
 │       ├── audio/               # 音频文件
 │       │   ├── bgm.mp3             # 背景音乐
-│       │   ├── bullet.mp3          # 发射音效
+│       │   ├── bullet.mp3          # 炮台发射音效
+│       │   ├── arrow.mp3           # 箭塔攻击音效
+│       │   ├── magic.mp3           # 魔法塔攻击音效
+│       │   ├── ice.mp3             # 冰霜塔攻击音效
+│       │   ├── sniper.mp3          # 狙击塔攻击音效
 │       │   ├── error.mp3           # 错误音效
 │       │   ├── victory.mp3         # 胜利音效
 │       │   └── defeat.mp3          # 失败音效
 │       ├── monsters/            # 怪物图片
 │       │   ├── slime.png           # 史莱姆
 │       │   ├── runner.png          # 疾行者
-│       │   ├── tank.png            # 坦克
+│       │   ├── tank.png            # 重甲兵
 │       │   └── boss.png            # Boss
-│       ├── towers/              # 炮塔图片
-│       │   └── tower.png           # 炮塔
+│       ├── towers/              # 防御塔图片
+│       │   ├── arrow.png           # 箭塔
+│       │   ├── magic.png           # 魔法塔
+│       │   ├── ice.png             # 冰霜塔
+│       │   ├── sniper.png          # 狙击塔
+│       │   ├── cannon_base.png     # 基地炮塔底座
+│       │   └── cannon_barrel.png   # 基地炮塔炮管
 │       └── bullets/             # 子弹图片
-│       │   ├── arrow.png           # 箭塔子弹
-│       │   └── bullet.png          # 炮台子弹
+│           ├── arrow.png           # 箭塔子弹
+│           ├── bullet.png          # 炮台子弹（普通）
+│           └── bullet_fire.png     # 炮台子弹（狂热模式）
 ├── src/
 │   ├── components/              # React 组件
 │   │   ├── dialog/              # 对话框组件
@@ -259,7 +272,8 @@ typing-defense/
   "attackType": "single",    // single/aoe
   "color": "#8b5cf6",        // 颜色
   "description": "...",      // 描述
-  "sprite": "tower"          // 贴图资源名
+  "sprite": "tower_arrow",   // 贴图资源名（对应 Phaser texture key）
+  "sound": "archery.mp3"     // 攻击音效文件名
 }
 ```
 
@@ -268,7 +282,8 @@ typing-defense/
 - `magic` - 魔法塔（范围伤害）
 - `ice` - 冰霜塔（减速效果）
 - `sniper` - 狙击塔（高伤害，远射程）
-- `gold` - 金币塔（产出金币）
+
+> 图片路径映射规则：`sprite` 字段去掉 `tower_` 前缀后，对应 `public/assets/towers/` 目录下的 PNG 文件。例如 `tower_arrow` → `/assets/towers/arrow.png`
 
 ### 游戏常量 (gameConstants.ts)
 
@@ -290,9 +305,14 @@ CANNON_BULLET_SPEED = 500  // 炮台子弹速度
 |------|------|------|
 | `monsters/` | slime.png | 史莱姆怪物 |
 | | runner.png | 疾行者怪物 |
-| | tank.png | 坦克怪物 |
+| | tank.png | 重甲兵怪物 |
 | | boss.png | Boss怪物 |
-| `towers/` | tower.png | 炮塔 |
+| `towers/` | arrow.png | 箭塔 |
+| | magic.png | 魔法塔 |
+| | ice.png | 冰霜塔 |
+| | sniper.png | 狙击塔 |
+| | cannon_base.png | 基地炮塔底座 |
+| | cannon_barrel.png | 基地炮塔炮管（会旋转） |
 | `bullets/` | arrow.png | 箭塔子弹 |
 | | bullet.png | 炮台子弹（普通） |
 | | bullet_fire.png | 炮台子弹（狂热模式） |
@@ -302,7 +322,11 @@ CANNON_BULLET_SPEED = 500  // 炮台子弹速度
 | 文件 | 用途 | 说明 |
 |------|------|------|
 | bgm.mp3 | 背景音乐 | 游戏过程中循环播放 |
-| bullet.mp3 | 发射音效 | 每次发射子弹时播放 |
+| bullet.mp3 | 炮台发射音效 | 炮台发射子弹时播放 |
+| arrow.mp3 | 箭塔攻击音效 | 箭塔攻击时播放 |
+| magic.mp3 | 魔法塔攻击音效 | 魔法塔攻击时播放 |
+| ice.mp3 | 冰霜塔攻击音效 | 冰霜塔攻击时播放 |
+| sniper.mp3 | 狙击塔攻击音效 | 狙击塔攻击时播放 |
 | error.mp3 | 错误音效 | 输入错误字母时播放 |
 | victory.mp3 | 胜利音效 | 关卡胜利时播放 |
 | defeat.mp3 | 失败音效 | 关卡失败时播放 |
@@ -391,8 +415,10 @@ npm run typecheck
 ### 添加新内容
 
 1. **新怪物**：在 `monsters.json` 添加配置，贴图放入 `public/assets/monsters/`，在 `BootScene.ts` 加载
-2. **新防御塔**：在 `towers.json` 添加配置，贴图放入 `public/assets/towers/`，在 `BootScene.ts` 加载
+2. **新防御塔**：在 `towers.json` 添加配置（包含 `sprite` 和 `sound` 字段），贴图放入 `public/assets/towers/`，音效放入 `public/assets/audio/`，在 `BootScene.ts` 加载图片资源
 3. **新关卡**：在 `levels.json` 添加配置，设置唯一递增的 `id`
+
+> 防御塔图片命名约定：配置文件中 `sprite` 字段为 `tower_xxx`，对应图片文件名为 `xxx.png`，放置在 `public/assets/towers/` 目录下
 
 ### 事件调试
 

@@ -3,6 +3,7 @@ import { GAME_WIDTH, GAME_HEIGHT, GRID_SIZE } from '@/constants/gameConstants';
 import { gameManager } from '@/game/GameManager';
 import { eventBus } from '@/game/EventBus';
 import { EVENT_NAMES } from '@/constants/eventNames';
+import { getTowerConfig } from '@/game/config/TowerConfig';
 import { useGameStore } from '@/store/useGameStore';
 import { worldToGrid } from '@/game/utils/grid';
 
@@ -17,6 +18,7 @@ export class GameScene extends Phaser.Scene {
   private towers: Map<string, Phaser.GameObjects.Container> = new Map();
   private bullets: Map<string, Phaser.GameObjects.Arc> = new Map();
   private cannon!: Phaser.GameObjects.Container;
+  private cannonBarrel!: Phaser.GameObjects.Image;
   private hoverCell: { x: number; y: number } | null = null;
   private rangeCircle!: Phaser.GameObjects.Arc;
 
@@ -124,29 +126,16 @@ export class GameScene extends Phaser.Scene {
     const pos = gameManager.getCannonPosition();
     this.cannon = this.add.container(pos.x, pos.y);
 
-    const shadow = this.add.circle(3, 5, 32, 0x000000, 0.3);
+    const base = this.add.image(0, 0, 'cannon_base');
+    const baseScale = 64 / Math.max(base.width, base.height);
+    base.setScale(baseScale);
 
-    const baseOuter = this.add.circle(0, 2, 32, 0x64748b);
-    baseOuter.setStrokeStyle(4, 0x334155);
+    this.cannonBarrel = this.add.image(0, 0, 'cannon_barrel');
+    const barrelScale = 64 / Math.max(this.cannonBarrel.width, this.cannonBarrel.height);
+    this.cannonBarrel.setScale(barrelScale);
+    this.cannonBarrel.setOrigin(0.5, 1);
 
-    const baseInner = this.add.circle(0, 0, 26, 0x475569);
-    baseInner.setStrokeStyle(2, 0x1e293b);
-
-    const barrelBase = this.add.rectangle(0, -5, 16, 18, 0x64748b);
-    barrelBase.setStrokeStyle(2, 0x334155);
-    barrelBase.setOrigin(0.5, 1);
-
-    const barrel = this.add.rectangle(0, -18, 10, 28, 0x94a3b8);
-    barrel.setStrokeStyle(2, 0x64748b);
-    barrel.setOrigin(0.5, 1);
-
-    const muzzle = this.add.rectangle(0, -32, 14, 8, 0x475569);
-    muzzle.setStrokeStyle(2, 0x1e293b);
-
-    const centerGem = this.add.circle(0, 0, 8, 0x22c55e);
-    centerGem.setStrokeStyle(2, 0x15803d);
-
-    this.cannon.add([shadow, baseOuter, baseInner, barrelBase, barrel, muzzle, centerGem]);
+    this.cannon.add([base, this.cannonBarrel]);
     this.cannon.setDepth(50);
   }
 
@@ -182,9 +171,19 @@ export class GameScene extends Phaser.Scene {
     });
 
     eventBus.on(EVENT_NAMES.BULLET_FIRE, (bullet) => {
-      this.addBullet(bullet.id, bullet.x, bullet.y, hexToNumber(bullet.color), bullet.towerType);
-      const cannonPos = gameManager.getCannonPosition();
-      this.showMuzzleFlash(cannonPos.x, cannonPos.y, hexToNumber(bullet.color));
+      if (bullet.towerType === 'cannon') {
+        // 炮台子弹：从炮管尖端出发
+        const cannonPos = gameManager.getCannonPosition();
+        const barrelAngle = this.cannonBarrel.angle;
+        const rad = Phaser.Math.DegToRad(barrelAngle - 90);
+        const barrelLength = 40;
+        const muzzleX = cannonPos.x + Math.cos(rad) * barrelLength;
+        const muzzleY = cannonPos.y + Math.sin(rad) * barrelLength;
+        this.addBullet(bullet.id, muzzleX, muzzleY, hexToNumber(bullet.color), bullet.towerType);
+        this.showMuzzleFlash(muzzleX, muzzleY, hexToNumber(bullet.color));
+      } else {
+        this.addBullet(bullet.id, bullet.x, bullet.y, hexToNumber(bullet.color), bullet.towerType);
+      }
     });
 
     eventBus.on(EVENT_NAMES.BULLET_HIT, (data) => {
@@ -375,13 +374,15 @@ export class GameScene extends Phaser.Scene {
   private addTower(id: string, x: number, y: number, type: string, color: number): void {
     const container = this.add.container(x, y);
 
-    const shadow = this.add.circle(2, 8, 20, 0x000000, 0.3);
+    const config = getTowerConfig(type as any);
+    const spriteKey = config?.sprite || `tower_${type}`;
+    const textureKey = this.textures.exists(spriteKey) ? spriteKey : 'tower';
 
-    if (this.textures.exists('tower')) {
-      const tower = this.add.image(0, 0, 'tower');
+    if (this.textures.exists(textureKey)) {
+      const tower = this.add.image(0, 0, textureKey);
       const scale = 40 / Math.max(tower.width, tower.height);
       tower.setScale(scale);
-      container.add([shadow, tower]);
+      container.add([tower]);
     } else {
       const base = this.add.circle(0, 6, 20, 0x64748b);
       base.setStrokeStyle(3, 0x334155);
@@ -397,7 +398,7 @@ export class GameScene extends Phaser.Scene {
 
       const gem = this.add.circle(0, -18, 5, 0xffffff, 0.5);
 
-      container.add([shadow, base, platform, body, top, gem]);
+      container.add([base, platform, body, top, gem]);
     }
 
     container.setDepth(20);
@@ -465,7 +466,7 @@ export class GameScene extends Phaser.Scene {
       container.add([glow, bullet, highlight]);
     }
 
-    container.setDepth(30);
+    container.setDepth(towerType === 'cannon' ? 55 : 30);
 
     this.bullets.set(id, container as any);
   }
@@ -605,13 +606,13 @@ export class GameScene extends Phaser.Scene {
 
   private updateCannonRotation(): void {
     const frontMonster = gameManager.monsterSystem.getFrontMonster();
-    if (frontMonster && this.cannon) {
+    if (frontMonster && this.cannonBarrel) {
       const pos = gameManager.getCannonPosition();
       const angle = Phaser.Math.Angle.Between(
         pos.x, pos.y,
         frontMonster.x, frontMonster.y
       );
-      this.cannon.angle = Phaser.Math.RadToDeg(angle) + 90;
+      this.cannonBarrel.angle = Phaser.Math.RadToDeg(angle) + 90;
     }
   }
 

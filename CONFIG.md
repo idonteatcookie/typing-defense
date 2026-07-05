@@ -84,9 +84,8 @@
 | `description` | string | 是 | 塔的描述文字 |
 | `slowAmount` | number | 否 | 减速比例（0-1），冰霜塔类使用 |
 | `slowDuration` | number | 否 | 减速持续时间（秒） |
-| `goldPerTick` | number | 否 | 每次产出金币数（金币塔类使用） |
-| `tickInterval` | number | 否 | 金币产出间隔（秒） |
-| `sprite` | string | 否 | 贴图资源名称 |
+| `sprite` | string | 否 | 贴图资源名称（对应 Phaser texture key） |
+| `sound` | string | 否 | 攻击音效文件名（位于 `assets/audio/` 目录） |
 
 ### 配置示例
 
@@ -102,7 +101,8 @@
   "attackType": "single",
   "color": "#8b5cf6",
   "description": "基础防御塔，单体攻击，性价比高",
-  "sprite": "tower"
+  "sprite": "tower_arrow",
+  "sound": "archery.mp3"
 }
 ```
 
@@ -118,24 +118,9 @@
   "attackType": "aoe",
   "aoeRadius": 50,
   "color": "#06b6d4",
-  "description": "范围伤害，对付密集怪物群"
-}
-```
-
-**金币产出塔：**
-```json
-{
-  "type": "gold",
-  "name": "金币塔",
-  "cost": 120,
-  "damage": 0,
-  "attackSpeed": 0,
-  "range": 0,
-  "attackType": "single",
-  "color": "#fbbf24",
-  "description": "不攻击，定期产生金币",
-  "goldPerTick": 5,
-  "tickInterval": 5
+  "description": "范围伤害，对付密集怪物群",
+  "sprite": "tower_magic",
+  "sound": "magic.mp3"
 }
 ```
 

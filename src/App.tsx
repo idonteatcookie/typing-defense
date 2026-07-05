@@ -6,6 +6,7 @@ import { gameManager } from './game/GameManager';
 import { eventBus } from './game/EventBus';
 import { EVENT_NAMES } from './constants/eventNames';
 import { audioManager } from './game/AudioManager';
+import { getTowerConfig } from './game/config/TowerConfig';
 import MainMenu from './components/menu/MainMenu';
 import LevelSelect from './components/menu/LevelSelect';
 import GameView from './components/game/GameView';
@@ -76,8 +77,15 @@ function App() {
       audioManager.playDefeatSound();
     });
 
-    const unsub9 = eventBus.on(EVENT_NAMES.BULLET_FIRE, () => {
-      audioManager.playBulletSound();
+    const unsub9 = eventBus.on(EVENT_NAMES.BULLET_FIRE, (bullet) => {
+      if (bullet.towerType === 'cannon') {
+        audioManager.playBulletSound();
+      } else {
+        const config = getTowerConfig(bullet.towerType);
+        if (config && config.sound) {
+          audioManager.playTowerSound(config.sound);
+        }
+      }
     });
 
     return () => {

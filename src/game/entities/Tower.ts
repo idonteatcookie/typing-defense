@@ -156,48 +156,6 @@ export class SniperTower extends Tower {
   }
 }
 
-export class GoldTower extends Tower {
-  public goldPerTick: number;
-  public tickInterval: number;
-  private tickTimer: number = 0;
-  public goldGenerated: number = 0;
-
-  constructor(gridX: number, gridY: number, id?: string) {
-    super('gold', gridX, gridY, id);
-    const config = getTowerConfig('gold');
-    this.goldPerTick = config.goldPerTick || 5;
-    this.tickInterval = config.tickInterval || 5;
-  }
-
-  update(deltaTime: number): Monster[] | null {
-    if (!this.active) return null;
-
-    this.tickTimer += deltaTime;
-    if (this.tickTimer >= this.tickInterval) {
-      this.tickTimer = 0;
-      this.goldGenerated += this.goldPerTick;
-      return null;
-    }
-    return null;
-  }
-
-  protected attack(): Monster[] {
-    return [];
-  }
-
-  getGoldGenerated(): number {
-    const gold = this.goldGenerated;
-    this.goldGenerated = 0;
-    return gold;
-  }
-
-  reset(): void {
-    super.reset();
-    this.tickTimer = 0;
-    this.goldGenerated = 0;
-  }
-}
-
 export class TowerFactory {
   public static create(type: TowerType, gridX: number, gridY: number): Tower {
     switch (type) {
@@ -209,8 +167,6 @@ export class TowerFactory {
         return new IceTower(gridX, gridY);
       case 'sniper':
         return new SniperTower(gridX, gridY);
-      case 'gold':
-        return new GoldTower(gridX, gridY);
       default:
         return new ArrowTower(gridX, gridY);
     }

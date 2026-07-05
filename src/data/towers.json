@@ -9,7 +9,8 @@
     "attackType": "single",
     "color": "#8b5cf6",
     "description": "基础防御塔，单体攻击，性价比高",
-    "sprite": "tower"
+    "sprite": "tower_arrow",
+    "sound": "arrow.mp3"
   },
   {
     "type": "magic",
@@ -22,7 +23,8 @@
     "aoeRadius": 50,
     "color": "#06b6d4",
     "description": "范围伤害，对付密集怪物群",
-    "sprite": "tower"
+    "sprite": "tower_magic",
+    "sound": "magic.mp3"
   },
   {
     "type": "ice",
@@ -36,7 +38,8 @@
     "description": "减速敌人，控制型防御塔",
     "slowAmount": 0.3,
     "slowDuration": 2,
-    "sprite": "tower"
+    "sprite": "tower_ice",
+    "sound": "ice.mp3"
   },
   {
     "type": "sniper",
@@ -48,20 +51,7 @@
     "attackType": "single",
     "color": "#f97316",
     "description": "超远射程，高伤害，攻速慢",
-    "sprite": "tower"
-  },
-  {
-    "type": "gold",
-    "name": "金币塔",
-    "cost": 120,
-    "damage": 0,
-    "attackSpeed": 0,
-    "range": 0,
-    "attackType": "single",
-    "color": "#fbbf24",
-    "description": "不攻击，定期产生金币",
-    "goldPerTick": 5,
-    "tickInterval": 5,
-    "sprite": "tower"
+    "sprite": "tower_sniper",
+    "sound": "sniper.mp3"
   }
 ]

@@ -130,10 +130,6 @@ export class GameManager {
     const monsters = this.monsterSystem.getMonsters();
     const towerResult = this.towerSystem.update(deltaTime, monsters);
 
-    if (towerResult.goldGenerated > 0) {
-      this.addGold(towerResult.goldGenerated);
-    }
-
     for (const attack of towerResult.attacks) {
       const tower = attack.tower;
       for (const target of attack.targets) {

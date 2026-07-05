@@ -1,4 +1,4 @@
-import { Tower, TowerFactory, GoldTower } from '../entities/Tower';
+import { Tower, TowerFactory } from '../entities/Tower';
 import type { TowerType, Point } from '../types/game';
 import type { Monster } from '../entities/Monster';
 import { eventBus } from '../EventBus';
@@ -58,19 +58,11 @@ export class TowerSystem {
 
   update(deltaTime: number, monsters: Monster[]): {
     attacks: { tower: Tower; targets: Monster[] }[];
-    goldGenerated: number;
   } {
     const attacks: { tower: Tower; targets: Monster[] }[] = [];
-    let goldGenerated = 0;
 
     for (const tower of this.towers) {
       if (!tower.active) continue;
-
-      if (tower instanceof GoldTower) {
-        tower.update(deltaTime);
-        goldGenerated += tower.getGoldGenerated();
-        continue;
-      }
 
       const targets = tower.update(deltaTime, monsters);
       if (targets && targets.length > 0) {
@@ -82,7 +74,7 @@ export class TowerSystem {
       }
     }
 
-    return { attacks, goldGenerated };
+    return { attacks };
   }
 
   getTowers(): Tower[] {

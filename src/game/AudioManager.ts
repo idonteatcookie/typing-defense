@@ -53,6 +53,20 @@ export class AudioManager {
     audio.play().catch(() => {});
   }
 
+  playArrowSound(): void {
+    if (this.isMuted) return;
+    const audio = new Audio('/assets/audio/archery.mp3');
+    audio.volume = 0.3;
+    audio.play().catch(() => {});
+  }
+
+  playTowerSound(soundFile: string): void {
+    if (this.isMuted) return;
+    const audio = new Audio(`/assets/audio/${soundFile}`);
+    audio.volume = 0.3;
+    audio.play().catch(() => {});
+  }
+
   playHitSound(): void {
     if (this.isMuted) return;
     const audio = new Audio('/assets/audio/hit.mp3');

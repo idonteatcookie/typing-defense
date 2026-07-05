@@ -30,6 +30,8 @@ export default function LeftPanel() {
           const config = TOWER_CONFIGS[type];
           const canAfford = gold >= config.cost;
           const isSelected = placingTowerType === type;
+          const spriteName = config.sprite?.replace('tower_', '') || 'tower';
+const imagePath = `/assets/towers/${spriteName}.png`;
 
           return (
             <div
@@ -42,14 +44,14 @@ export default function LeftPanel() {
               )}
               <div className="flex items-center gap-3">
                 <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center text-2xl"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center"
                   style={{ backgroundColor: config.color + '40', border: `2px solid ${config.color}` }}
                 >
-                  {type === 'arrow' && '🏹'}
-                  {type === 'magic' && '🔮'}
-                  {type === 'ice' && '❄️'}
-                  {type === 'sniper' && '🎯'}
-                  {type === 'gold' && '💰'}
+                  <img
+                    src={imagePath}
+                    alt={config.name}
+                    className="w-7 h-7 object-contain"
+                  />
                 </div>
                 <div className="flex-1">
                   <div className="text-white font-bold pixel-text">{config.name}</div>
