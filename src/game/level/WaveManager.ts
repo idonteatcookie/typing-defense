@@ -28,6 +28,12 @@ export class WaveManager {
     this.startCurrentWave();
   }
 
+  private onWaveStartCallback?: () => void;
+
+  setOnWaveStart(callback: () => void): void {
+    this.onWaveStartCallback = callback;
+  }
+
   update(deltaTime: number): { type: MonsterType }[] {
     const spawnedMonsters: { type: MonsterType }[] = [];
 
@@ -35,6 +41,10 @@ export class WaveManager {
       this.waveDelayTimer -= deltaTime;
       if (this.waveDelayTimer <= 0) {
         this.startCurrentWave();
+        // 下一波真正开始时触发回调
+        if (this.onWaveStartCallback) {
+          this.onWaveStartCallback();
+        }
       }
       return spawnedMonsters;
     }

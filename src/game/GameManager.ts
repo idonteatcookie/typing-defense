@@ -43,6 +43,9 @@ export class GameManager {
     this.typingManager = new TypingManager('qwerty');
     this.levelManager = new LevelManager();
     this.waveManager = new WaveManager();
+    this.waveManager.setOnWaveStart(() => {
+      eventBus.emit(EVENT_NAMES.WAVE_START, this.waveManager.getCurrentWaveNumber());
+    });
   }
 
   static getInstance(): GameManager {
@@ -201,10 +204,8 @@ export class GameManager {
       eventBus.emit(EVENT_NAMES.WAVE_COMPLETE, currentWave);
 
       if (!this.waveManager.isAllWavesComplete()) {
-        const hasNext = this.waveManager.startNextWave();
-        if (hasNext) {
-          eventBus.emit(EVENT_NAMES.WAVE_START, this.waveManager.getCurrentWaveNumber());
-        }
+        this.waveManager.startNextWave();
+        // WAVE_START 事件会在 waveDelayTimer 结束后由回调触发
       }
     }
   }

@@ -21,6 +21,7 @@ export class GameScene extends Phaser.Scene {
   private cannonBarrel!: Phaser.GameObjects.Image;
   private hoverCell: { x: number; y: number } | null = null;
   private rangeCircle!: Phaser.GameObjects.Arc;
+  private waveText: Phaser.GameObjects.Text | null = null;
 
   constructor() {
     super('GameScene');
@@ -208,6 +209,62 @@ export class GameScene extends Phaser.Scene {
     eventBus.on(EVENT_NAMES.GAME_DEFEAT, () => {
       this.cameras.main.shake(300, 0.01);
       this.cameras.main.flash(500, 200, 50, 50);
+    });
+
+    eventBus.on(EVENT_NAMES.WAVE_START, (waveNum: number) => {
+      this.showWaveText(`第 ${waveNum} 波`, '#22c55e');
+    });
+
+    eventBus.on(EVENT_NAMES.WAVE_COMPLETE, (waveNum: number) => {
+      this.showWaveText(`第 ${waveNum} 波 已清除`, '#fbbf24');
+    });
+  }
+
+  private showWaveText(text: string, color: string): void {
+    // 清理上一个提示
+    if (this.waveText) {
+      this.waveText.destroy();
+      this.waveText = null;
+    }
+
+    const txt = this.add.text(GAME_WIDTH / 2, GAME_HEIGHT / 2 - 80, text, {
+      fontFamily: 'Arial',
+      fontSize: '40px',
+      color: color,
+      fontStyle: 'bold',
+      stroke: '#000000',
+      strokeThickness: 6,
+    });
+    txt.setOrigin(0.5);
+    txt.setDepth(200);
+    txt.setAlpha(0);
+    txt.setScale(0.5);
+
+    this.waveText = txt;
+
+    this.tweens.add({
+      targets: txt,
+      alpha: 1,
+      scale: 1,
+      duration: 300,
+      ease: 'Back.easeOut',
+      onComplete: () => {
+        // 停留一段时间后淡出
+        this.tweens.add({
+          targets: txt,
+          alpha: 0,
+          y: txt.y - 30,
+          duration: 600,
+          delay: 1200,
+          ease: 'Power1',
+          onComplete: () => {
+            txt.destroy();
+            if (this.waveText === txt) {
+              this.waveText = null;
+            }
+          },
+        });
+      },
     });
   }
 
