@@ -5,6 +5,7 @@ import LeftPanel from '../layout/LeftPanel';
 import BottomInput from '../layout/BottomInput';
 import ComboDisplay from '../game/ComboDisplay';
 import TutorialGuide from '../game/TutorialGuide';
+import FrenzyFire from '../game/FrenzyFire';
 import { useGameStore } from '@/store/useGameStore';
 import { eventBus } from '@/game/EventBus';
 import { EVENT_NAMES } from '@/constants/eventNames';
@@ -124,30 +125,7 @@ export default function GameView({ onPause, onSpeedToggle, children }: GameViewP
 
           <div className={getGlowClass()} />
           {isDanger && <div className="danger-glow" />}
-          {isFrenzy && (
-            <div className="frenzy-fire">
-              <div className="fire-glow" />
-              <div className="flame-base" />
-              <div className="flame-tongue-1" />
-              <div className="flame-tongue-2" />
-              <div className="flame-tongue-3" />
-              <div className="flame-tongue-4" />
-              <div className="flame-tongue-5" />
-              <div className="flame-mid" />
-              <div className="flame-inner" />
-              <div className="flame-tip" />
-              <div className="sparks">
-                <div className="spark" />
-                <div className="spark" />
-                <div className="spark" />
-                <div className="spark" />
-                <div className="spark" />
-                <div className="spark" />
-                <div className="spark" />
-                <div className="spark" />
-              </div>
-            </div>
-          )}
+          {isFrenzy && <FrenzyFire />}
           <ComboDisplay />
 
           {hasDialog && (
