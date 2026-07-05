@@ -1,10 +1,9 @@
 import type { ITypingEngine, TypingTarget, TypingInputResult, TypingDisplayText } from '../types/typing';
-import type { TypingEngineType } from '../types/game';
 import { generateId } from '../utils/math';
 import wordsData from '../../data/words.json';
 
 export class WordEngine implements ITypingEngine {
-  public readonly type: TypingEngineType = 'qwerty';
+  public readonly type = 'word' as const;
   private words: string[] = wordsData as string[];
 
   generateTarget(difficulty: number): TypingTarget {
