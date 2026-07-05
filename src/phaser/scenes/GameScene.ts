@@ -539,7 +539,8 @@ export class GameScene extends Phaser.Scene {
   }
 
   update(time: number, delta: number): void {
-    const deltaSeconds = delta / 1000;
+    const speedMultiplier = useGameStore.getState().speedMultiplier;
+    const deltaSeconds = delta / 1000 * speedMultiplier;
 
     if (gameManager.getState() === 'playing') {
       gameManager.update(deltaSeconds);

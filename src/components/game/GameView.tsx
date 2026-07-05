@@ -10,10 +10,11 @@ import { EVENT_NAMES } from '@/constants/eventNames';
 
 interface GameViewProps {
   onPause: () => void;
+  onSpeedToggle: () => void;
   children?: React.ReactNode;
 }
 
-export default function GameView({ onPause, children }: GameViewProps) {
+export default function GameView({ onPause, onSpeedToggle, children }: GameViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
   const [comboLevel, setComboLevel] = useState(0);
@@ -95,7 +96,7 @@ export default function GameView({ onPause, children }: GameViewProps) {
 
   return (
     <div className="game-container flex flex-col">
-      <TopBar onPause={onPause} />
+      <TopBar onPause={onPause} onSpeedToggle={onSpeedToggle} />
 
       <div className="flex flex-1 overflow-hidden">
         <LeftPanel />

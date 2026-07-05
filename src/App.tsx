@@ -130,6 +130,10 @@ function App() {
     setGameScreen('playing');
   }, [setGameScreen]);
 
+  const handleSpeedToggle = useCallback(() => {
+    useGameStore.getState().toggleSpeedMultiplier();
+  }, []);
+
   const handleRestart = useCallback(() => {
     const levelId = useGameStore.getState().currentLevelId;
     if (levelId) {
@@ -176,7 +180,7 @@ function App() {
       )}
 
       {(gameScreen === 'playing' || gameScreen === 'paused' || gameScreen === 'victory' || gameScreen === 'defeat') && (
-        <GameView onPause={handlePause}>
+        <GameView onPause={handlePause} onSpeedToggle={handleSpeedToggle}>
           {gameScreen === 'paused' && (
             <PauseDialog
               onResume={handleResume}

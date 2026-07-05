@@ -17,6 +17,7 @@ interface GameStore {
   wpm: number;
   placingTowerType: TowerType | null;
   selectedTowerId: string | null;
+  speedMultiplier: number;
 
   victoryData: VictoryData | null;
   defeatData: DefeatData | null;
@@ -38,6 +39,8 @@ interface GameStore {
   setVictory: (data: VictoryData) => void;
   setDefeat: (data: DefeatData) => void;
   resetResult: () => void;
+
+  toggleSpeedMultiplier: () => void;
 }
 
 export const useGameStore = create<GameStore>((set) => ({
@@ -54,6 +57,7 @@ export const useGameStore = create<GameStore>((set) => ({
   wpm: 0,
   placingTowerType: null,
   selectedTowerId: null,
+  speedMultiplier: 1,
   victoryData: null,
   defeatData: null,
 
@@ -78,4 +82,8 @@ export const useGameStore = create<GameStore>((set) => ({
   setVictory: (data) => set({ gameScreen: 'victory', victoryData: data }),
   setDefeat: (data) => set({ gameScreen: 'defeat', defeatData: data }),
   resetResult: () => set({ victoryData: null, defeatData: null }),
+
+  toggleSpeedMultiplier: () => set((state) => ({
+    speedMultiplier: state.speedMultiplier === 1 ? 2 : 1,
+  })),
 }));
