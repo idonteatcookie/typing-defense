@@ -71,8 +71,10 @@ export default function BottomInput() {
 
   return (
     <div className="w-full h-24 panel rounded-b-lg rounded-t-none border-b-0 border-x-0 border-t border-slate-600">
-      <div className="h-full flex items-center justify-center gap-8 px-6">
-        <div className="w-48 flex flex-col items-center justify-center shrink-0">
+      <div className="h-full flex items-center justify-between px-6">
+        <div className="w-28" />
+
+        <div className="flex flex-col items-center justify-center">
           <div className="text-slate-400 text-sm mb-1 pixel-text">目标字母</div>
           <div
             className={`input-display ${wrongShake ? 'shake-wrong' : ''}`}
