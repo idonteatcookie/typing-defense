@@ -4,6 +4,7 @@ import TopBar from '../layout/TopBar';
 import LeftPanel from '../layout/LeftPanel';
 import BottomInput from '../layout/BottomInput';
 import ComboDisplay from '../game/ComboDisplay';
+import TutorialGuide from '../game/TutorialGuide';
 import { useGameStore } from '@/store/useGameStore';
 import { eventBus } from '@/game/EventBus';
 import { EVENT_NAMES } from '@/constants/eventNames';
@@ -158,6 +159,7 @@ export default function GameView({ onPause, onSpeedToggle, children }: GameViewP
       </div>
 
       <BottomInput />
+      <TutorialGuide />
     </div>
   );
 }

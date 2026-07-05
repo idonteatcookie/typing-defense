@@ -10,17 +10,23 @@
 - **倍速功能**：点击右上角「⚡ 1x」按钮切换为2倍速，再次点击恢复正常速度，加速时怪物移动和防御塔攻击都会加倍
 - **连击系统**：连续正确输入可获得连击加成，提高伤害（最高2倍）
 - **实时统计**：显示打字速度(WPM)、准确率、连击数等数据
+- **波次提示**：每波怪物开始和清除时显示文字提示，衔接自然
+- **新手引导**：首次进入第1关时显示引导，提示输入字母攻击怪物；金币足够时提示建造防御塔（使用 localStorage 记录，仅显示一次）
 
 ### 关卡系统
-- **52个关卡**：循序渐进的打字练习，从基准键位到全键盘
-- **无尽模式**：第53关为无尽模式，波次循环，挑战极限
+- **52个关卡 + 无尽模式**：循序渐进的打字练习，覆盖全键盘（含数字和标点）
+- **8个阶段**：基准键位 → 上行 → 下行 → 数字 → 标点 → 速度 → 综合掌握 → 大师挑战
+- **14种地图**：Z形、S形、U形、蛇形、螺旋、L形、双L、之字形、迷宫、环形等多样化路径
+- **无尽模式**：第53关为无尽模式，波次循环，挑战极限（首页独立入口，不计入关卡选择）
 - **关卡选择**：可自由选择已解锁的关卡
 - **星级评价**：根据剩余生命和准确率给予1-3星评价
+- **零初始金币**：每关 startGold=0，必须通过打字积累金币，纯防御塔难以通关
 
 ### 练习字母设计
-- 每关练习特定的字母组合（一排字母或一排中的几个）
+- 每关练习一组字母（如 asdf、jkl;、qwer、uiop），避免单字母关卡
 - 游戏中输入目标始终为单个字母
-- 难度递进：基准行 → 上行 → 下行 → 全键盘
+- 难度递进：基准行 → 上行 → 下行 → 数字 → 标点 → 全键盘
+- 详细设计见 [LEVEL_DESIGN.md](LEVEL_DESIGN.md)
 
 ### 塔防元素
 - **炮塔系统**：可放置防御塔辅助攻击，包括箭塔、魔法塔、冰霜塔、狙击塔
@@ -108,7 +114,8 @@ typing-defense/
 │   │   │   └── VictoryDialog.tsx   # 胜利弹窗
 │   │   ├── game/                # 游戏相关组件
 │   │   │   ├── ComboDisplay.tsx    # 连击显示
-│   │   │   └── GameView.tsx        # 游戏视图容器
+│   │   │   ├── GameView.tsx        # 游戏视图容器
+│   │   │   └── TutorialGuide.tsx   # 新手引导（打字+防御塔提示）
 │   │   ├── layout/              # 布局组件
 │   │   │   ├── BottomInput.tsx     # 底部输入显示
 │   │   │   ├── LeftPanel.tsx       # 左侧炮塔面板
@@ -176,9 +183,14 @@ typing-defense/
 │   └── main.tsx                # 入口文件
 ├── .eslintrc.cjs               # ESLint 配置
 ├── .gitignore                  # Git 忽略配置
+├── CONFIG.md                   # 配置文件详细说明
+├── LEVEL_DESIGN.md             # 关卡设计文档（8阶段52关+无尽模式）
 ├── index.html                  # HTML 入口
 ├── package.json                # 项目依赖
 ├── postcss.config.js           # PostCSS 配置
+├── scripts/                    # 脚本工具
+│   ├── generateLevels.js          # 关卡生成脚本（JS 版本）
+│   └── generate_levels.py         # 关卡生成脚本（Python 版本，当前使用）
 ├── tailwind.config.js          # Tailwind 配置
 ├── tsconfig.json               # TypeScript 配置
 ├── tsconfig.node.json          # TypeScript Node 配置
@@ -208,7 +220,7 @@ typing-defense/
   "name": "左手基准键",        // 关卡名称
   "practiceLetters": "asdf",  // 练习字母集
   "isEndless": false,         // 是否为无尽模式
-  "startGold": 100,           // 初始金币
+  "startGold": 0,             // 初始金币（普通关为0，需打字积累）
   "startLives": 10,           // 初始生命
   "typingDifficulty": 1,      // 打字难度（1-5）
   "path": [...],              // 怪物路径点坐标数组
@@ -436,6 +448,19 @@ npm run typecheck
   3. 选中后地图显示网格和攻击范围
   4. 点击地图上的网格位置放置防御塔
   5. 点击提示栏的「取消」按钮或按 ESC 取消放置
+
+## 新手引导
+
+首次进入第1关时会自动触发两步引导（已看过则不再显示，状态保存在 `localStorage` 的 `typing_defense_tutorial` 键）：
+
+1. **打字提示**：游戏开始 800ms 后弹出气泡，指向底部输入框，提示玩家按下字母键攻击怪物
+2. **防御塔提示**：当玩家通过打字积累的金币足够建造最便宜的防御塔时，弹出气泡指向左侧防御塔面板，提示如何建造防御塔
+
+引导组件位于 [TutorialGuide.tsx](src/components/game/TutorialGuide.tsx)，样式定义在 [index.css](src/index.css) 的「新手引导样式」段。
+
+## 波次提示
+
+每波怪物开始和清除时会在地图中央显示文字提示（如「第 2 波」、「第 1 波 已清除」），带缩放和淡出动画，避免波次切换过于突兀。事件由 [WaveManager](src/game/level/WaveManager.ts) 通过回调触发，[GameScene](src/phaser/scenes/GameScene.ts) 监听并渲染文字。
 
 ## 架构说明
 
