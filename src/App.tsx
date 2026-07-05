@@ -13,6 +13,7 @@ import GameView from './components/game/GameView';
 import VictoryDialog from './components/dialog/VictoryDialog';
 import DefeatDialog from './components/dialog/DefeatDialog';
 import PauseDialog from './components/dialog/PauseDialog';
+import SettingsDialog from './components/dialog/SettingsDialog';
 import type { VictoryData, DefeatData } from './game/EventBus';
 
 function App() {
@@ -29,8 +30,10 @@ function App() {
 
   const loadUserStore = useUserStore((state) => state.loadFromStorage);
   const loadSettings = useSettingsStore((state) => state.loadFromStorage);
+  const settings = useSettingsStore((state) => state.settings);
 
   const [isInitialized, setIsInitialized] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
     loadUserStore();
@@ -38,6 +41,14 @@ function App() {
     gameManager.init();
     setIsInitialized(true);
   }, [loadUserStore, loadSettings]);
+
+  useEffect(() => {
+    if (!isInitialized) return;
+    audioManager.setBgmMuted(settings.bgmMuted);
+    audioManager.setSfxMuted(settings.sfxMuted);
+    audioManager.setBgmVolume(settings.bgmVolume);
+    audioManager.setSfxVolume(settings.sfxVolume);
+  }, [isInitialized, settings.bgmMuted, settings.sfxMuted, settings.bgmVolume, settings.sfxVolume]);
 
   useEffect(() => {
     const unsub1 = eventBus.on(EVENT_NAMES.GOLD_CHANGE, (data) => {
@@ -142,6 +153,14 @@ function App() {
     useGameStore.getState().toggleSpeedMultiplier();
   }, []);
 
+  const handleOpenSettings = useCallback(() => {
+    setShowSettings(true);
+  }, []);
+
+  const handleCloseSettings = useCallback(() => {
+    setShowSettings(false);
+  }, []);
+
   const handleRestart = useCallback(() => {
     const levelId = useGameStore.getState().currentLevelId;
     if (levelId) {
@@ -175,10 +194,18 @@ function App() {
   return (
     <div className="w-full h-full flex items-center justify-center">
       {gameScreen === 'menu' && (
-        <MainMenu
-          onStart={handleGoToLevelSelect}
-          onEndless={handleStartEndless}
-        />
+        <div className="relative w-full h-full">
+          <MainMenu
+            onStart={handleGoToLevelSelect}
+            onEndless={handleStartEndless}
+            onSettings={handleOpenSettings}
+          />
+          {showSettings && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-50">
+              <SettingsDialog onClose={handleCloseSettings} />
+            </div>
+          )}
+        </div>
       )}
 
       {gameScreen === 'levelSelect' && (
