@@ -1,6 +1,7 @@
 import type { ITypingEngine, TypingEngineType } from '../types/typing';
 import type { TypingEngineType as EngineType } from '../types/game';
 import { QwertyEngine } from './QwertyEngine';
+import { WordEngine } from './WordEngine';
 
 export class EngineFactory {
   private static engines: Map<EngineType, ITypingEngine> = new Map();
@@ -21,6 +22,8 @@ export class EngineFactory {
         return new QwertyEngine();
       case 'wubi':
         return new QwertyEngine();
+      case 'word':
+        return new WordEngine();
       default:
         return new QwertyEngine();
     }

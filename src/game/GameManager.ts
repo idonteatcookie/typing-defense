@@ -7,7 +7,7 @@ import { WaveManager } from './level/WaveManager';
 import { eventBus } from './EventBus';
 import { EVENT_NAMES } from '@/constants/eventNames';
 import { GAME_WIDTH, GAME_HEIGHT, CANNON_DAMAGE, CANNON_BULLET_SPEED } from '@/constants/gameConstants';
-import type { TowerType, GameState, TypingEngineType } from './types/game';
+import type { TowerType, GameState, TypingEngineType, EndlessMode } from './types/game';
 import type { TypingStats } from './types/typing';
 import type { Tower } from './entities/Tower';
 import type { Monster } from './entities/Monster';
@@ -63,6 +63,11 @@ export class GameManager {
     const level = this.levelManager.loadLevel(levelId);
     this.currentLevelId = levelId;
 
+    // 闯关模式始终使用 qwerty 引擎（避免从无尽单词模式切回时遗留 word 引擎）
+    if (!level.isEndless && this.typingManager.getCurrentEngineType() !== 'qwerty') {
+      this.typingManager.switchEngine('qwerty');
+    }
+
     this.gold = level.startGold;
     this.lives = level.startLives;
     this.score = 0;
@@ -88,6 +93,13 @@ export class GameManager {
     eventBus.emit(EVENT_NAMES.WAVE_START, this.waveManager.getCurrentWaveNumber());
 
     this.assignNewTypingTarget();
+  }
+
+  startEndlessMode(mode: EndlessMode): void {
+    // 切换打字引擎：字母模式用 qwerty，单词模式用 word
+    const engineType: TypingEngineType = mode === 'word' ? 'word' : 'qwerty';
+    this.typingManager.switchEngine(engineType);
+    this.startLevel(53);
   }
 
   pause(): void {

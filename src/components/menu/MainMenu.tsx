@@ -2,9 +2,10 @@ interface MainMenuProps {
   onStart: () => void;
   onEndless: () => void;
   onSettings: () => void;
+  onAbout: () => void;
 }
 
-export default function MainMenu({ onStart, onEndless, onSettings }: MainMenuProps) {
+export default function MainMenu({ onStart, onEndless, onSettings, onAbout }: MainMenuProps) {
   return (
     <div className="flex flex-col items-center justify-center gap-8 p-12">
       <div className="text-center bounce-in">
@@ -42,9 +43,9 @@ export default function MainMenu({ onStart, onEndless, onSettings }: MainMenuPro
         <button
           className="btn-game text-lg bg-slate-600 text-white"
           style={{ boxShadow: '0 4px 0 #334155, 0 6px 10px rgba(0,0,0,0.3)' }}
-          onClick={() => {}}
+          onClick={onAbout}
         >
-          关于游戏
+          ℹ️ 关于游戏
         </button>
       </div>
 

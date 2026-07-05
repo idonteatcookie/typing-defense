@@ -14,6 +14,8 @@ import VictoryDialog from './components/dialog/VictoryDialog';
 import DefeatDialog from './components/dialog/DefeatDialog';
 import PauseDialog from './components/dialog/PauseDialog';
 import SettingsDialog from './components/dialog/SettingsDialog';
+import EndlessModeDialog from './components/dialog/EndlessModeDialog';
+import AboutDialog from './components/dialog/AboutDialog';
 import type { VictoryData, DefeatData } from './game/EventBus';
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
 
   const [isInitialized, setIsInitialized] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [showEndlessModeSelect, setShowEndlessModeSelect] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
 
   useEffect(() => {
     loadUserStore();
@@ -130,12 +134,29 @@ function App() {
   }, [setGameScreen]);
 
   const handleStartEndless = useCallback(() => {
-    gameManager.startLevel(53);
+    setShowEndlessModeSelect(true);
+  }, []);
+
+  const handleSelectEndlessMode = useCallback((mode: 'letter' | 'word') => {
+    setShowEndlessModeSelect(false);
+    gameManager.startEndlessMode(mode);
     setCurrentLevelId(53);
     setGameScreen('playing');
     setWave(1, gameManager.getTotalWaves());
     audioManager.startBgm();
   }, [setGameScreen, setWave, setCurrentLevelId]);
+
+  const handleCancelEndlessMode = useCallback(() => {
+    setShowEndlessModeSelect(false);
+  }, []);
+
+  const handleOpenAbout = useCallback(() => {
+    setShowAbout(true);
+  }, []);
+
+  const handleCloseAbout = useCallback(() => {
+    setShowAbout(false);
+  }, []);
 
   const handlePause = useCallback(() => {
     gameManager.pause();
@@ -199,10 +220,22 @@ function App() {
             onStart={handleGoToLevelSelect}
             onEndless={handleStartEndless}
             onSettings={handleOpenSettings}
+            onAbout={handleOpenAbout}
           />
           {showSettings && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-50">
               <SettingsDialog onClose={handleCloseSettings} />
+            </div>
+          )}
+          {showEndlessModeSelect && (
+            <EndlessModeDialog
+              onSelect={handleSelectEndlessMode}
+              onCancel={handleCancelEndlessMode}
+            />
+          )}
+          {showAbout && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-50">
+              <AboutDialog onClose={handleCloseAbout} />
             </div>
           )}
         </div>

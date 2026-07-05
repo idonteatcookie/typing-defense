@@ -9488,7 +9488,7 @@
     "name": "无尽模式",
     "practiceLetters": "qwertyuiopasdfghjkl;zxcvbnm,./1234567890,.;:()[]{}+-*/=<>!@#$%^&*\"'~`\\|",
     "isEndless": true,
-    "startGold": 300,
+    "startGold": 0,
     "startLives": 10,
     "typingDifficulty": 1,
     "availableTowers": [

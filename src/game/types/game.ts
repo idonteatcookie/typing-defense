@@ -13,6 +13,8 @@ export type MonsterType = 'slime' | 'runner' | 'tank' | 'boss';
 
 export type AttackType = 'single' | 'aoe';
 
-export type TypingEngineType = 'qwerty' | 'shuangpin' | 'wubi';
+export type TypingEngineType = 'qwerty' | 'shuangpin' | 'wubi' | 'word';
 
 export type Difficulty = 'easy' | 'normal' | 'hard';
+
+export type EndlessMode = 'letter' | 'word';
