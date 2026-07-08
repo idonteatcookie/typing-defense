@@ -48,8 +48,24 @@ export class AudioManager {
   startBgm(): void {
     if (this.bgmMuted) return;
 
-    if (!this.bgmAudio) {
+    if (!this.bgmAudio || this.bgmAudio.src !== '/assets/audio/bgm.mp3') {
+      this.stopBgm();
       this.bgmAudio = new Audio('/assets/audio/bgm.mp3');
+      this.bgmAudio.loop = true;
+      this.bgmAudio.volume = this.bgmVolume;
+    }
+
+    if (this.bgmAudio.paused) {
+      this.bgmAudio.play().catch(() => {});
+    }
+  }
+
+  startHomeBgm(): void {
+    if (this.bgmMuted) return;
+
+    if (!this.bgmAudio || this.bgmAudio.src !== '/assets/audio/home.mp3') {
+      this.stopBgm();
+      this.bgmAudio = new Audio('/assets/audio/home.mp3');
       this.bgmAudio.loop = true;
       this.bgmAudio.volume = this.bgmVolume;
     }
@@ -117,6 +133,13 @@ export class AudioManager {
   playWrongSound(): void {
     if (this.sfxMuted) return;
     const audio = new Audio('/assets/audio/error.mp3');
+    audio.volume = this.sfxVolume;
+    audio.play().catch(() => {});
+  }
+
+  playButtonSound(): void {
+    if (this.sfxMuted) return;
+    const audio = new Audio('/assets/audio/button.mp3');
     audio.volume = this.sfxVolume;
     audio.play().catch(() => {});
   }

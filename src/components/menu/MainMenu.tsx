@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { audioManager } from '@/game/AudioManager';
+
 interface MainMenuProps {
   onStart: () => void;
   onEndless: () => void;
@@ -6,57 +9,75 @@ interface MainMenuProps {
 }
 
 export default function MainMenu({ onStart, onEndless, onSettings, onAbout }: MainMenuProps) {
+  useEffect(() => {
+    audioManager.startHomeBgm();
+    return () => {
+      audioManager.stopBgm();
+    };
+  }, []);
+
+  const handleClick = (callback: () => void) => {
+    audioManager.playButtonSound();
+    callback();
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center gap-8 p-12">
-      <div className="text-center bounce-in">
-        <h1 className="text-6xl font-bold text-green-400 glow-text pixel-text mb-4">
-          盲打防线
-        </h1>
-        <p className="text-2xl text-slate-300 pixel-text">
-          Typing Defense
-        </p>
+    <div
+      className="relative w-full h-full"
+      style={{
+        backgroundImage: `url('/assets/ui/background.png')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div
+        className="absolute inset-0 panel-drop-down"
+        style={{
+          backgroundImage: `url('/assets/ui/panel.png')`,
+          backgroundSize: '100% 100%',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="absolute top-[15%] left-1/2 -translate-x-1/2 text-center z-10">
+          <h1 className="text-4xl font-bold text-amber-700 pixel-text drop-shadow-lg" style={{ fontFamily: 'Zpix, monospace' }}>
+            盲打防线
+          </h1>
+        </div>
+
+        <div className="absolute top-[30.5%] left-1/2 -translate-x-1/2 flex flex-col gap-10 z-10">
+          <button
+            className="px-12 py-3 text-2xl font-bold text-amber-900 pixel-text transition-all duration-200 transform hover:scale-105 active:scale-95"
+            style={{ fontFamily: 'Zpix, monospace' }}
+            onClick={() => handleClick(onStart)}
+          >
+            闯关模式
+          </button>
+
+          <button
+            className="px-12 py-3 text-2xl font-bold text-amber-900 pixel-text transition-all duration-200 transform hover:scale-105 active:scale-95"
+            style={{ fontFamily: 'Zpix, monospace' }}
+            onClick={() => handleClick(onEndless)}
+          >
+            无尽模式
+          </button>
+
+          <button
+            className="px-12 py-3 text-2xl font-bold text-amber-900 pixel-text transition-all duration-200 transform hover:scale-105 active:scale-95"
+            style={{ fontFamily: 'Zpix, monospace' }}
+            onClick={() => handleClick(onSettings)}
+          >
+            游戏设置
+          </button>
+
+          <button
+            className="px-12 py-3 text-2xl font-bold text-amber-900 pixel-text transition-all duration-200 transform hover:scale-105 active:scale-95"
+            style={{ fontFamily: 'Zpix, monospace' }}
+            onClick={() => handleClick(onAbout)}
+          >
+            游戏介绍
+          </button>
+        </div>
       </div>
-
-      <div className="flex flex-col gap-4 w-64 mt-8">
-        <button
-          className="btn-game btn-primary text-2xl"
-          onClick={onStart}
-        >
-          🎮 闯关模式
-        </button>
-
-        <button
-          className="btn-game btn-secondary text-xl"
-          onClick={onEndless}
-        >
-          🔄 无尽模式
-        </button>
-
-        <button
-          className="btn-game text-lg bg-slate-600 text-white"
-          style={{ boxShadow: '0 4px 0 #334155, 0 6px 10px rgba(0,0,0,0.3)' }}
-          onClick={onSettings}
-        >
-          ⚙️ 设置
-        </button>
-
-        <button
-          className="btn-game text-lg bg-slate-600 text-white"
-          style={{ boxShadow: '0 4px 0 #334155, 0 6px 10px rgba(0,0,0,0.3)' }}
-          onClick={onAbout}
-        >
-          ℹ️ 关于游戏
-        </button>
-      </div>
-
-      <div className="mt-8 text-slate-400 text-center">
-        <p className="text-lg">用打字的力量守护你的基地！</p>
-        <p className="text-sm mt-2 opacity-70">快速输入字母消灭怪物，建造防御塔阻挡敌人</p>
-      </div>
-
-      <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-green-500/10 blur-2xl" />
-      <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-blue-500/10 blur-3xl" />
-      <div className="absolute top-1/3 right-20 w-16 h-16 rounded-full bg-yellow-500/10 blur-2xl" />
     </div>
   );
 }

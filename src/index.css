@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Zpix';
+  src: url('/assets/fonts/zpix.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -198,6 +206,18 @@ body {
   0% { transform: scale(0.5); opacity: 0; }
   70% { transform: scale(1.1); }
   100% { transform: scale(1); opacity: 1; }
+}
+
+.panel-drop-down {
+  animation: panelDropDown 0.8s ease-out forwards;
+}
+
+@keyframes panelDropDown {
+  0% { transform: translateY(-100%); }
+  70% { transform: translateY(8%); }
+  85% { transform: translateY(-3%); }
+  95% { transform: translateY(1%); }
+  100% { transform: translateY(0); }
 }
 
 .fade-in {
