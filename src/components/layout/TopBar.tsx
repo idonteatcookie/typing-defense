@@ -1,5 +1,6 @@
 import { useGameStore } from '@/store/useGameStore';
 import { gameManager } from '@/game/GameManager';
+import { asset } from '@/utils/asset';
 
 interface TopBarProps {
   onPause: () => void;
@@ -122,7 +123,7 @@ export default function TopBar({ onPause, onSpeedToggle, isPaused }: TopBarProps
           onClick={onSpeedToggle}
         >
           <img
-            src={`/assets/ui/${speedMultiplier === 2 ? 'double_speed.png' : 'origin_speed.png'}`}
+            src={asset(`assets/ui/${speedMultiplier === 2 ? 'double_speed.png' : 'origin_speed.png'}`)}
             alt={speedMultiplier === 2 ? '恢复原速' : '加速'}
             className="w-full h-full object-contain"
           />
@@ -132,7 +133,7 @@ export default function TopBar({ onPause, onSpeedToggle, isPaused }: TopBarProps
           onClick={onPause}
         >
           <img
-            src={`/assets/ui/${isPaused ? 'continue.png' : 'pause.png'}`}
+            src={asset(`assets/ui/${isPaused ? 'continue.png' : 'pause.png'}`)}
             alt={isPaused ? '继续' : '暂停'}
             className="w-full h-full object-contain"
           />

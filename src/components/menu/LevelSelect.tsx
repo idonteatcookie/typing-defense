@@ -1,6 +1,7 @@
 import { useUserStore } from '@/store/useUserStore';
 import { gameManager } from '@/game/GameManager';
 import { audioManager } from '@/game/AudioManager';
+import { assetUrl } from '@/utils/asset';
 
 interface LevelSelectProps {
   onSelectLevel: (levelId: number) => void;
@@ -51,7 +52,7 @@ export default function LevelSelect({ onSelectLevel, onBack }: LevelSelectProps)
     <div 
       className="w-full h-full flex flex-col items-center gap-6 p-8 relative overflow-hidden"
       style={{
-        backgroundImage: `url('/assets/ui/menu_bg.png')`,
+        backgroundImage: assetUrl('assets/ui/menu_bg.png'),
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
@@ -80,7 +81,7 @@ export default function LevelSelect({ onSelectLevel, onBack }: LevelSelectProps)
                   }`}
                   style={{ 
                     fontFamily: 'Zpix, monospace',
-                    backgroundImage: `url('/assets/ui/level_btn.png')`,
+                    backgroundImage: assetUrl('assets/ui/level_btn.png'),
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     border: 'none',
@@ -116,7 +117,7 @@ export default function LevelSelect({ onSelectLevel, onBack }: LevelSelectProps)
         className="absolute bottom-6 left-1/2 -translate-x-1/2 px-8 py-3 text-lg font-bold text-yellow-200 transition-transform hover:scale-105 active:scale-95"
         style={{ 
           fontFamily: 'Zpix, monospace',
-          backgroundImage: `url('/assets/ui/back_btn.png')`,
+          backgroundImage: assetUrl('assets/ui/back_btn.png'),
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           border: 'none',

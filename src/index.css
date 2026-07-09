@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Zpix';
-  src: url('/assets/fonts/zpix.ttf') format('truetype');
+  src: var(--asset-font-zpix) format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -46,7 +46,7 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background-image: url('/assets/ui/game_bg.png');
+  background-image: var(--asset-game-bg);
   background-size: cover;
   background-position: center;
   flex-shrink: 0;
@@ -93,7 +93,7 @@ body {
 
 .panel {
   @apply border-none rounded-lg;
-  background-image: url('/assets/ui/dialog_bg.png');
+  background-image: var(--asset-dialog-bg);
   background-size: 100% 100%;
   background-position: center;
   box-shadow: 0 4px 20px rgba(0,0,0,0.5);

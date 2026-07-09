@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { audioManager } from '@/game/AudioManager';
+import { assetUrl } from '@/utils/asset';
 
 interface MainMenuProps {
   onStart: () => void;
@@ -40,7 +41,7 @@ export default function MainMenu({ onStart, onEndless, onSettings, onAbout }: Ma
     <div
       className="relative w-full h-full"
       style={{
-        backgroundImage: `url('/assets/ui/background.png')`,
+        backgroundImage: assetUrl('assets/ui/background.png'),
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
@@ -51,7 +52,7 @@ export default function MainMenu({ onStart, onEndless, onSettings, onAbout }: Ma
           style={{
             width: '800px',
             height: '800px',
-            backgroundImage: `url('/assets/ui/panel.png')`,
+            backgroundImage: assetUrl('assets/ui/panel.png'),
             backgroundSize: '100% 100%',
             backgroundRepeat: 'no-repeat',
           }}

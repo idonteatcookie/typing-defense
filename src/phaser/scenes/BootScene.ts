@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { GAME_WIDTH, GAME_HEIGHT } from '@/constants/gameConstants';
+import { asset } from '@/utils/asset';
 
 export class BootScene extends Phaser.Scene {
   constructor() {
@@ -41,22 +41,22 @@ export class BootScene extends Phaser.Scene {
       percentText.destroy();
     });
 
-    this.load.image('slime', '/assets/monsters/slime.png');
-    this.load.image('runner', '/assets/monsters/runner.png');
-    this.load.image('tank', '/assets/monsters/tank.png');
-    this.load.image('tower', '/assets/towers/tower.png');
-    this.load.image('tower_arrow', '/assets/towers/arrow.png');
-    this.load.image('tower_magic', '/assets/towers/magic.png');
-    this.load.image('tower_ice', '/assets/towers/ice.png');
-    this.load.image('tower_sniper', '/assets/towers/sniper.png');
-    this.load.image('arrow_bullet', '/assets/bullets/arrow.png');
-    this.load.image('cannon_bullet', '/assets/bullets/bullet.png');
-    this.load.image('cannon_bullet_fire', '/assets/bullets/bullet_fire.png');
-    this.load.image('cannon_base', '/assets/towers/cannon_base.png');
-    this.load.image('cannon_barrel', '/assets/towers/cannon_barrel.png');
-    this.load.image('slate', '/assets/ui/slate.png');
-    this.load.image('monstor_home', '/assets/ui/monstor_home.png');
-    this.load.image('player_home', '/assets/ui/player_home.png');
+    this.load.image('slime', asset('assets/monsters/slime.png'));
+    this.load.image('runner', asset('assets/monsters/runner.png'));
+    this.load.image('tank', asset('assets/monsters/tank.png'));
+    this.load.image('tower', asset('assets/towers/tower.png'));
+    this.load.image('tower_arrow', asset('assets/towers/arrow.png'));
+    this.load.image('tower_magic', asset('assets/towers/magic.png'));
+    this.load.image('tower_ice', asset('assets/towers/ice.png'));
+    this.load.image('tower_sniper', asset('assets/towers/sniper.png'));
+    this.load.image('arrow_bullet', asset('assets/bullets/arrow.png'));
+    this.load.image('cannon_bullet', asset('assets/bullets/bullet.png'));
+    this.load.image('cannon_bullet_fire', asset('assets/bullets/bullet_fire.png'));
+    this.load.image('cannon_base', asset('assets/towers/cannon_base.png'));
+    this.load.image('cannon_barrel', asset('assets/towers/cannon_barrel.png'));
+    this.load.image('slate', asset('assets/ui/slate.png'));
+    this.load.image('monstor_home', asset('assets/ui/monstor_home.png'));
+    this.load.image('player_home', asset('assets/ui/player_home.png'));
   }
 
   create(): void {

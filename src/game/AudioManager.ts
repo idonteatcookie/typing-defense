@@ -1,6 +1,9 @@
+import { asset } from '@/utils/asset';
+
 export class AudioManager {
   private static instance: AudioManager;
   private bgmAudio: HTMLAudioElement | null = null;
+  private currentBgmPath: string | null = null;
   private bgmMuted = false;
   private sfxMuted = false;
   private bgmVolume = 0.3;
@@ -45,12 +48,13 @@ export class AudioManager {
     return this.sfxMuted;
   }
 
-  startBgm(): void {
+  private playBgm(path: string): void {
     if (this.bgmMuted) return;
 
-    if (!this.bgmAudio || this.bgmAudio.src !== '/assets/audio/bgm.mp3') {
+    if (!this.bgmAudio || this.currentBgmPath !== path) {
       this.stopBgm();
-      this.bgmAudio = new Audio('/assets/audio/bgm.mp3');
+      this.bgmAudio = new Audio(asset(path));
+      this.currentBgmPath = path;
       this.bgmAudio.loop = true;
       this.bgmAudio.volume = this.bgmVolume;
     }
@@ -60,19 +64,12 @@ export class AudioManager {
     }
   }
 
+  startBgm(): void {
+    this.playBgm('assets/audio/bgm.mp3');
+  }
+
   startHomeBgm(): void {
-    if (this.bgmMuted) return;
-
-    if (!this.bgmAudio || this.bgmAudio.src !== '/assets/audio/home.mp3') {
-      this.stopBgm();
-      this.bgmAudio = new Audio('/assets/audio/home.mp3');
-      this.bgmAudio.loop = true;
-      this.bgmAudio.volume = this.bgmVolume;
-    }
-
-    if (this.bgmAudio.paused) {
-      this.bgmAudio.play().catch(() => {});
-    }
+    this.playBgm('assets/audio/home.mp3');
   }
 
   stopBgm(): void {
@@ -95,76 +92,55 @@ export class AudioManager {
     }
   }
 
-  playBulletSound(): void {
+  private playSfx(path: string, volumeScale = 1): void {
     if (this.sfxMuted) return;
-    const audio = new Audio('/assets/audio/bullet.mp3');
-    audio.volume = this.sfxVolume;
+    const audio = new Audio(asset(path));
+    audio.volume = this.sfxVolume * volumeScale;
     audio.play().catch(() => {});
+  }
+
+  playBulletSound(): void {
+    this.playSfx('assets/audio/bullet.mp3');
   }
 
   playArrowSound(): void {
-    if (this.sfxMuted) return;
-    const audio = new Audio('/assets/audio/arrow.mp3');
-    audio.volume = this.sfxVolume;
-    audio.play().catch(() => {});
+    this.playSfx('assets/audio/arrow.mp3');
   }
 
   playTowerSound(soundFile: string): void {
-    if (this.sfxMuted) return;
-    const audio = new Audio(`/assets/audio/${soundFile}`);
-    audio.volume = this.sfxVolume;
-    audio.play().catch(() => {});
+    this.playSfx(`assets/audio/${soundFile}`);
   }
 
   playHitSound(): void {
-    if (this.sfxMuted) return;
-    const audio = new Audio('/assets/audio/hit.mp3');
-    audio.volume = this.sfxVolume;
-    audio.play().catch(() => {});
+    this.playSfx('assets/audio/hit.mp3');
   }
 
   playCorrectSound(): void {
-    if (this.sfxMuted) return;
-    const audio = new Audio('/assets/audio/correct.mp3');
-    audio.volume = this.sfxVolume * 0.7;
-    audio.play().catch(() => {});
+    this.playSfx('assets/audio/correct.mp3', 0.7);
   }
 
   playWrongSound(): void {
-    if (this.sfxMuted) return;
-    const audio = new Audio('/assets/audio/error.mp3');
-    audio.volume = this.sfxVolume;
-    audio.play().catch(() => {});
+    this.playSfx('assets/audio/error.mp3');
   }
 
   playButtonSound(): void {
-    if (this.sfxMuted) return;
-    const audio = new Audio('/assets/audio/button.mp3');
-    audio.volume = this.sfxVolume;
-    audio.play().catch(() => {});
+    this.playSfx('assets/audio/button.mp3');
   }
 
   playDeathSound(): void {
-    if (this.sfxMuted) return;
-    const audio = new Audio('/assets/audio/death.mp3');
-    audio.volume = this.sfxVolume * 1.3;
-    audio.play().catch(() => {});
+    this.playSfx('assets/audio/death.mp3', 1.3);
   }
 
   playVictorySound(): void {
     if (this.sfxMuted) return;
     this.stopBgm();
-    const audio = new Audio('/assets/audio/victory.mp3');
-    audio.volume = this.sfxVolume * 1.5;
-    audio.play().catch(() => {});
+    this.playSfx('assets/audio/victory.mp3', 1.5);
   }
 
   playDefeatSound(): void {
     if (this.sfxMuted) return;
     this.stopBgm();
-    const audio = new Audio('/assets/audio/defeat.mp3');
-    audio.volume = this.sfxVolume * 1.5;
-    audio.play().catch(() => {});
+    this.playSfx('assets/audio/defeat.mp3', 1.5);
   }
 
   toggleMute(): boolean {

@@ -1,6 +1,7 @@
 import { useGameStore } from '@/store/useGameStore';
 import { gameManager } from '@/game/GameManager';
 import { TOWER_CONFIGS } from '@/game/config/TowerConfig';
+import { asset, assetUrl } from '@/utils/asset';
 
 export default function LeftPanel() {
   const gold = useGameStore((state) => state.gold);
@@ -23,7 +24,7 @@ export default function LeftPanel() {
     <div
       className="w-[180px] p-6 overflow-y-auto flex-shrink-0"
       style={{
-        backgroundImage: "url('/assets/ui/sidebar.png')",
+        backgroundImage: assetUrl('assets/ui/sidebar.png'),
         backgroundSize: '100% 100%',
         backgroundRepeat: 'no-repeat',
       }}
@@ -34,7 +35,7 @@ export default function LeftPanel() {
           const canAfford = gold >= config.cost;
           const isSelected = placingTowerType === type;
           const spriteName = config.sprite?.replace('tower_', '') || 'tower';
-const imagePath = `/assets/towers/${spriteName}.png`;
+          const imagePath = asset(`assets/towers/${spriteName}.png`);
 
           return (
             <div

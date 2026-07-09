@@ -1,5 +1,6 @@
 import { useGameStore } from '@/store/useGameStore';
 import { useUserStore } from '@/store/useUserStore';
+import { assetUrl } from '@/utils/asset';
 import { useEffect } from 'react';
 
 interface VictoryDialogProps {
@@ -104,7 +105,7 @@ export default function VictoryDialog({ onNextLevel, onRestart, onMenu }: Victor
         <button
           className="px-8 py-3 pixel-text text-yellow-200 text-xl hover:scale-105 active:scale-95 transition-transform"
           style={{
-            backgroundImage: "url('/assets/ui/select_btn.png')",
+            backgroundImage: assetUrl('assets/ui/select_btn.png'),
             backgroundSize: '100% 100%',
             backgroundRepeat: 'no-repeat',
           }}
@@ -116,7 +117,7 @@ export default function VictoryDialog({ onNextLevel, onRestart, onMenu }: Victor
           <button
             className="px-6 py-3 pixel-text text-yellow-200 text-xl hover:scale-105 active:scale-95 transition-transform"
             style={{
-              backgroundImage: "url('/assets/ui/select_btn.png')",
+              backgroundImage: assetUrl('assets/ui/select_btn.png'),
               backgroundSize: '100% 100%',
               backgroundRepeat: 'no-repeat',
             }}
@@ -127,7 +128,7 @@ export default function VictoryDialog({ onNextLevel, onRestart, onMenu }: Victor
           <button
             className="px-4 py-2 pixel-text text-yellow-200 text-xl hover:scale-105 active:scale-95 transition-transform"
             style={{
-              backgroundImage: "url('/assets/ui/back_btn.png')",
+              backgroundImage: assetUrl('assets/ui/back_btn.png'),
               backgroundSize: '100% 100%',
               backgroundRepeat: 'no-repeat',
             }}
