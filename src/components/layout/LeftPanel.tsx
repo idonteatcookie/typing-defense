@@ -24,7 +24,7 @@ export default function LeftPanel() {
     <div
       className="w-[180px] p-6 overflow-y-auto flex-shrink-0"
       style={{
-        backgroundImage: assetUrl('assets/ui/sidebar.png'),
+        backgroundImage: assetUrl('assets/ui/sidebar.webp'),
         backgroundSize: '100% 100%',
         backgroundRepeat: 'no-repeat',
       }}
@@ -35,7 +35,7 @@ export default function LeftPanel() {
           const canAfford = gold >= config.cost;
           const isSelected = placingTowerType === type;
           const spriteName = config.sprite?.replace('tower_', '') || 'tower';
-          const imagePath = asset(`assets/towers/${spriteName}.png`);
+          const imagePath = asset(`assets/towers/${spriteName}.webp`);
 
           return (
             <div

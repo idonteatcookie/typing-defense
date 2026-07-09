@@ -128,7 +128,7 @@ export default function SettingsDialog({ onClose }: SettingsDialogProps) {
           <button
             className="px-6 py-2 pixel-text text-yellow-200 text-xl text-center hover:scale-105 active:scale-95 transition-transform"
             style={{
-              backgroundImage: assetUrl('assets/ui/back_btn.png'),
+              backgroundImage: assetUrl('assets/ui/back_btn.webp'),
               backgroundSize: '100% 100%',
               backgroundRepeat: 'no-repeat',
             }}

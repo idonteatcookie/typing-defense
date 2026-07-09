@@ -41,7 +41,7 @@ export default function AboutDialog({ onClose }: AboutDialogProps) {
           <button
             className="px-4 py-2 pixel-text text-yellow-200 text-xl hover:scale-105 active:scale-95 transition-transform"
             style={{
-              backgroundImage: assetUrl('assets/ui/back_btn.png'),
+              backgroundImage: assetUrl('assets/ui/back_btn.webp'),
               backgroundSize: '100% 100%',
               backgroundRepeat: 'no-repeat',
             }}
