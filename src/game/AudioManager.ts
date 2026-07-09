@@ -72,11 +72,19 @@ export class AudioManager {
     this.playBgm('assets/audio/home.mp3');
   }
 
+  /** 仅停止主菜单 BGM，避免卸载主菜单时误停游戏 BGM */
+  stopHomeBgm(): void {
+    if (this.currentBgmPath === 'assets/audio/home.mp3') {
+      this.stopBgm();
+    }
+  }
+
   stopBgm(): void {
     if (this.bgmAudio) {
       this.bgmAudio.pause();
       this.bgmAudio.currentTime = 0;
     }
+    this.currentBgmPath = null;
   }
 
   pauseBgm(): void {

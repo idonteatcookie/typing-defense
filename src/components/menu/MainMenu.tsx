@@ -26,7 +26,7 @@ export default function MainMenu({ onStart, onEndless, onSettings, onAbout }: Ma
     window.addEventListener('keydown', onFirstInteraction);
 
     return () => {
-      audioManager.stopBgm();
+      audioManager.stopHomeBgm();
       window.removeEventListener('click', onFirstInteraction);
       window.removeEventListener('keydown', onFirstInteraction);
     };
