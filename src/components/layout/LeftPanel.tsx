@@ -20,7 +20,7 @@ export default function LeftPanel() {
   };
 
   return (
-    <div className="w-48 panel rounded-none border-l-0 border-t-0 border-b-0 border-r border-slate-600 p-3 overflow-y-auto flex-shrink-0">
+    <div className="w-36 p-2 overflow-y-auto flex-shrink-0">
       <h3 className="text-white font-bold text-lg mb-3 pixel-text text-center border-b border-slate-600 pb-2">
         🏰 防御塔
       </h3>
@@ -42,7 +42,7 @@ const imagePath = `/assets/towers/${spriteName}.png`;
               {isSelected && (
                 <div className="tower-selected-badge">✓</div>
               )}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-between mb-2">
                 <div
                   className="w-10 h-10 rounded-lg flex items-center justify-center"
                   style={{ backgroundColor: config.color + '40', border: `2px solid ${config.color}` }}
@@ -53,14 +53,23 @@ const imagePath = `/assets/towers/${spriteName}.png`;
                     className="w-7 h-7 object-contain"
                   />
                 </div>
-                <div className="flex-1">
-                  <div className="text-white font-bold pixel-text">{config.name}</div>
-                  <div className="text-yellow-400 text-sm pixel-text">
-                    💰 {config.cost}
-                  </div>
+                <div
+                  className="text-yellow-400 text-base pixel-text"
+                  style={{ fontFamily: 'Zpix, monospace' }}
+                >
+                  💰 {config.cost}
                 </div>
               </div>
-              <div className="text-xs text-slate-400 mt-2">
+              <div
+                className="text-white font-bold text-sm mb-1 pixel-text"
+                style={{ fontFamily: 'Zpix, monospace' }}
+              >
+                {config.name}
+              </div>
+              <div
+                className="text-xs text-slate-400 pixel-text"
+                style={{ fontFamily: 'Zpix, monospace' }}
+              >
                 {config.description}
               </div>
             </div>

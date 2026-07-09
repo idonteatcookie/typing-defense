@@ -25,6 +25,7 @@ export const EVENT_NAMES = {
 
   GOLD_CHANGE: 'gold:change',
   LIFE_CHANGE: 'life:change',
+  KILLS_CHANGE: 'kills:change',
   WAVE_START: 'wave:start',
   WAVE_COMPLETE: 'wave:complete',
 

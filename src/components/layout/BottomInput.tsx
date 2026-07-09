@@ -70,44 +70,61 @@ export default function BottomInput() {
     : rawDisplay;
 
   return (
-    <div className="w-full h-24 panel rounded-b-lg rounded-t-none border-b-0 border-x-0 border-t border-slate-600">
+    <div className="w-full h-24">
       <div className="h-full flex items-center justify-between px-6">
         <div className="w-28" />
 
-        <div className="flex flex-col items-center justify-center">
-          <div className="text-slate-400 text-sm mb-1 pixel-text">目标字母</div>
+        <div className="flex items-center justify-center">
           <div
-            className={`input-display ${wrongShake ? 'shake-wrong' : ''}`}
+            className={`text-3xl font-bold ${wrongShake ? 'shake-wrong' : ''}`}
+            style={{ fontFamily: 'Zpix, monospace' }}
           >
             {displayText ? (
               <>
-                <span className="char-before">{displayText.before}</span>
+                <span className="text-slate-400">输入字母:</span>
+                <span className="char-before text-green-400 ml-2">{displayText.before}</span>
                 <span
-                  className="char-current"
+                  className="char-current text-yellow-300 ml-2"
                   style={{
-                    color: isCorrect ? '#4ade80' : wrongShake ? '#ef4444' : undefined,
+                    color: isCorrect ? '#4ade80' : wrongShake ? '#ef4444' : '#fde047',
                   }}
                 >
                   {displayText.current}
                 </span>
-                <span className="char-after">{displayText.after}</span>
+                <span className="char-after text-gray-400 ml-1">{displayText.after}</span>
               </>
             ) : (
-              <span className="text-slate-500">等待怪物...</span>
+              <span className="text-slate-500">输入字母: 等待怪物...</span>
             )}
           </div>
         </div>
 
         <div className="flex gap-6 text-right shrink-0">
           <div className="w-28">
-            <div className="text-slate-400 text-sm pixel-text">速度</div>
-            <div className="text-2xl text-green-400 font-bold pixel-text text-right">
+            <div
+              className="text-slate-400 text-sm"
+              style={{ fontFamily: 'Zpix, monospace' }}
+            >
+              速度
+            </div>
+            <div
+              className="text-2xl text-green-400 font-bold text-right"
+              style={{ fontFamily: 'Zpix, monospace' }}
+            >
               {stats.wpm} WPM
             </div>
           </div>
           <div className="w-24">
-            <div className="text-slate-400 text-sm pixel-text">准确率</div>
-            <div className="text-2xl text-blue-400 font-bold pixel-text text-right">
+            <div
+              className="text-slate-400 text-sm"
+              style={{ fontFamily: 'Zpix, monospace' }}
+            >
+              准确率
+            </div>
+            <div
+              className="text-2xl text-blue-400 font-bold text-right"
+              style={{ fontFamily: 'Zpix, monospace' }}
+            >
               {Math.round(stats.accuracy * 100)}%
             </div>
           </div>

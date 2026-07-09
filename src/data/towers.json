@@ -8,7 +8,7 @@
     "range": 120,
     "attackType": "single",
     "color": "#8b5cf6",
-    "description": "基础防御塔，单体攻击，性价比高",
+    "description": "基础防御塔，单体攻击",
     "sprite": "tower_arrow",
     "sound": "arrow.mp3"
   },

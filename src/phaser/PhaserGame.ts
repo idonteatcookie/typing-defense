@@ -9,7 +9,7 @@ export function createPhaserGame(container: HTMLElement): Phaser.Game {
     parent: container,
     width: GAME_WIDTH,
     height: GAME_HEIGHT,
-    backgroundColor: '#1e293b',
+    transparent: true,
     scale: {
       mode: Phaser.Scale.FIT,
       autoCenter: Phaser.Scale.CENTER_BOTH,

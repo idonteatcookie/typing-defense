@@ -73,6 +73,7 @@ export class GameManager {
     this.score = 0;
     this.kills = 0;
     this.startTime = Date.now();
+    eventBus.emit(EVENT_NAMES.KILLS_CHANGE, { current: this.kills });
 
     const path = level.path;
     this.monsterSystem.setPath(path);
@@ -140,6 +141,7 @@ export class GameManager {
       this.addGold(monster.goldReward);
       this.kills++;
       this.score += monster.goldReward * 10;
+      eventBus.emit(EVENT_NAMES.KILLS_CHANGE, { current: this.kills });
     }
 
     const monsters = this.monsterSystem.getMonsters();
@@ -170,6 +172,7 @@ export class GameManager {
           this.addGold(result.monster.goldReward);
           this.kills++;
           this.score += result.monster.goldReward * 10;
+          eventBus.emit(EVENT_NAMES.KILLS_CHANGE, { current: this.kills });
         }
       }
     }
@@ -419,6 +422,18 @@ export class GameManager {
 
   getTotalWaves(): number {
     return this.waveManager.getTotalWaves();
+  }
+
+  getCurrentWaveMonsterCount(): number {
+    return this.waveManager.getCurrentWaveMonsterCount();
+  }
+
+  getTotalMonsterCount(): number {
+    return this.waveManager.getTotalMonsterCount();
+  }
+
+  getMonsterCountUpToWave(waveNumber: number): number {
+    return this.waveManager.getMonsterCountUpToWave(waveNumber - 1);
   }
 }
 

@@ -14,6 +14,7 @@ function hexToNumber(hex: string): number {
 export class GameScene extends Phaser.Scene {
   private pathGraphics!: Phaser.GameObjects.Graphics;
   private gridGraphics!: Phaser.GameObjects.Graphics;
+  private pathBackgrounds: Phaser.GameObjects.Image[] = [];
   private monsters: Map<string, Phaser.GameObjects.Container> = new Map();
   private towers: Map<string, Phaser.GameObjects.Container> = new Map();
   private bullets: Map<string, Phaser.GameObjects.Arc> = new Map();
@@ -38,24 +39,6 @@ export class GameScene extends Phaser.Scene {
   }
 
   private createBackground(): void {
-    const bg = this.add.graphics();
-    bg.fillStyle(0x4a8c4a, 1);
-    bg.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-
-    for (let x = 0; x < GAME_WIDTH; x += 40) {
-      for (let y = 0; y < GAME_HEIGHT; y += 40) {
-        const shade = Math.random() * 0.12;
-        const isLighter = Math.random() > 0.5;
-        bg.fillStyle(isLighter ? 0x5a9c5a : 0x3d7c3d, shade);
-        bg.fillRect(x, y, 40, 40);
-      }
-    }
-
-    const border = this.add.graphics();
-    border.lineStyle(6, 0x2d5a2d, 1);
-    border.strokeRect(3, 3, GAME_WIDTH - 6, GAME_HEIGHT - 6);
-    border.lineStyle(2, 0x6bb06b, 1);
-    border.strokeRect(3, 3, GAME_WIDTH - 6, GAME_HEIGHT - 6);
   }
 
   private createPath(): void {
@@ -68,21 +51,49 @@ export class GameScene extends Phaser.Scene {
     if (path.length < 2) return;
 
     this.pathGraphics.clear();
+    
+    this.pathBackgrounds.forEach(img => img.destroy());
+    this.pathBackgrounds = [];
 
-    this.pathGraphics.lineStyle(GRID_SIZE * 0.85, 0x8b5a2b, 1);
-    this.pathGraphics.strokePoints(
-      path.map(p => new Phaser.Geom.Point(p.x, p.y))
-    );
+    const slateKey = 'slate';
+    const pathWidth = GRID_SIZE * 0.85;
+    
+    if (this.textures.exists(slateKey)) {
+      for (let i = 0; i < path.length - 1; i++) {
+        const start = path[i];
+        const end = path[i + 1];
+        
+        const dx = end.x - start.x;
+        const dy = end.y - start.y;
+        const length = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+        
+        const centerX = (start.x + end.x) / 2;
+        const centerY = (start.y + end.y) / 2;
+        
+        const img = this.add.image(centerX, centerY, slateKey);
+        img.setAngle(angle);
+        img.setDisplaySize(length + pathWidth, pathWidth);
+        img.setDepth(1);
+        this.pathBackgrounds.push(img);
+      }
+    } else {
+      console.warn('Slate texture not found, using fallback colors');
+      this.pathGraphics.lineStyle(pathWidth, 0x8b5a2b, 1);
+      this.pathGraphics.strokePoints(
+        path.map(p => new Phaser.Geom.Point(p.x, p.y))
+      );
 
-    this.pathGraphics.lineStyle(GRID_SIZE * 0.7, 0xdaa520, 1);
-    this.pathGraphics.strokePoints(
-      path.map(p => new Phaser.Geom.Point(p.x, p.y))
-    );
+      this.pathGraphics.lineStyle(GRID_SIZE * 0.7, 0xdaa520, 1);
+      this.pathGraphics.strokePoints(
+        path.map(p => new Phaser.Geom.Point(p.x, p.y))
+      );
 
-    this.pathGraphics.lineStyle(GRID_SIZE * 0.5, 0xffd700, 1);
-    this.pathGraphics.strokePoints(
-      path.map(p => new Phaser.Geom.Point(p.x, p.y))
-    );
+      this.pathGraphics.lineStyle(GRID_SIZE * 0.5, 0xffd700, 1);
+      this.pathGraphics.strokePoints(
+        path.map(p => new Phaser.Geom.Point(p.x, p.y))
+      );
+    }
 
     const startPoint = path[0];
     const endPoint = path[path.length - 1];

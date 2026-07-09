@@ -26,6 +26,8 @@ function App() {
   const setDefeat = useGameStore((state) => state.setDefeat);
   const setGold = useGameStore((state) => state.setGold);
   const setLives = useGameStore((state) => state.setLives);
+  const setScore = useGameStore((state) => state.setScore);
+  const setKills = useGameStore((state) => state.setKills);
   const setWave = useGameStore((state) => state.setWave);
   const setTypingTarget = useGameStore((state) => state.setTypingTarget);
   const setCombo = useGameStore((state) => state.setCombo);
@@ -63,8 +65,16 @@ function App() {
       setLives(data.current);
     });
 
+    const unsub2b = eventBus.on(EVENT_NAMES.KILLS_CHANGE, (data) => {
+      setKills(data.current);
+    });
+
     const unsub3 = eventBus.on(EVENT_NAMES.WAVE_START, (waveNum) => {
       setWave(waveNum, gameManager.getTotalWaves());
+    });
+
+    const unsub3b = eventBus.on(EVENT_NAMES.WAVE_COMPLETE, (waveNum) => {
+      setWave(waveNum + 1, gameManager.getTotalWaves());
     });
 
     const unsub4 = eventBus.on(EVENT_NAMES.TYPING_TARGET_CHANGE, (target) => {
@@ -106,7 +116,9 @@ function App() {
     return () => {
       unsub1();
       unsub2();
+      unsub2b();
       unsub3();
+      unsub3b();
       unsub4();
       unsub5();
       unsub6();

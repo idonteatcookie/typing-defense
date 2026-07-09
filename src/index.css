@@ -33,13 +33,14 @@ body {
 
 .game-container {
   position: relative;
-  box-shadow: 0 0 60px rgba(34, 197, 94, 0.2);
-  border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  width: 1152px;
-  height: 792px;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/assets/ui/game_bg.png');
+  background-size: cover;
+  background-position: center;
 }
 
 .pixel-text {
@@ -87,12 +88,16 @@ body {
 }
 
 .stat-item {
-  @apply flex items-center gap-2 px-3 py-1 rounded bg-slate-700/50;
+  @apply flex items-center gap-2 px-3 py-1 rounded;
 }
 
 .tower-card {
-  @apply p-3 rounded-lg cursor-pointer transition-all duration-200 border-2 border-transparent relative;
-  @apply hover:border-green-400 hover:bg-slate-700/50;
+  @apply p-3 rounded-lg cursor-pointer transition-all duration-150 border-4 relative;
+  border-color: #92400e;
+}
+
+.tower-card:hover:not(.disabled) {
+  transform: scale(0.95);
 }
 
 .tower-card.selected {
@@ -101,7 +106,7 @@ body {
 }
 
 .tower-card.disabled {
-  @apply opacity-50 cursor-not-allowed hover:border-transparent hover:bg-transparent;
+  @apply opacity-50 cursor-not-allowed;
 }
 
 .tower-selected-badge {

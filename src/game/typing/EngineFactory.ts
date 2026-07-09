@@ -1,4 +1,4 @@
-import type { ITypingEngine, TypingEngineType } from '../types/typing';
+import type { ITypingEngine } from '../types/typing';
 import type { TypingEngineType as EngineType } from '../types/game';
 import { QwertyEngine } from './QwertyEngine';
 import { WordEngine } from './WordEngine';

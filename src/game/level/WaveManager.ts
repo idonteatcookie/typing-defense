@@ -155,4 +155,24 @@ export class WaveManager {
     }
     return total;
   }
+
+  getCurrentWaveMonsterCount(): number {
+    if (this.currentWaveIndex >= this.waves.length) return 0;
+    const wave = this.waves[this.currentWaveIndex];
+    let total = 0;
+    for (const spawn of wave.monsters) {
+      total += spawn.count;
+    }
+    return total;
+  }
+
+  getMonsterCountUpToWave(waveIndex: number): number {
+    let total = 0;
+    for (let i = 0; i <= waveIndex && i < this.waves.length; i++) {
+      for (const spawn of this.waves[i].monsters) {
+        total += spawn.count;
+      }
+    }
+    return total;
+  }
 }

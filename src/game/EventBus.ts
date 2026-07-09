@@ -1,9 +1,9 @@
 import { EVENT_NAMES } from '@/constants/eventNames';
 import type { EventName } from '@/constants/eventNames';
-import type { MonsterState } from '../types/monster';
-import type { TowerState } from '../types/tower';
-import type { BulletState } from '../types/bullet';
-import type { TypingTarget, TypingStats } from '../types/typing';
+import type { MonsterState } from './types/monster';
+import type { TowerState } from './types/tower';
+import type { BulletState } from './types/bullet';
+import type { TypingTarget, TypingStats } from './types/typing';
 
 interface EventDataMap {
   [EVENT_NAMES.GAME_START]: void;
@@ -32,6 +32,7 @@ interface EventDataMap {
 
   [EVENT_NAMES.GOLD_CHANGE]: { current: number; delta: number };
   [EVENT_NAMES.LIFE_CHANGE]: { current: number; delta: number };
+  [EVENT_NAMES.KILLS_CHANGE]: { current: number };
   [EVENT_NAMES.WAVE_START]: number;
   [EVENT_NAMES.WAVE_COMPLETE]: number;
 

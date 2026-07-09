@@ -3,11 +3,13 @@
     "id": 1,
     "name": "左手基准键",
     "practiceLetters": "asdf",
-    "startGold": 0,
+    "startGold": 1000,
     "startLives": 10,
     "typingDifficulty": 1,
     "availableTowers": [
-      "arrow"
+      "arrow",
+      "ice",
+      "magic"
     ],
     "path": [
       {

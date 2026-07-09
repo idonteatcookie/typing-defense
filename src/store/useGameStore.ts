@@ -9,6 +9,7 @@ interface GameStore {
   gold: number;
   lives: number;
   score: number;
+  kills: number;
   currentWave: number;
   totalWaves: number;
   currentTypingTarget: TypingTarget | null;
@@ -27,6 +28,7 @@ interface GameStore {
   setGold: (gold: number) => void;
   setLives: (lives: number) => void;
   setScore: (score: number) => void;
+  setKills: (kills: number) => void;
   setWave: (current: number, total: number) => void;
   setTypingTarget: (target: TypingTarget | null) => void;
   setCombo: (combo: number) => void;
@@ -49,6 +51,7 @@ export const useGameStore = create<GameStore>((set) => ({
   gold: 100,
   lives: 10,
   score: 0,
+  kills: 0,
   currentWave: 0,
   totalWaves: 0,
   currentTypingTarget: null,
@@ -66,6 +69,7 @@ export const useGameStore = create<GameStore>((set) => ({
   setGold: (gold) => set({ gold }),
   setLives: (lives) => set({ lives }),
   setScore: (score) => set({ score }),
+  setKills: (kills) => set({ kills }),
   setWave: (current, total) => set({ currentWave: current, totalWaves: total }),
   setTypingTarget: (target) => set({ currentTypingTarget: target }),
   setCombo: (combo) => set({ combo }),

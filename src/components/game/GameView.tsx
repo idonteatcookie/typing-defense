@@ -21,6 +21,7 @@ export default function GameView({ onPause, onSpeedToggle, children }: GameViewP
   const gameRef = useRef<Phaser.Game | null>(null);
   const [comboLevel, setComboLevel] = useState(0);
   const [isDanger, setIsDanger] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const placingTowerType = useGameStore((state) => state.placingTowerType);
   const cancelPlacingTower = useGameStore((state) => state.cancelPlacingTower);
 
@@ -75,6 +76,16 @@ export default function GameView({ onPause, onSpeedToggle, children }: GameViewP
     };
     eventBus.on(EVENT_NAMES.GAME_START, handleGameStart);
 
+    const handlePause = () => {
+      setIsPaused(true);
+    };
+    eventBus.on(EVENT_NAMES.GAME_PAUSE, handlePause);
+
+    const handleResume = () => {
+      setIsPaused(false);
+    };
+    eventBus.on(EVENT_NAMES.GAME_RESUME, handleResume);
+
     return () => {
       eventBus.off(EVENT_NAMES.TYPING_CORRECT, handleCorrect);
       eventBus.off(EVENT_NAMES.TYPING_WRONG, handleWrong);
@@ -82,6 +93,8 @@ export default function GameView({ onPause, onSpeedToggle, children }: GameViewP
       eventBus.off(EVENT_NAMES.GAME_DEFEAT, handleDefeat);
       eventBus.off(EVENT_NAMES.MONSTER_NEAR_END, handleNearEnd);
       eventBus.off(EVENT_NAMES.GAME_START, handleGameStart);
+      eventBus.off(EVENT_NAMES.GAME_PAUSE, handlePause);
+      eventBus.off(EVENT_NAMES.GAME_RESUME, handleResume);
     };
   }, []);
 
@@ -97,15 +110,12 @@ export default function GameView({ onPause, onSpeedToggle, children }: GameViewP
   const isFrenzy = comboLevel >= 2;
 
   return (
-    <div className="game-container flex flex-col">
-      <TopBar onPause={onPause} onSpeedToggle={onSpeedToggle} />
+    <div className="game-container flex flex-col relative p-5">
+      <TopBar onPause={onPause} onSpeedToggle={onSpeedToggle} isPaused={isPaused} />
 
       <div className="flex flex-1 overflow-hidden">
-        <LeftPanel />
-
         <div
-          className="relative"
-          style={{ width: '960px', height: '640px' }}
+          className="relative flex-1"
         >
           <div ref={containerRef} className="w-full h-full" />
 
@@ -127,17 +137,18 @@ export default function GameView({ onPause, onSpeedToggle, children }: GameViewP
           {isDanger && <div className="danger-glow" />}
           {isFrenzy && <FrenzyFire />}
           <ComboDisplay />
-
-          {hasDialog && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-50">
-              {children}
-            </div>
-          )}
         </div>
+        <LeftPanel />
       </div>
 
       <BottomInput />
       <TutorialGuide />
+
+      {hasDialog && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-50">
+          {children}
+        </div>
+      )}
     </div>
   );
 }
