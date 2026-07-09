@@ -92,13 +92,11 @@ function App() {
 
     const unsub7 = eventBus.on(EVENT_NAMES.GAME_VICTORY, (data: VictoryData) => {
       setVictory(data);
-      audioManager.stopBgm();
       audioManager.playVictorySound();
     });
 
     const unsub8 = eventBus.on(EVENT_NAMES.GAME_DEFEAT, (data: DefeatData) => {
       setDefeat(data);
-      audioManager.stopBgm();
       audioManager.playDefeatSound();
     });
 

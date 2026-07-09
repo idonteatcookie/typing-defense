@@ -103,7 +103,8 @@ export class AudioManager {
   private playSfx(path: string, volumeScale = 1): void {
     if (this.sfxMuted) return;
     const audio = new Audio(asset(path));
-    audio.volume = this.sfxVolume * volumeScale;
+    // volume 必须在 [0, 1]，否则会抛 IndexSizeError 导致音效无法播放
+    audio.volume = Math.min(1, Math.max(0, this.sfxVolume * volumeScale));
     audio.play().catch(() => {});
   }
 
