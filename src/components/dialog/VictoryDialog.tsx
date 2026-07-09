@@ -64,7 +64,7 @@ export default function VictoryDialog({ onNextLevel, onRestart, onMenu }: Victor
   };
 
   return (
-    <div className="panel p-4 text-center bounce-in max-w-md">
+    <div className="panel p-10 text-center bounce-in max-w-md">
       <h2 className="text-2xl font-bold text-green-400 mb-4 pixel-text">
         关卡胜利
       </h2>

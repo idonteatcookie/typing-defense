@@ -37,7 +37,7 @@ export default function DefeatDialog({ onRestart, onMenu }: DefeatDialogProps) {
   };
 
   return (
-    <div className="panel p-4 text-center bounce-in max-w-md">
+    <div className="panel p-10 text-center bounce-in max-w-md">
       <h2 className="text-2xl font-bold text-red-400 mb-4 pixel-text">
         防线失守
       </h2>
