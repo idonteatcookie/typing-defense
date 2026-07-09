@@ -4,9 +4,9 @@ interface AboutDialogProps {
 
 export default function AboutDialog({ onClose }: AboutDialogProps) {
   return (
-    <div className="panel p-8 bounce-in min-w-[420px]">
-      <h2 className="text-4xl font-bold text-green-400 glow-text mb-6 pixel-text text-center">
-        🎮 关于游戏
+    <div className="panel p-10 bounce-in min-w-[420px]">
+      <h2 className="text-2xl font-bold text-green-400 mb-4 pixel-text text-center">
+        关于游戏
       </h2>
 
       <div className="flex flex-col gap-4 text-slate-200 pixel-text">
@@ -35,12 +35,19 @@ export default function AboutDialog({ onClose }: AboutDialogProps) {
           <div className="text-2xl text-yellow-400 font-bold">我不吃饼干</div>
         </div>
 
-        <button
-          className="btn-game btn-primary w-full text-xl mt-4"
-          onClick={onClose}
-        >
-          返回
-        </button>
+        <div className="flex justify-center mt-2">
+          <button
+            className="px-4 py-2 pixel-text text-yellow-200 text-xl hover:scale-105 active:scale-95 transition-transform"
+            style={{
+              backgroundImage: "url('/assets/ui/back_btn.png')",
+              backgroundSize: '100% 100%',
+              backgroundRepeat: 'no-repeat',
+            }}
+            onClick={onClose}
+          >
+            返回
+          </button>
+        </div>
       </div>
     </div>
   );

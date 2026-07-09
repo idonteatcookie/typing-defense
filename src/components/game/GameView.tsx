@@ -4,11 +4,13 @@ import TopBar from '../layout/TopBar';
 import LeftPanel from '../layout/LeftPanel';
 import BottomInput from '../layout/BottomInput';
 import ComboDisplay from '../game/ComboDisplay';
-import TutorialGuide from '../game/TutorialGuide';
 import FrenzyFire from '../game/FrenzyFire';
 import { useGameStore } from '@/store/useGameStore';
 import { eventBus } from '@/game/EventBus';
 import { EVENT_NAMES } from '@/constants/eventNames';
+
+const DESIGN_WIDTH = 1480;
+const DESIGN_HEIGHT = 800;
 
 interface GameViewProps {
   onPause: () => void;
@@ -22,8 +24,21 @@ export default function GameView({ onPause, onSpeedToggle, children }: GameViewP
   const [comboLevel, setComboLevel] = useState(0);
   const [isDanger, setIsDanger] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [scale, setScale] = useState(1);
   const placingTowerType = useGameStore((state) => state.placingTowerType);
   const cancelPlacingTower = useGameStore((state) => state.cancelPlacingTower);
+
+  useEffect(() => {
+    const updateScale = () => {
+      const sx = window.innerWidth / DESIGN_WIDTH;
+      const sy = window.innerHeight / DESIGN_HEIGHT;
+      const s = Math.min(sx, sy, 1);
+      setScale(s);
+    };
+    updateScale();
+    window.addEventListener('resize', updateScale);
+    return () => window.removeEventListener('resize', updateScale);
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -73,6 +88,7 @@ export default function GameView({ onPause, onSpeedToggle, children }: GameViewP
 
     const handleGameStart = () => {
       setIsDanger(false);
+      setComboLevel(0);
     };
     eventBus.on(EVENT_NAMES.GAME_START, handleGameStart);
 
@@ -110,45 +126,55 @@ export default function GameView({ onPause, onSpeedToggle, children }: GameViewP
   const isFrenzy = comboLevel >= 2;
 
   return (
-    <div className="game-container flex flex-col relative p-5">
-      <TopBar onPause={onPause} onSpeedToggle={onSpeedToggle} isPaused={isPaused} />
+    <div className="game-scale-wrapper">
+      <div
+        className="game-container flex flex-col relative p-5"
+        style={{
+          width: `${DESIGN_WIDTH}px`,
+          height: `${DESIGN_HEIGHT}px`,
+          transform: `scale(${scale})`,
+          transformOrigin: 'center center',
+        }}
+      >
+        <TopBar onPause={onPause} onSpeedToggle={onSpeedToggle} isPaused={isPaused} />
 
-      <div className="flex flex-1 overflow-hidden">
-        <div
-          className="relative flex-1"
-        >
-          <div ref={containerRef} className="w-full h-full" />
+        <div className="flex flex-1 overflow-hidden">
+          <div
+            className="relative flex-1"
+          >
+            <div ref={containerRef} className="w-full h-full" />
 
-          {placingTowerType && (
-            <div className="placing-hint-bar">
-              <span className="text-green-300 pixel-text">
-                📍 点击地图放置防御塔
-              </span>
-              <button
-                className="placing-cancel-btn"
-                onClick={cancelPlacingTower}
-              >
-                取消 (ESC)
-              </button>
-            </div>
-          )}
+            {placingTowerType && (
+              <div className="placing-hint-bar">
+                <span className="text-green-300 pixel-text">
+                  📍 点击地图放置防御塔
+                </span>
+                <button
+                  className="placing-cancel-btn"
+                  onClick={cancelPlacingTower}
+                >
+                  取消 (ESC)
+                </button>
+              </div>
+            )}
 
-          <div className={getGlowClass()} />
-          {isDanger && <div className="danger-glow" />}
-          {isFrenzy && <FrenzyFire />}
-          <ComboDisplay />
+            <ComboDisplay />
+          </div>
+          <LeftPanel />
         </div>
-        <LeftPanel />
+
+        <BottomInput />
+
+        <div className={getGlowClass()} />
+        {isDanger && <div className="danger-glow" />}
+        {isFrenzy && <FrenzyFire />}
+
+        {hasDialog && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-50">
+            {children}
+          </div>
+        )}
       </div>
-
-      <BottomInput />
-      <TutorialGuide />
-
-      {hasDialog && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-50">
-          {children}
-        </div>
-      )}
     </div>
   );
 }

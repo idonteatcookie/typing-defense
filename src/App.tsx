@@ -102,6 +102,10 @@ function App() {
       audioManager.playDefeatSound();
     });
 
+    const unsub8b = eventBus.on(EVENT_NAMES.GAME_START, () => {
+      setCombo(0);
+    });
+
     const unsub9 = eventBus.on(EVENT_NAMES.BULLET_FIRE, (bullet) => {
       if (bullet.towerType === 'cannon') {
         audioManager.playBulletSound();
@@ -124,6 +128,7 @@ function App() {
       unsub6();
       unsub7();
       unsub8();
+      unsub8b();
       unsub9();
     };
   }, [setGold, setLives, setWave, setTypingTarget, setCombo, setVictory, setDefeat]);

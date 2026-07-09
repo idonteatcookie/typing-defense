@@ -30,19 +30,24 @@ export default function FrenzyFire() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let width = canvas.clientWidth;
-    let height = canvas.clientHeight;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-    const resize = () => {
-      width = canvas.clientWidth;
-      height = canvas.clientHeight;
+    const updateSize = () => {
+      const rect = canvas.getBoundingClientRect();
+      const width = rect.width;
+      const height = rect.height || 120;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.max(1, Math.floor(width * dpr));
       canvas.height = Math.max(1, Math.floor(height * dpr));
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { width, height };
     };
-    resize();
-    window.addEventListener('resize', resize);
+
+    let { width, height } = updateSize();
+    const handleResize = () => {
+      const size = updateSize();
+      width = size.width;
+      height = size.height;
+    };
+    window.addEventListener('resize', handleResize);
 
     const flames: Particle[] = [];
     const smokes: Particle[] = [];
@@ -215,7 +220,7 @@ export default function FrenzyFire() {
 
     return () => {
       cancelAnimationFrame(animationRef.current);
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', handleResize);
       flames.length = 0;
       smokes.length = 0;
     };
@@ -228,10 +233,11 @@ export default function FrenzyFire() {
         position: 'absolute',
         bottom: 0,
         left: 0,
+        right: 0,
         width: '100%',
-        height: '110px',
+        height: '120px',
         pointerEvents: 'none',
-        zIndex: 7,
+        zIndex: 40,
       }}
     />
   );

@@ -37,9 +37,9 @@ export default function SettingsDialog({ onClose }: SettingsDialogProps) {
   };
 
   return (
-    <div className="panel p-8 bounce-in min-w-[380px]">
-      <h2 className="text-4xl font-bold text-blue-400 glow-text mb-6 pixel-text text-center">
-        ⚙️ 设置
+    <div className="panel p-10 bounce-in min-w-[380px]">
+      <h2 className="text-2xl font-bold text-blue-400 mb-4 pixel-text text-center">
+        游戏设置
       </h2>
 
       <div className="flex flex-col gap-5">
@@ -123,9 +123,14 @@ export default function SettingsDialog({ onClose }: SettingsDialogProps) {
           </span>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-2 flex justify-center">
           <button
-            className="btn-game btn-primary w-full text-xl"
+            className="px-6 py-2 pixel-text text-yellow-200 text-xl text-center hover:scale-105 active:scale-95 transition-transform"
+            style={{
+              backgroundImage: "url('/assets/ui/back_btn.png')",
+              backgroundSize: '100% 100%',
+              backgroundRepeat: 'no-repeat',
+            }}
             onClick={onClose}
           >
             返回

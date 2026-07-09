@@ -37,16 +37,16 @@ export default function DefeatDialog({ onRestart, onMenu }: DefeatDialogProps) {
   };
 
   return (
-    <div className="panel p-8 text-center bounce-in max-w-md">
-      <h2 className="text-4xl font-bold text-red-400 glow-text mb-6 pixel-text">
-        💀 防线失守...
+    <div className="panel p-4 text-center bounce-in max-w-md">
+      <h2 className="text-2xl font-bold text-red-400 mb-4 pixel-text">
+        防线失守
       </h2>
 
-      <p className="text-slate-300 mb-6 pixel-text text-lg">
+      <p className="text-slate-300 mb-4 pixel-text text-lg">
         别灰心，再试一次吧！
       </p>
 
-      <div className="grid grid-cols-2 gap-4 mb-6 text-left">
+      <div className="grid grid-cols-2 gap-4 mb-4 text-left">
         <div className="stat-item">
           <span className="text-slate-400">击杀数</span>
           <span className="text-white font-bold ml-auto pixel-text">{defeatData.kills}</span>
@@ -71,13 +71,25 @@ export default function DefeatDialog({ onRestart, onMenu }: DefeatDialogProps) {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3">
-        <button className="btn-game btn-primary w-full" onClick={onRestart}>
-          🔄 重新挑战
+      <div className="flex flex-col gap-3 items-center">
+        <button
+          className="px-8 py-3 pixel-text text-yellow-200 text-xl hover:scale-105 active:scale-95 transition-transform"
+          style={{
+            backgroundImage: "url('/assets/ui/select_btn.png')",
+            backgroundSize: '100% 100%',
+            backgroundRepeat: 'no-repeat',
+          }}
+          onClick={onRestart}
+        >
+          重新挑战
         </button>
         <button
-          className="btn-game w-full text-white"
-          style={{ background: 'linear-gradient(to bottom, #64748b, #475569)', boxShadow: '0 4px 0 #334155, 0 6px 10px rgba(0,0,0,0.3)' }}
+          className="px-4 py-2 pixel-text text-yellow-200 text-xl hover:scale-105 active:scale-95 transition-transform"
+          style={{
+            backgroundImage: "url('/assets/ui/back_btn.png')",
+            backgroundSize: '100% 100%',
+            backgroundRepeat: 'no-repeat',
+          }}
           onClick={onMenu}
         >
           返回菜单

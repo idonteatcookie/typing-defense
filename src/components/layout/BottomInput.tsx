@@ -12,6 +12,31 @@ export default function BottomInput() {
   const [wrongShake, setWrongShake] = useState(false);
   const [stats, setStats] = useState({ wpm: 0, accuracy: 1 });
 
+  const getComboLevel = (c: number) => {
+    if (c >= 50) return 4;
+    if (c >= 20) return 3;
+    if (c >= 10) return 2;
+    if (c >= 5) return 1;
+    return 0;
+  };
+
+  const comboLevel = getComboLevel(combo);
+  const isFrenzy = comboLevel >= 2;
+
+  const getComboProgress = () => {
+    if (combo >= 50) return 100;
+    if (combo >= 20) return 100;
+    if (combo >= 10) return ((combo - 10) / 10) * 100;
+    return 0;
+  };
+
+  const getProgressColor = () => {
+    if (combo >= 50) return '#ef4444';
+    if (combo >= 20) return '#a855f7';
+    if (combo >= 10) return '#f97316';
+    return '#fde047';
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (gameScreen === 'playing') {
@@ -99,8 +124,33 @@ export default function BottomInput() {
           </div>
         </div>
 
-        <div className="flex gap-6 text-right shrink-0">
-          <div className="w-28">
+        <div className="flex gap-3 text-right shrink-0">
+          <div className="w-28 px-2 py-1 rounded bg-[#92400e]/30">
+            <div className="flex items-center gap-2">
+              <div className="flex-1 h-3 bg-[#92400e] rounded-full overflow-hidden">
+                <div
+                  className="h-full rounded-full transition-all duration-200"
+                  style={{
+                    width: `${getComboProgress()}%`,
+                    backgroundColor: getProgressColor(),
+                  }}
+                />
+              </div>
+              <span
+                className="text-sm font-bold shrink-0"
+                style={{ fontFamily: 'Zpix, monospace', color: getProgressColor() }}
+              >
+                {combo}
+              </span>
+            </div>
+            <div
+              className="text-slate-400 text-xs mt-1"
+              style={{ fontFamily: 'Zpix, monospace' }}
+            >
+              狂热
+            </div>
+          </div>
+          <div className="w-18">
             <div
               className="text-slate-400 text-sm"
               style={{ fontFamily: 'Zpix, monospace' }}
@@ -114,7 +164,7 @@ export default function BottomInput() {
               {stats.wpm} WPM
             </div>
           </div>
-          <div className="w-24">
+          <div className="w-18">
             <div
               className="text-slate-400 text-sm"
               style={{ fontFamily: 'Zpix, monospace' }}

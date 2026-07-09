@@ -1,5 +1,6 @@
 import { useUserStore } from '@/store/useUserStore';
 import { gameManager } from '@/game/GameManager';
+import { audioManager } from '@/game/AudioManager';
 
 interface LevelSelectProps {
   onSelectLevel: (levelId: number) => void;
@@ -10,6 +11,11 @@ export default function LevelSelect({ onSelectLevel, onBack }: LevelSelectProps)
   const levels = gameManager.levelManager.getLevels();
   const levelProgress = useUserStore((state) => state.levelProgress);
   const isLoaded = useUserStore((state) => state.isLoaded);
+
+  const handleClick = (callback: () => void) => {
+    audioManager.playButtonSound();
+    callback();
+  };
 
   const getStars = (levelId: number): number => {
     return levelProgress[levelId]?.stars || 0;
@@ -42,12 +48,22 @@ export default function LevelSelect({ onSelectLevel, onBack }: LevelSelectProps)
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center gap-6 p-8 relative overflow-hidden">
-      <h2 className="text-4xl font-bold text-green-400 glow-text pixel-text flex-shrink-0">
+    <div 
+      className="w-full h-full flex flex-col items-center gap-6 p-8 relative overflow-hidden"
+      style={{
+        backgroundImage: `url('/assets/ui/menu_bg.png')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <h2 
+        className="text-4xl font-bold text-amber-700 pixel-text flex-shrink-0"
+        style={{ fontFamily: 'Zpix, monospace' }}
+      >
         选择关卡
       </h2>
 
-      <div className="w-full flex-1 overflow-y-auto">
+      <div className="w-full flex-1 overflow-y-auto no-scrollbar">
         <div className="flex justify-center w-full">
           <div className="grid grid-cols-4 gap-4 pb-24">
             {levels.filter(level => !level.isEndless).map((level) => {
@@ -57,28 +73,35 @@ export default function LevelSelect({ onSelectLevel, onBack }: LevelSelectProps)
               return (
                 <button
                   key={level.id}
-                  className={`panel p-4 w-40 transition-all duration-200 flex-shrink-0 ${
+                  className={`p-4 w-40 transition-all duration-200 flex-shrink-0 ${
                     unlocked
-                      ? 'hover:scale-105 hover:border-green-400 cursor-pointer'
+                      ? 'hover:scale-105 cursor-pointer'
                       : 'opacity-50 cursor-not-allowed'
                   }`}
-                  onClick={() => unlocked && onSelectLevel(level.id)}
+                  style={{ 
+                    fontFamily: 'Zpix, monospace',
+                    backgroundImage: `url('/assets/ui/level_btn.png')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    border: 'none',
+                  }}
+                  onClick={() => unlocked && handleClick(() => onSelectLevel(level.id))}
                   disabled={!unlocked}
                 >
-                  <div className="text-4xl font-bold text-center mb-1 text-slate-200">
+                  <div className="text-4xl font-bold text-center mb-1 text-yellow-200">
                     {unlocked ? level.id : '🔒'}
                   </div>
-                  <div className="text-lg text-center text-slate-300 mb-1">
+                  <div className="text-lg text-center text-yellow-200 mb-1">
                     {level.name}
                   </div>
                   {level.practiceLetters && (
-                    <div className="text-sm text-center text-yellow-400 mb-2 font-mono">
+                    <div className="text-sm text-center text-yellow-300 mb-2">
                       {formatPracticeLetters(level.practiceLetters)}
                     </div>
                   )}
                   {unlocked && renderStars(stars)}
                   {!unlocked && (
-                    <div className="text-xs text-slate-500 text-center mt-1">
+                    <div className="text-xs text-yellow-300 text-center mt-1">
                       完成上一关解锁
                     </div>
                   )}
@@ -90,9 +113,16 @@ export default function LevelSelect({ onSelectLevel, onBack }: LevelSelectProps)
       </div>
 
       <button
-        className="btn-game text-lg bg-slate-600 text-white absolute bottom-6 left-1/2 -translate-x-1/2"
-        style={{ boxShadow: '0 4px 0 #334155, 0 6px 10px rgba(0,0,0,0.3)' }}
-        onClick={onBack}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 px-8 py-3 text-lg font-bold text-yellow-200 transition-transform hover:scale-105 active:scale-95"
+        style={{ 
+          fontFamily: 'Zpix, monospace',
+          backgroundImage: `url('/assets/ui/back_btn.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          border: 'none',
+          boxShadow: 'none',
+        }}
+        onClick={() => handleClick(onBack)}
       >
         返回主菜单
       </button>

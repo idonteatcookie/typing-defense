@@ -98,29 +98,15 @@ export class GameScene extends Phaser.Scene {
     const startPoint = path[0];
     const endPoint = path[path.length - 1];
 
-    this.pathGraphics.fillStyle(0xa855f7, 0.15);
-    this.pathGraphics.fillCircle(startPoint.x, startPoint.y, 40);
+    const monsterHome = this.add.image(startPoint.x, startPoint.y, 'monstor_home');
+    const homeScale = 120 / Math.max(monsterHome.width, monsterHome.height);
+    monsterHome.setScale(homeScale);
+    monsterHome.setDepth(2);
 
-    this.pathGraphics.fillStyle(0xc084fc, 1);
-    this.pathGraphics.fillCircle(startPoint.x, startPoint.y, 30);
-
-    this.pathGraphics.lineStyle(4, 0x7c3aed, 1);
-    this.pathGraphics.strokeCircle(startPoint.x, startPoint.y, 30);
-
-    this.pathGraphics.fillStyle(0x7c3aed, 0.8);
-    this.pathGraphics.fillCircle(startPoint.x, startPoint.y, 18);
-
-    this.pathGraphics.fillStyle(0xef4444, 0.15);
-    this.pathGraphics.fillCircle(endPoint.x, endPoint.y, 40);
-
-    this.pathGraphics.fillStyle(0xf87171, 1);
-    this.pathGraphics.fillCircle(endPoint.x, endPoint.y, 30);
-
-    this.pathGraphics.lineStyle(4, 0xdc2626, 1);
-    this.pathGraphics.strokeCircle(endPoint.x, endPoint.y, 30);
-
-    this.pathGraphics.fillStyle(0xdc2626, 0.8);
-    this.pathGraphics.fillCircle(endPoint.x, endPoint.y, 18);
+    const playerHome = this.add.image(endPoint.x, endPoint.y, 'player_home');
+    const playerScale = 120 / Math.max(playerHome.width, playerHome.height);
+    playerHome.setScale(playerScale);
+    playerHome.setDepth(2);
   }
 
   private createGrid(): void {
@@ -238,7 +224,10 @@ export class GameScene extends Phaser.Scene {
       this.waveText = null;
     }
 
-    const txt = this.add.text(GAME_WIDTH / 2, GAME_HEIGHT / 2 - 80, text, {
+    const centerX = this.cameras.main.centerX;
+    const centerY = this.cameras.main.centerY;
+
+    const txt = this.add.text(centerX, centerY - 80, text, {
       fontFamily: 'Arial',
       fontSize: '40px',
       color: color,

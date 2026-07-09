@@ -116,7 +116,7 @@ export default function TopBar({ onPause, onSpeedToggle, isPaused }: TopBarProps
         </div>
       </div>
 
-      <div className="flex items-center gap-2 px-8">
+      <div className="flex items-center gap-2" style={{ width: '150px', justifyContent: 'center' }}>
         <button
           className="w-10 h-10 p-0 rounded-md overflow-hidden transition-transform hover:scale-95 active:scale-90"
           onClick={onSpeedToggle}

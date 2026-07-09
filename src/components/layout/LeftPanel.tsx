@@ -20,11 +20,14 @@ export default function LeftPanel() {
   };
 
   return (
-    <div className="w-36 p-2 overflow-y-auto flex-shrink-0">
-      <h3 className="text-white font-bold text-lg mb-3 pixel-text text-center border-b border-slate-600 pb-2">
-        🏰 防御塔
-      </h3>
-
+    <div
+      className="w-[180px] p-6 overflow-y-auto flex-shrink-0"
+      style={{
+        backgroundImage: "url('/assets/ui/sidebar.png')",
+        backgroundSize: '100% 100%',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <div className="flex flex-col gap-2">
         {availableTowers.map((type) => {
           const config = TOWER_CONFIGS[type];

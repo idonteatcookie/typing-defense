@@ -31,7 +31,7 @@ export class GameManager {
   private kills: number = 0;
   private currentLevelId: number = 1;
   private startTime: number = 0;
-  private cannonPosition = { x: GAME_WIDTH / 2, y: GAME_HEIGHT - 30 };
+  private cannonPosition = { x: 80, y: GAME_HEIGHT / 2 };
   private targetAssignDelay: number = 0;
   private isDanger: boolean = false;
   private dangerThreshold: number = 0.8;

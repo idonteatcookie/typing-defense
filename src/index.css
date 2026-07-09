@@ -31,20 +31,29 @@ body {
   justify-content: center;
 }
 
+.game-scale-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  overflow: hidden;
+}
+
 .game-container {
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
   background-image: url('/assets/ui/game_bg.png');
   background-size: cover;
   background-position: center;
+  flex-shrink: 0;
 }
 
 .pixel-text {
-  font-family: 'VT323', monospace;
+  font-family: 'Zpix', monospace;
   letter-spacing: 1px;
 }
 
@@ -83,8 +92,11 @@ body {
 }
 
 .panel {
-  @apply bg-slate-800 border border-slate-500 rounded-lg;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  @apply border-none rounded-lg;
+  background-image: url('/assets/ui/dialog_bg.png');
+  background-size: 100% 100%;
+  background-position: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 .stat-item {
@@ -94,6 +106,7 @@ body {
 .tower-card {
   @apply p-3 rounded-lg cursor-pointer transition-all duration-150 border-4 relative;
   border-color: #92400e;
+  background-color: #49251a;
 }
 
 .tower-card:hover:not(.disabled) {
@@ -106,7 +119,7 @@ body {
 }
 
 .tower-card.disabled {
-  @apply opacity-50 cursor-not-allowed;
+  @apply opacity-70 cursor-not-allowed;
 }
 
 .tower-selected-badge {
@@ -312,138 +325,11 @@ body {
   text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
 }
 
-/* ========== 新手引导样式 ========== */
-.tutorial-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 60;
-  background: rgba(0, 0, 0, 0.5);
-  animation: tutorialFadeIn 0.3s ease-out;
+/* 隐藏滚动条 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
-
-@keyframes tutorialFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.tutorial-bubble {
-  position: absolute;
-  background: linear-gradient(135deg, #1e293b, #334155);
-  border: 2px solid #60a5fa;
-  border-radius: 12px;
-  padding: 0;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(96, 165, 250, 0.3);
-  animation: tutorialPopIn 0.4s ease-out;
-  max-width: 320px;
-}
-
-@keyframes tutorialPopIn {
-  from {
-    opacity: 0;
-    transform: scale(0.7) translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-/* 指向底部的气泡 - 打字提示 */
-.tutorial-bubble-bottom {
-  bottom: 110px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.tutorial-arrow-down {
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-top: 12px solid #60a5fa;
-}
-
-.tutorial-arrow-down::after {
-  content: '';
-  position: absolute;
-  top: -14px;
-  left: -10px;
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid #1e293b;
-}
-
-/* 指向左侧的气泡 - 防御塔提示 */
-.tutorial-bubble-left {
-  top: 50%;
-  left: 212px;
-  transform: translateY(-50%);
-}
-
-.tutorial-arrow-left {
-  position: absolute;
-  top: 50%;
-  left: -12px;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  border-right: 12px solid #60a5fa;
-}
-
-.tutorial-arrow-left::after {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: 2px;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 10px solid #1e293b;
-}
-
-.tutorial-content {
-  padding: 16px 20px;
-}
-
-.tutorial-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #60a5fa;
-  margin-bottom: 8px;
-  font-family: 'VT323', monospace;
-}
-
-.tutorial-text {
-  font-size: 14px;
-  color: #cbd5e1;
-  line-height: 1.6;
-  margin-bottom: 12px;
-}
-
-.tutorial-btn {
-  display: inline-block;
-  padding: 6px 20px;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: 'VT323', monospace;
-}
-
-.tutorial-btn:hover {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  transform: scale(1.05);
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }

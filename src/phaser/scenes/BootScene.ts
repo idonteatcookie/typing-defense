@@ -10,15 +10,18 @@ export class BootScene extends Phaser.Scene {
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
-    progressBox.fillRect(GAME_WIDTH / 2 - 160, GAME_HEIGHT / 2 - 25, 320, 50);
+    const centerX = this.cameras.main.centerX;
+    const centerY = this.cameras.main.centerY;
 
-    const loadingText = this.add.text(GAME_WIDTH / 2, GAME_HEIGHT / 2 - 50, '加载中...', {
+    progressBox.fillRect(centerX - 160, centerY - 25, 320, 50);
+
+    const loadingText = this.add.text(centerX, centerY - 50, '加载中...', {
       fontSize: '24px',
       color: '#ffffff',
     });
     loadingText.setOrigin(0.5);
 
-    const percentText = this.add.text(GAME_WIDTH / 2, GAME_HEIGHT / 2, '0%', {
+    const percentText = this.add.text(centerX, centerY, '0%', {
       fontSize: '20px',
       color: '#ffffff',
     });
@@ -27,7 +30,7 @@ export class BootScene extends Phaser.Scene {
     this.load.on('progress', (value: number) => {
       progressBar.clear();
       progressBar.fillStyle(0x22c55e, 1);
-      progressBar.fillRect(GAME_WIDTH / 2 - 150, GAME_HEIGHT / 2 - 15, 300 * value, 30);
+      progressBar.fillRect(centerX - 150, centerY - 15, 300 * value, 30);
       percentText.setText(Math.round(value * 100) + '%');
     });
 
@@ -52,6 +55,8 @@ export class BootScene extends Phaser.Scene {
     this.load.image('cannon_base', '/assets/towers/cannon_base.png');
     this.load.image('cannon_barrel', '/assets/towers/cannon_barrel.png');
     this.load.image('slate', '/assets/ui/slate.png');
+    this.load.image('monstor_home', '/assets/ui/monstor_home.png');
+    this.load.image('player_home', '/assets/ui/player_home.png');
   }
 
   create(): void {

@@ -1,4 +1,4 @@
-export const GAME_WIDTH = 960;
+export const GAME_WIDTH = 1200;
 export const GAME_HEIGHT = 640;
 export const GRID_SIZE = 40;
 export const GRID_COLS = Math.floor(GAME_WIDTH / GRID_SIZE);

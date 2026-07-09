@@ -3,6 +3,7 @@ import type { TowerType } from '../types/game';
 import type { BulletState, BulletHitResult } from '../types/bullet';
 import type { Monster } from './Monster';
 import { circleHit } from '../utils/math';
+import { GAME_WIDTH, GAME_HEIGHT } from '@/constants/gameConstants';
 
 export class Bullet extends GameEntity {
   public damage: number;
@@ -84,7 +85,7 @@ export class Bullet extends GameEntity {
       }
     }
 
-    if (this.x < -50 || this.x > 1000 || this.y < -50 || this.y > 700) {
+    if (this.x < -50 || this.x > GAME_WIDTH + 50 || this.y < -50 || this.y > GAME_HEIGHT + 50) {
       this.active = false;
     }
 
