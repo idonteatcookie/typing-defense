@@ -49,7 +49,17 @@
         "monsters": [
           {
             "type": "slime",
-            "count": 1,
+            "count": 7,
+            "interval": 2500
+          }
+        ]
+      },
+      {
+        "delay": 0,
+        "monsters": [
+          {
+            "type": "slime",
+            "count": 9,
             "interval": 2500
           }
         ]
